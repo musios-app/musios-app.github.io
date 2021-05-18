@@ -1,37 +1,17 @@
-## Welcome to GitHub Pages
+## Andrew Hunt
 
-You can use the [editor on GitHub](https://github.com/andrewjhunt/andrewjhunt.github.io/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+Some projects I've published to GitHub.  These are focussed on home recording and music production. That's my hobby. By day, I work in software.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+**[logic-pro-scripter](https://andrewjhunt.github.io/logic-pro-scripter/)**
 
-### Markdown
+This guide is intended for developers who want to use their dev knowledge to do good stuff with Scripter for MIDI in Logic Pro. It assumes some knowledge of both Logic Pro and JavaScript. I maintain it because I found Apple’s Scripter documentation both incomplete and somewhat difficult to use.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+**[equal-loudness](https://github.com/andrewjhunt/equal-loudness)**
 
-```markdown
-Syntax highlighted code block
+Use simple EQ to simulate the audio balance at a different loudness without changing your volume. Improve the bass-mid-high balance in your mixing and mastering while listening at a comfortable volume.  The project describes the psycho-acoustic basis for the EQ curves with software calculations.
 
-# Header 1
-## Header 2
-### Header 3
+**[speaker-loudness-calibration](https://github.com/andrewjhunt/speaker-loudness-calibration)**
 
-- Bulleted
-- List
+Home studio sound depends upon good audio and loudness is critical to the quality. We all like it louder but getting balanced sound is about calibration and control. This project provides the tools and steps to do a decent calibration of loudness from your computer speakers without expensive equipment.
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/andrewjhunt/andrewjhunt.github.io/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+![Nigel Tufnel: "These go to eleven"](https://github.com/andrewjhunt/speaker-loudness-calibration/raw/main/images/volume11.jpg)
