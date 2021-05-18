@@ -1,11 +1,3 @@
-x ---
-layout: default
-title: Dev Home
-description: Some projects Ive published to GitHub
-x ---
-
-
-
 These are focussed on home recording and music production. That's my hobby. By day, I work in software.
 
 **[logic-pro-scripter](https://andrewjhunt.github.io/logic-pro-scripter/)**

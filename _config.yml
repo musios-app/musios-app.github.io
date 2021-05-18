@@ -1,1 +1,5 @@
 theme: jekyll-theme-slate
+layout: default
+
+title: Dev Home
+description: Some projects I've published to GitHub
