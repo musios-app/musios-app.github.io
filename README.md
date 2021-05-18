@@ -1,7 +1,9 @@
 ---
 title: Dev Home
-description: Some projects I've published to GitHub
 ---
+
+description: Some projects I've published to GitHub
+
 
 These are focussed on home recording and music production. That's my hobby. By day, I work in software.
 
