@@ -12,4 +12,5 @@ Hi, I'm <a href='https://andrewjhunt.github.io/'>Andrew Hunt</a>. These are some
 
 > Home studio sound depends upon good audio and loudness is critical to the quality. We all like it louder but getting balanced sound is about calibration and control. This project provides the tools and steps to do a decent calibration of loudness from your computer speakers without expensive equipment.
 
+
 ![Nigel Tufnel: "These go to eleven"](https://github.com/andrewjhunt/speaker-loudness-calibration/raw/main/images/volume11.jpg)
