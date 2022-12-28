@@ -1,5 +1,9 @@
 Hi, I'm <a href='https://andrewhunt.com.au'>Andrew Hunt</a>. These are some of my <a href='https://github.com/andrewjhunt'>github</a> projects focussed on home recording and music production. That's my hobby. By day, I work in software.
 
+**[gig-performer-notes](https://andrewjhunt.github.io/gig-performer-notes/)**
+
+> These are my notes on using Gig Performer - useful tricks, workflow etc.
+
 **[logic-pro-scripter](https://andrewjhunt.github.io/logic-pro-scripter/)**
 
 > This guide is intended for developers who want to use their dev knowledge to do good stuff with Scripter for MIDI in Logic Pro. It assumes some knowledge of both Logic Pro and JavaScript. I maintain it because I found Apple’s Scripter documentation both incomplete and somewhat difficult to use.
