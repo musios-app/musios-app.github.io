@@ -1,4 +1,4 @@
-Hi, I'm <a href='https://andrewhunt.com.au'>Andrew Hunt</a>. My <a href='https://github.com/andrewjhunt'>github</a> projects focus on home recording and music production. That's my hobby. By day, I work in software.
+[**musios.app**](https://www.musios.app) is a collection of how-to's and notes for music software and DAWs.
 
 **[gig-performer-notes](https://andrewjhunt.github.io/gig-performer-notes/)**
 
@@ -16,5 +16,9 @@ Hi, I'm <a href='https://andrewhunt.com.au'>Andrew Hunt</a>. My <a href='https:/
 
 > Home studio sound depends upon good audio and loudness is critical to the quality. We all like it louder but getting balanced sound is about calibration and control. This project provides the tools and steps to do a decent calibration of loudness from your computer speakers without expensive equipment.
 
-
 ![Nigel Tufnel: "These go to eleven"](https://github.com/andrewjhunt/speaker-loudness-calibration/raw/main/images/volume11.jpg)
+
+### About this site
+
+
+Created by <a href='https://github.com/andrewjhunt'>Andrew Hunt</a>. My <a href='https://github.com/andrewjhunt'>github</a> projects focus on home recording and music production. That's my hobby. By day, I work in software.
