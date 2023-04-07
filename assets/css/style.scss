@@ -3,16 +3,26 @@
 
 @import "{{ site.theme }}";
 
-.outer {
-    background-color:#0f0;
+#header_wrap {
+    .outer {
+        background-color:#0f0;
+    }
+    .inner {
+        background-color:#00f;
+    }
 }
 
-.inner {
-    background-color:#00f;
+#main_content_wrap {
+    .outer {
+        background-color:#f00;
+    }
+    .inner {
+        background-color:#0ff;
+    }
 }
-
 
 body {
+    margin: 10px;
     background-color:#f00;
     color:#000;
 }
