@@ -4,8 +4,10 @@
 @import "{{ site.theme }}";
 
 #header_wrap {
+    background-color:#0f0;
+    
     .outer {
-        background-color:#0f0;
+        background-color:#ff0;
     }
     .inner {
         background-color:#00f;
