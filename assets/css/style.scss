@@ -5,7 +5,13 @@
 
 #header_wrap {
     background-color:#0f0;
+
+    &.outer {
+        background-image: none;
+        background-color:#ff0;
+    }
     
+
     .outer {
         background-color:#ff0;
     }
