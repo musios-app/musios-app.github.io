@@ -1,4 +1,4 @@
-Hi, I'm <a href='https://andrewhunt.com.au'>Andrew Hunt</a>. These are some of my <a href='https://github.com/andrewjhunt'>github</a> projects focussed on home recording and music production. That's my hobby. By day, I work in software.
+Hi, I'm <a href='https://andrewhunt.com.au'>Andrew Hunt</a>. My <a href='https://github.com/andrewjhunt'>github</a> projects focus on home recording and music production. That's my hobby. By day, I work in software.
 
 **[gig-performer-notes](https://andrewjhunt.github.io/gig-performer-notes/)**
 
