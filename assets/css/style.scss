@@ -10,7 +10,8 @@ body {}
         background: none;
         background-image: url("/assets/images/background-colors-crop.jpg");
         background-position: center bottom;
-        // background-color:#ff0;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 
     .outer {
