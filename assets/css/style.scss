@@ -14,11 +14,9 @@ body {}
         background-size: cover;
     }
 
-    .outer {
-        // background-color:#ff0;
-    }
     .inner {
-        // background-color:#00f;
+        color: white;
+        text-shadow: 0 0 0.1rem grey;
     }
 }
 
