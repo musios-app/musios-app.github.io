@@ -3,34 +3,27 @@
 
 @import "{{ site.theme }}";
 
-#header_wrap {
-    background-color:#0f0;
+body {}
 
+#header_wrap {
     &.outer {
         background-image: none;
-        background-color:#ff0;
+        background-image: url("/assets/images/background-colors.jpg");
+        // background-color:#ff0;
     }
-    
 
     .outer {
-        background-color:#ff0;
+        // background-color:#ff0;
     }
     .inner {
-        background-color:#00f;
+        // background-color:#00f;
     }
 }
 
 #main_content_wrap {
     .outer {
-        background-color:#f00;
     }
     .inner {
-        background-color:#0ff;
     }
 }
 
-body {
-    margin: 10px;
-    background-color:#f00;
-    color:#000;
-}
