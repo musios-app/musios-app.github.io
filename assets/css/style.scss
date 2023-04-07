@@ -3,9 +3,14 @@
 
 @import "{{ site.theme }}";
 
-.header_wrap {
+.outer {
     background-color:#0f0;
 }
+
+.inner {
+    background-color:#00f;
+}
+
 
 body {
     background-color:#f00;
