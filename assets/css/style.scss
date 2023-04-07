@@ -7,8 +7,9 @@ body {}
 
 #header_wrap {
     &.outer {
-        background-image: none;
+        background: none;
         background-image: url("/assets/images/background-colors.jpg");
+        background-position: center center;
         // background-color:#ff0;
     }
 
