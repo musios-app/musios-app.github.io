@@ -20,5 +20,4 @@
 
 ### About this site
 
-
-Created by <a href='https://github.com/andrewjhunt'>Andrew Hunt</a>. My <a href='https://github.com/andrewjhunt'>github</a> projects focus on home recording and music production. That's my hobby. By day, I work in software.
+Created by <a href='https://github.com/andrewjhunt'>Andrew Hunt</a> and deployed under the GitHub org of musios-app. The projects focus on home recording and music production.
