@@ -1,9 +1,5 @@
 [**musios.app**](https://www.musios.app) is a collection of how-to's and notes for music software and DAWs. The [musios-app GitHub org](https://github.com/musios-app) has the source and is the place for reporting bugs, feedback and contributions.
 
-**[gig-performer-notes](https://andrewjhunt.github.io/gig-performer-notes/)**
-
-> These are my notes on using Gig Performer - useful tricks, workflow etc.
-
 **[logic-pro-scripter](https://andrewjhunt.github.io/logic-pro-scripter/)**
 
 > This guide is intended for developers who want to use their dev knowledge to do good stuff with Scripter for MIDI in Logic Pro. It assumes some knowledge of both Logic Pro and JavaScript. I maintain it because I found Apple’s Scripter documentation both incomplete and somewhat difficult to use.
