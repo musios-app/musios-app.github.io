@@ -3,3 +3,6 @@ layout: default
 
 title: musios.app
 description: Audio & Music Projects
+
+url: https://musios.app
+baseurl: /
