@@ -2,8 +2,8 @@ theme: jekyll-theme-slate
 layout: default
 
 domain: musios.app
-url: https://musios.app
-baseurl: /
+url: "https://musios.app"
+baseurl: "/"
 
-title: 'musios.app' Home
+title: Home for musios.app
 description: Audio & Music Projects
