@@ -1,3 +1,9 @@
+---
+permalink: /xxx
+layout: page
+title: musios.app
+---
+
 [**musios.app**](https://www.musios.app) is a collection of how-to's and notes for music software and DAWs. The [musios-app GitHub org](https://github.com/musios-app) has the source and is the place for reporting bugs, feedback and contributions.
 
 **[logic-pro-scripter](https://andrewjhunt.github.io/logic-pro-scripter/)**
