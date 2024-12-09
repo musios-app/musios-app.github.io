@@ -5,5 +5,5 @@ domain: musios.app
 url: "https://musios.app"
 baseurl: "/"
 
-title: Home for musios.app
-description: Audio & Music Projects
+title: musios.app
+description: Docs, scripts and tools for music nerds
