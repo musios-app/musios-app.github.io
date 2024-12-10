@@ -1,3 +1,0 @@
-[submodule "equal-loudness"]
-	path = docs/equal-loudness
-	url = https://github.com/musios-app/equal-loudness.git
