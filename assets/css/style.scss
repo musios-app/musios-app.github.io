@@ -6,13 +6,21 @@
 body {}
 
 #header_wrap {
-    &.outer {
+    .hero {
         background: none;
         background-image: url("/assets/images/background-colors-crop.jpg");
-        background-position: center bottom;
+        background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
+        height: 25vh;
     }
+    // &.outer {
+    //     background: none;
+    //     background-image: url("/assets/images/background-colors-crop.jpg");
+    //     background-position: center bottom;
+    //     background-repeat: no-repeat;
+    //     background-size: cover;
+    // }
 
     .titles {
         position: relative;
@@ -20,25 +28,28 @@ body {}
         background-color: black;
         margin-bottom: 0px;
 
-        #project_title {
-            font-size: 1.6rem;
-        }
-    
-        #project_tagline {
+        #project_title, #project_tagline {
+            display: inline-block;
             font-size: 1.5rem;
+            color: #ffffff;
+            text-shadow: 0 0 1.0rem black;    
+        }
+
+        #project_title {
+            font-weight: bold;
         }    
     }
 
 
-    #project_title, #project_tagline {
-        color: #ffffff;
-        display: inline-block;
-        text-shadow: 0 0 1.0rem black;
-    }
+    // #project_title, #project_tagline {
+    //     color: #ffffff;
+    //     display: inline-block;
+    //     text-shadow: 0 0 1.0rem black;
+    // }
 
-    #project_title {
-        font-size: 3.0rem;
-    }
+    // #project_title {
+    //     font-size: 3.0rem;
+    // }
 }
 
 #forkme_banner {
