@@ -5,15 +5,15 @@
 
 body {}
 
-#header_wrap {
+header {
     .hero {
-        background: none;
+        height: 200px;
         background-image: url("/assets/images/background-colors-crop.jpg");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        height: 25vh;
     }
+
     // &.outer {
     //     background: none;
     //     background-image: url("/assets/images/background-colors-crop.jpg");
