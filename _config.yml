@@ -9,6 +9,6 @@ baseurl: "/"
 
 name: musios.app
 title: musios.app
-description: Tools, scripts and ocs for music nerds
+description: tools, scripts and docs for music nerds
 
 exclude: [CNAME]

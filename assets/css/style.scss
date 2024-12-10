@@ -7,24 +7,16 @@ body {}
 
 header {
     .hero {
-        height: 200px;
+        height: 7.0rem;
         background-image: url("/assets/images/background-colors-crop.jpg");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
     }
 
-    // &.outer {
-    //     background: none;
-    //     background-image: url("/assets/images/background-colors-crop.jpg");
-    //     background-position: center bottom;
-    //     background-repeat: no-repeat;
-    //     background-size: cover;
-    // }
-
     .titles {
         position: relative;
-        height: 2rem;
+        height: 3.5rem;
         background-color: black;
         margin-bottom: 0px;
 
@@ -39,17 +31,6 @@ header {
             font-weight: bold;
         }    
     }
-
-
-    // #project_title, #project_tagline {
-    //     color: #ffffff;
-    //     display: inline-block;
-    //     text-shadow: 0 0 1.0rem black;
-    // }
-
-    // #project_title {
-    //     font-size: 3.0rem;
-    // }
 }
 
 #forkme_banner {
