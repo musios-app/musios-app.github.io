@@ -15,8 +15,18 @@ body {}
     }
 
     .titles {
+        position: relative;
         height: 2rem;
         background-color: black;
+        bottom: 0px;
+    }
+
+    .titles h1 {
+        font-size: 1.6rem;
+    }
+
+    .titles h2 {
+        font-size: 1.5rem;
     }
 
     #project_title, #project_tagline {
