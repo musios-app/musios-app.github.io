@@ -14,9 +14,19 @@ body {}
         background-size: cover;
     }
 
+    .titles {
+        height: 2rem;
+        background-color: black;
+    }
+
     #project_title, #project_tagline {
         color: #ffffff;
+        display: inline-block
         text-shadow: 0 0 1.0rem black;
+    }
+
+    #project_title {
+        font-size: 3.0rem;
     }
 }
 
