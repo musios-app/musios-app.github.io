@@ -14,6 +14,9 @@ Musios.app is maintained <a href='https://github.com/andrewjhunt'>Andrew Hunt</a
 
 **[equal-loudness](https://musios.app/equal-loudness)**
 
+[docs/equal-loudness](https://musios.app/docs/equal-loudness)
+
+
 > Use simple EQ to simulate the audio balance at a different loudness without changing your volume. Improve the bass-mid-high balance in your mixing and mastering while listening at a comfortable volume.  The project describes the psycho-acoustic basis for the EQ curves with software calculations.
 
 **[speaker-loudness-calibration](https://musios.app/speaker-loudness-calibration)**
