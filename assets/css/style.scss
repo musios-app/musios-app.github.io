@@ -20,13 +20,13 @@ header {
         background-color: black;
         margin-bottom: 0px;
         padding: 5px 10px;
+        color: #ffffff;
+        text-shadow: 0 0 1.0rem #888888;
 
         #project_title, #project_tagline {
             display: inline-block;
             line-height: normal;
             font-size: 1.5rem;
-            color: #ffffff;
-            text-shadow: 0 0 1.0rem black;    
         }
 
         #project_title {
