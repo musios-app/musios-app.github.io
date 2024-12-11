@@ -1,7 +1,7 @@
 remote_theme: pages-themes/slate@v0.2.0
-layout: default
 plugins:
-- jekyll-remote-theme # add this line to the plugins list if you already have one
+- jekyll-remote-theme
+
 
 domain: musios.app
 url: "https://musios.app"
