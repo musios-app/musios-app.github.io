@@ -1,9 +1,9 @@
----
----
+// ---
+// ---
 
 @import "{{ site.theme }}";
 
-body {}
+// body {}
 
 header {
     .hero {
@@ -35,14 +35,14 @@ header {
     }
 }
 
-#forkme_banner {
-    display: none;
-}
+// #forkme_banner {
+//     display: none;
+// }
 
-#main_content_wrap {
-    .outer {
-    }
-    .inner {
-    }
-}
+// #main_content_wrap {
+//     .outer {
+//     }
+//     .inner {
+//     }
+// }
 
