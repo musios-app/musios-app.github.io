@@ -24,6 +24,15 @@ header {
         color: #ffffff;
         text-shadow: 0 0 1.0rem #888888;
 
+        img {
+            position: absolute;
+            padding: 0; 
+            margin: 0; 
+            border: none;
+            height: 2rem; 
+            box-shadow: none;
+        }
+
         #project_title, #project_tagline {
             font-family: "M PLUS Rounded 1c", sans-serif;
             display: inline-block;
