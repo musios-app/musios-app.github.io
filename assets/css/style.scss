@@ -7,7 +7,9 @@ $font-family-default: 'M PLUS Rounded 1c', Calibri, Helvetica, Arial, sans-serif
 
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
 
-
+* {
+    letter-spacing: -0.03rem
+}
 
 header {
     .hero {
