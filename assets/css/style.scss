@@ -3,7 +3,12 @@
 
 @import "{{ site.theme }}";
 
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
+
+
 header {
+    font-family: "M+PLUS+Rounded+1c", sans-serif;
+
     .hero {
         height: 9.0rem;
         background-image: url("/assets/images/background-colors-crop.jpg");
