@@ -1,3 +1,6 @@
 [submodule "docs/equal-loudness"]
 	path = projects/equal-loudness
 	url = https://github.com/musios-app/equal-loudness.git
+[submodule "_themes/Plain-Webcomic"]
+	path = _themes/Plain-Webcomic
+	url = https://github.com/peahatlanding/Plain-Webcomic.git

@@ -1,7 +1,7 @@
 ---
 ---
 
-$font-family-default: 'M PLUS Rounded 1c', Calibri, Helvetica, Arial, sans-serif;
+$font-family-headings: 'M PLUS Rounded 1c', 'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif !default;
 
 @import "{{ site.theme }}";
 
@@ -29,17 +29,17 @@ header {
         color: #ffffff;
         text-shadow: 0 0 1.0rem #888888;
 
-        img {
-            position: absolute;
-            top: 15px; 
-            left: -40px;
-            height: 2rem; 
+        // img {
+        //     position: absolute;
+        //     top: 15px; 
+        //     left: -40px;
+        //     height: 2rem; 
 
-            padding: 0; 
-            margin: 0; 
-            border: none;
-            box-shadow: none;
-        }
+        //     padding: 0; 
+        //     margin: 0; 
+        //     border: none;
+        //     box-shadow: none;
+        // }
 
         #project_title, #project_tagline {
             font-family: "M PLUS Rounded 1c", sans-serif;

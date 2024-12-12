@@ -1,14 +1,19 @@
-remote_theme: pages-themes/slate@v0.2.0
-plugins:
-- jekyll-remote-theme
+# remote_theme: pages-themes/slate@v0.2.0
+# plugins:
+# - jekyll-remote-theme
+
+name: musios.app
+title: musios.app
+tab_title: XXXX
+description: tools, scripts and docs for music nerds
 
 
 domain: musios.app
 url: "https://musios.app"
 baseurl: "/"
 
-name: musios.app
-title: musios.app
-description: tools, scripts and docs for music nerds
-
 exclude: [CNAME]
+
+# Build settings
+markdown: kramdown
+theme: minima
