@@ -2,7 +2,6 @@
 layout: default
 ---
 
-
 **musios.app** is a collection of how-to's and notes for music software and DAWs. The projects focus on home recording, music production and live performance.  It's all licensed as open source.
 
 Musios.app is maintained <a href='https://github.com/andrewjhunt'>Andrew Hunt</a> with the source shared through [musios-app](https://github.com/musios-app) on GitHub. GitHub [musios-app](https://github.com/musios-app) is the place for reporting bugs, feedback and contributions.
