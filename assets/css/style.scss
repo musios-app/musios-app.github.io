@@ -7,8 +7,6 @@
 
 
 header {
-    font-family: "M PLUS Rounded 1c", sans-serif;
-
     .hero {
         height: 9.0rem;
         background-image: url("/assets/images/background-colors-crop.jpg");
@@ -27,6 +25,7 @@ header {
         text-shadow: 0 0 1.0rem #888888;
 
         #project_title, #project_tagline {
+            font-family: "M PLUS Rounded 1c", sans-serif;
             display: inline-block;
             line-height: normal;
             font-size: 1.5rem;
