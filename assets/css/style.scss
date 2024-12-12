@@ -1,9 +1,12 @@
 ---
 ---
 
+$font-family-default: 'M PLUS Rounded 1c', Calibri, Helvetica, Arial, sans-serif;
+
 @import "{{ site.theme }}";
 
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
+
 
 
 header {
