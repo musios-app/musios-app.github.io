@@ -5,7 +5,7 @@ description: tools, scripts and docs for music nerds
 
 domain: musios.app
 url: "https://musios.app"
-#baseurl: "/"
+baseurl: "/"
 
 exclude: [CNAME]
 
