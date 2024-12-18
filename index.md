@@ -28,4 +28,4 @@ Musios.app is maintained <a href='https://github.com/andrewjhunt'>Andrew Hunt</a
 
 ### About
 
-This site is built with [Jekyll](https://jekyllrb.com) and hosted on [GitHub Pages](https://pages.github.com). The theme is based on [Just the Docs](https://pmarsceill.github.io/just-the-docs/).
+This site is built with [Jekyll](https://jekyllrb.com) and hosted on [GitHub Pages](https://pages.github.com). The theme is based on [Plain-Webcomic theme](https://peahatlanding.github.io/Plain-Webcomic) by [Nico](https://peahatlanding.github.io/).
