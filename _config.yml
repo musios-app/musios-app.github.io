@@ -1,11 +1,11 @@
 name: musios.app
 title: musios.app
-tab_title: XXXX
+tab_title: XX-tab-title-XX
 description: tools, scripts and docs for music nerds
 
 domain: musios.app
 url: "https://musios.app"
-baseurl: "/"
+#baseurl: "/"
 
 exclude: [CNAME]
 
