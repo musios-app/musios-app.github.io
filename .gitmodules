@@ -4,3 +4,6 @@
 [submodule "_themes/Plain-Webcomic"]
 	path = _themes/Plain-Webcomic
 	url = https://github.com/peahatlanding/Plain-Webcomic.git
+[submodule "projects/speaker-loudness-calibration"]
+	path = projects/speaker-loudness-calibration
+	url = https://github.com/musios-app/speaker-loudness-calibration.git
