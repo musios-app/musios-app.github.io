@@ -4,29 +4,9 @@
 <!--FRONT PAGE LAYOUT-->
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
+    {% include includes/head.html %}
     <meta name="layout" content="comic.html">
-
     <title>{{ site.tab_title }}</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for webcomic -->
-    <!-- <link href="{{ site.url }}/assets/css/comic.css" rel="stylesheet"> -->
-    <link rel="stylesheet" href="{{ site.url }}/assets/css/style.css">
-
-    <!--Google Fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Arvo|Fredoka+One|Roboto" rel="stylesheet">
-
-    <!-- Font Awesome-->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-
   </head>
 
   <body>
@@ -39,7 +19,7 @@
         </div>
 
         <div class="col-md-12 center">
-          {% include /_includes/navigation.html %}
+          {% include includes/navigation.html %}
           <div class="panel center col-md-12">
 
             <div class="comic-panel center">
@@ -49,16 +29,15 @@
                 <li><a class="btn btn-outline-secondary" href= {{ site.url }}{{ page.previous.url }}#top-page >PREVIOUS</a></li>
                 <li><a class="btn btn-outline-primary" href= {{ site.url }}{{ page.next.url }}#top-page >NEXT</a></li>
               </ul>
-            </div><!--comic div-->
+            </div>
 
-        </div><!--end panel-->
-        </div><!--end main div-->
-      </div><!--end row-->
-    </div><!-- end container-->
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        </div>
+        </div>
+      </div>
+    </div>
   </body>
+
+  <footer>
+    {% include includes/footer.html %}
+  </footer>
 </html>

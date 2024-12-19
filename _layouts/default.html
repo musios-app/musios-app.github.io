@@ -3,8 +3,8 @@
 
 <html lang="en">
   <head>
-    {% include head.html %}
-
+    {% include includes/head.html %}
+    <meta name="layout" content="default.html">
     <title>{{ site.tab_title }}</title>
   </head>
 
@@ -48,7 +48,7 @@
         </div>
 
         <div class="col-md-12 center">
-          {% include navigation.html %}
+          {% include includes/navigation.html %}
 
           <div class="panel center col-md-12">
             {{ content }}
