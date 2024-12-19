@@ -2,7 +2,7 @@
 
 <html lang="en">
   <head>
-    {% include includes/head.html %}
+    {% include_relative includes/head.html %}
     <meta name="layout" content="guide-default.html">
     <title>{{ site.tab_title }}</title>
   </head>
@@ -44,6 +44,10 @@
     </div><!-- end container-->
 
   </body>
+
+  <footer>
+    {% include_relative includes/footer.html %}
+  </footer>
 </html>
 
 
