@@ -3,7 +3,8 @@
 
 <html lang="en">
   <head>
-    {% include_relative includes/head.html %}
+    {% include_relative fragments/head.html %}
+
     <meta name="layout" content="default.html">
     <title>{{ site.tab_title }}</title>
   </head>
@@ -48,7 +49,7 @@
         </div>
 
         <div class="col-md-12 center">
-          {% include include_relative/navigation.html %}
+          {% include_relative fragments/navigation.html %}
 
           <div class="panel center col-md-12">
             {{ content }}
@@ -70,8 +71,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 
   </body>
-  
+
   <footer>
-    {% include_relative includes/footer.html %}
+    {% include_relative fragments/footer.html %}
   </footer>
 </html>
