@@ -4,7 +4,7 @@
 <!--FRONT PAGE LAYOUT-->
 <html lang="en">
   <head>
-    {% include_relative fragments/head.html %}
+    {% include_relative head.html %}
     <meta name="layout" content="comic.html">
     <title>{{ site.tab_title }}</title>
   </head>
@@ -19,7 +19,7 @@
         </div>
 
         <div class="col-md-12 center">
-          {% include_relative fragments/navigation.html %}
+          {% include_relative navigation.html %}
           <div class="panel center col-md-12">
 
             <div class="comic-panel center">
@@ -38,6 +38,6 @@
   </body>
 
   <footer>
-    {% include_relative fragments/footer.html %}
+    {% include_relative footer.html %}
   </footer>
 </html>
