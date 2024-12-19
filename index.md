@@ -25,7 +25,3 @@ Musios.app is maintained <a href='https://github.com/andrewjhunt'>Andrew Hunt</a
 > Home studio sound depends upon good audio and loudness is critical to the quality. We all like it louder but getting balanced sound is about calibration and control. This project provides the tools and steps to do a decent calibration of loudness from your computer speakers without expensive equipment.
 
 ![Nigel Tufnel: "These go to eleven"](./images/volume11.jpg)
-
-### About
-
-This site is built with [Jekyll](https://jekyllrb.com) and hosted on [GitHub Pages](https://pages.github.com). The theme is based on [Plain-Webcomic theme](https://peahatlanding.github.io/Plain-Webcomic) by [Nico](https://peahatlanding.github.io/).
