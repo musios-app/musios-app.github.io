@@ -1,53 +1,44 @@
 ---
 ---
 
-$font-family-headings: 'M PLUS Rounded 1c', 'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif !default;
+@import "musios-material-theme/light.css";
 
-@import "comic.css";
+$primary-font: 'Droid Sans', sans-serif;
+$secondary-font: 'Roboto', sans-serif;
+$heading-font: 'Arvo', serif;
 
-@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
+$primary-color: #424142;
+$background-color: #f4f0f0;
+$panel-background: white;
+// $panel-padding: 1rem;
+// $panel-text-padding: 0px 25px 0px 25px;
 
-* { letter-spacing: -0.03rem }
 
-header {
-    .hero {
-        height: 9.0rem;
-        background-image: url("/assets/images/background-colors-crop.jpg");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
+body {
+    background-color: $background-color;
+}
 
-    .titles {
-        position: relative;
-        height: 3.0rem;
-        background-color: black;
-        margin-bottom: 0px;
-        padding: 5px 10px;
-        color: #ffffff;
-        text-shadow: 0 0 1.0rem #888888;
+h1, h2, h3, h4, h5, h6 {
+    font-family: $heading-font;
+    color: $primary-color;
+}
 
-        // img {
-        //     position: absolute;
-        //     top: 15px; 
-        //     left: -40px;
-        //     height: 2rem; 
+  
+body {
+    font-family: $primary-font;
+    font-size: 15px;
+    color: $primary-color;
+    background-color: $background-color;
+}
 
-        //     padding: 0; 
-        //     margin: 0; 
-        //     border: none;
-        //     box-shadow: none;
-        // }
 
-        #project_title, #project_tagline {
-            font-family: "M PLUS Rounded 1c", sans-serif;
-            display: inline-block;
-            line-height: normal;
-            font-size: 1.5rem;
-        }
+#main-content .panel {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.4);
+}
 
-        #project_title {
-            font-weight: bold;
-        }    
-    }
+img {
+    max-width: 100%;
 }

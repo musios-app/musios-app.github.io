@@ -10,60 +10,16 @@
 </head>
 
 <body>
-  <header>
-    <div class="row outer">
+  {% include header.html %}
 
-      <div class="hero">
-        <div class="inner">
-          <div
-            style="display: flex; justify-content: center; align-items: center; left: 0px; width: 5rem; height: 5rem;  position: relative; border: solid 2px white; border-radius: 50%; padding: 2rem 2rem; background: black;">
-            <img class="hero-logo" src="/assets/images/Musios logo - white.svg" style="width: 4rem; height: 4rem; transform: scale(1); border: none; box-shadow: none; margin: auto;" />
-          </div>
+  <section id="main-content">
+    <div class="container">
+        <div class="panel center col-md-12">
+          {{ content }}
         </div>
-      </div>
-
-
-      <!-- <div class="titles inner">
-          <h1 id="project_title">{{ site.title | default: site.github.repository_name }}:</h1>
-          <h2 id="project_tagline">{{ site.description | default: site.github.project_tagline }}</h2>
-        </div> -->
-
-      <div class="row inner">
-
-        <div class="jumbotron">
-          <a href="{{ site.url }}/index.html">
-            <h1>{{ site.title }}</h1>
-          </a>
-          <p>{{ site.description }}</p>
-        </div>
-
-      </div>
-
-      <!-- {% if site.show_github %} -->
-      <!-- <a id="forkme_banner" href="{{ site.github.repository_url }}">View on GitHub</a> -->
-      <!-- {% endif %} -->
-
-
-      <!-- {% if site.show_downloads %} -->
-      <!-- <section id="downloads">
-          <a class="zip_download_link" href="{{ site.github.zip_url }}">Download this project as a .zip file</a>
-          <a class="tar_download_link" href="{{ site.github.tar_url }}">Download this project as a tar.gz file</a>
-        </section> -->
-      <!-- {% endif %} -->
-
-  </header>
-
-
-  <div class="container">
-    <div class="col-md-12 center">
-      {% include navigation.html %}
-
-      <div class="panel center col-md-12">
-        {{ content }}
       </div>
     </div>
-  </div>
-
+  </section>
 
   {% include content-footer.html %}
 </body>

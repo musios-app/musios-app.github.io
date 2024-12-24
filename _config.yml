@@ -1,14 +1,32 @@
 name: musios.app
 title: musios.app
 tab_title: "musios.app: tools, scripts and docs for music nerds"
-description: tools, scripts and docs for music nerds
+description: A collection of tools for music creators and performers
 
 domain: musios.app
 url: "https://musios.app"
 baseurl: "/"
 
-exclude: [CNAME]
+lang: en
 
-# Build settings
-markdown: kramdown
 theme: minima
+markdown: kramdown
+
+kramdown:
+    syntax_highlighter_opts:
+        block:
+            line_numbers: true
+
+# Author info
+author:
+    name: Andrew Hunt (musios)
+    site: http://musios.app
+
+exclude:
+    - CNAME
+    - Gemfile
+    - Gemfile.lock
+    - node_modules
+
+plugins:
+    - jekyll-sitemap
