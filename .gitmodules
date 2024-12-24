@@ -7,3 +7,6 @@
 [submodule "projects/speaker-loudness-calibration"]
 	path = projects/speaker-loudness-calibration
 	url = https://github.com/musios-app/speaker-loudness-calibration.git
+[submodule "projects/gp-support-act"]
+	path = projects/gp-support-act
+	url = https://github.com/musios-app/gp-support-act.git
