@@ -17,7 +17,7 @@ layout: default
 
 > Use simple EQ to simulate the audio balance at a different loudness without changing your volume. Improve the bass-mid-high balance in your mixing and mastering while listening at a comfortable volume.  The project describes the psycho-acoustic basis for the EQ curves with software calculations.
 
-**[speaker-loudness-calibration](https://musios.app/speaker-loudness-calibration)**
+**[speaker-loudness-calibration](/projects/speaker-loudness-calibration)**
 
 > Home studio sound depends upon good audio and loudness is critical to the quality. We all like it louder but getting balanced sound is about calibration and control. This project provides the tools and steps to do a decent calibration of loudness from your computer speakers without expensive equipment.
 
