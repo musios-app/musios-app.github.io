@@ -16,3 +16,6 @@
 [submodule "projects/web-sheet-music-midi"]
 	path = projects/web-sheet-music-midi
 	url = https://github.com/musios-app/web-sheet-music-midi.git
+[submodule "projects/numaxpiano-midi-controller"]
+	path = projects/numaxpiano-midi-controller
+	url = https://github.com/musios-app/numaxpiano-midi-controller.git
