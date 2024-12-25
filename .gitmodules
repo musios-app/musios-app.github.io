@@ -10,3 +10,6 @@
 [submodule "projects/gp-support-act"]
 	path = projects/gp-support-act
 	url = https://github.com/musios-app/gp-support-act.git
+[submodule "projects/logic-pro-scripter"]
+	path = projects/logic-pro-scripter
+	url = https://github.com/musios-app/logic-pro-scripter.git
