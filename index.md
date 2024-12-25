@@ -9,7 +9,7 @@ layout: default
 > GP Support Act is a configurable AppleScript script to support your [Gig Performer](https://gigperformer.com) habit. Use it to check that your system is ready for the gig, then start up apps you need for your gig, and finally starts Gig Performer.  It can do a long list of checks and actions that get your system ready for GP.
 
 
-**[logic-pro-scripter](https://andrewjhunt.github.io/logic-pro-scripter/)**
+**[logic-pro-scripter](/projects/logic-pro-scripter/)**
 
 > This guide is intended for developers who want to use their dev knowledge to do good stuff with Scripter for MIDI in Logic Pro. It assumes some knowledge of both Logic Pro and JavaScript. I maintain it because I found Apple’s Scripter documentation both incomplete and somewhat difficult to use.
 
