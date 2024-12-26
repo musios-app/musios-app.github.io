@@ -29,4 +29,18 @@
         <a id="forkme_banner" href="{{ site.github.repository_url }}">View on GitHub</a>
     {% endif %}
 
+
+    <!--
+    <ul>
+    {% for page in site.pages %}
+        <li>{{ page.url }}</li>
+        {% if page.url contains '/projects/' %}
+        <li {% if page.url == page.url %}class="active"{% endif %}>
+            <a href="{{ page.url }}">{{ page.title }}</a>
+        </li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+    -->
+
 </header>
