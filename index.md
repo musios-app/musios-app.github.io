@@ -34,7 +34,7 @@ title: musios.app Home
 						{% if page.image %}
 							<img src="{{ page.image }}" style="max-height: 60px"/>
 						{% else %}
-							<img src="/assets/images/Musios logo - black.svg" style="max-height: 60px"/>
+                            {% include musios-logo-template.svg color="white" circle-color="rgb(26, 127, 55)" %}
 						{% endif %}
 					</div>
 					<div class="col-3">
