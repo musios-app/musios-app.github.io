@@ -46,5 +46,4 @@ exclude:
 plugins:
     - jekyll-sitemap
     - jekyll-feed
-    - gemoji
     - kramdown-parser-gfm
