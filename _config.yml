@@ -17,7 +17,20 @@ kramdown:
         block:
             line_numbers: true
 
-# Author info
+defaults:
+    - scope:
+          path: "" # means all files in the project
+      values:
+          layout: "default"
+
+projects_homes:
+    - src: "/projects/gp-support-act/README.md"
+    - src: "/projects/web-sheet-music-midi/README.md"
+    - src: "/projects/numaxpiano-midi-controller/README.md"
+    - src: "/projects/logic-pro-scripter/README.md"
+    - src: "/projects/equal-loudness/README.md"
+    - src: "/projects/speaker-loudness-calibration/README.md"
+
 author:
     name: Andrew Hunt (musios)
     site: http://musios.app
@@ -27,6 +40,11 @@ exclude:
     - Gemfile
     - Gemfile.lock
     - node_modules
+    - _README.md
+    - theme.md
 
 plugins:
     - jekyll-sitemap
+    - jekyll-feed
+    - gemoji
+    - kramdown-parser-gfm

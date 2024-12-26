@@ -1,4 +1,9 @@
-# Managing this GitHub Pages report
+---
+layout: default
+title: Managing GitHub Pages for this repo
+---
+
+# Managing GitHub Pages for this repo
 
 The `musios-app.github.io` repo is the primary content for the [musios.app](https://musios.app) site with:
 
