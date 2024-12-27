@@ -35,7 +35,7 @@ title: musios.app Home
 							{% endif %}
 						</div>
 					</div>
-					<div class="col-8">
+					<div class="col-9">
 						<h3 class="h5"><a href="{{ page.url }}">{{ page.title }}</a></h3>
 						{{ page.description }}
 
