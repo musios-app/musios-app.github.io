@@ -3,42 +3,71 @@
 
 @import "musios-material-theme/light.css";
 
-$primary-font: 'Droid Sans', sans-serif;
-$secondary-font: 'Roboto', sans-serif;
-$heading-font: 'Arvo', serif;
-
 $primary-color: #424142;
-$background-color: #f4f0f0;
+$background-color: #faffff;
 $panel-background: white;
-// $panel-padding: 1rem;
-// $panel-text-padding: 0px 25px 0px 25px;
 
 
 body {
     background-color: $background-color;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: $heading-font;
-    color: $primary-color;
-}
+h1 { font-size: 2.0rem; margin-top: 2.0rem; }
+h2 { font-size: 1.8rem; margin-top: 1.5rem; }
+h3 { font-size: 1.6rem; margin-top: 1.25rem; }
+h4 { font-size: 1.4rem; margin-top: 1.0rem; }
+h5 { font-size: 1.2rem; margin-top: 0.75rem; }
+h6 { font-size: 1.1rem; margin-top: 0.5rem; }
 
-  
-body {
-    font-family: $primary-font;
-    font-size: 15px;
-    color: $primary-color;
-    background-color: $background-color;
-}
-
-
-#main-content .panel {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    padding: 0.5rem;
-    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.4);
-}
 
 img {
     max-width: 100%;
+}
+
+.next-list-check + ul {
+    list-style-type: none;
+
+    ul {
+        list-style-type: none;
+    }
+    
+    li::before {
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        content: "\f00c";
+        padding-right: 12px;
+    }
+}
+
+#project-list {
+
+    .project-row {
+        border-radius: 5px;
+        background-color: #f8f8f8
+    }
+
+    .project-icon-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 85px;
+        height: 55px;
+    }
+
+    .project-icon {
+        width: auto;
+        height: 55px;
+    }
+
+    .project-github-icon-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 55px;
+        height: 55px;
+    }
+}
+
+footer {
+    font-size: 75%;
 }

@@ -6,6 +6,8 @@ $title-height: 6.0rem;
 $logo-height: $title-height * 0.7;
 
 header {
+    h1, h2, h3, h4 { margin: 0; }
+
     .hero {
         position: relative;
         height: $hero-height;
