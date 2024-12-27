@@ -3,6 +3,8 @@ layout: default
 title: Theme
 ---
 
+Markdown examples to showcase the theme.
+
 # H1 - Heading 1
 ## H2 - Heading 2
 ### H3 - Heading 3
