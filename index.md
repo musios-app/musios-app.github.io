@@ -3,31 +3,53 @@ layout: default
 title: musios.app Home
 ---
 
-**musios.app** is a collection of tools, software, and documentations for music software and DAWs. The projects focus on home recording, music production and live performance.  It's all licensed as open source. Musios.app is maintained <a href='https://github.com/andrewjhunt'>Andrew Hunt</a> with the source shared through [musios-app](https://github.com/musios-app) on GitHub. GitHub [musios-app](https://github.com/musios-app) is the place for reporting bugs, feedback and contributions.
+**musios.app** is a collection of tools, software, and documentations for music software and DAWs. The projects cover home studios and live performance.  It's all licensed as open source. Musios.app is maintained by <a href='https://github.com/andrewjhunt'>Andrew Hunt</a> with the source available through [musios-app](https://github.com/musios-app) on GitHub. Got bugs, feedback and contributions... then create an issue in the GitHub project [musios-app](https://github.com/musios-app).
 
 
 <h3>Projects</h3>
 
-<div class="container align-middle">
-	{% for home in site.projects_homes %}
-		{% assign url = home.src | replace: ".md", ".html" %}
+<div id="project-list" class="container align-middle">
+	{% for project in site.projects_homes %}
+		{% assign url = project.dir | append: "/" | append: project.home | replace: ".md", ".html" %}
 		{% for page in site.pages %}
 			{% if url == page.url %}
 
-				<div class="row m-3 d-flex align-items-center border p-3">
-					<div class="col-2">
-						{% if page.image %}
-							<img src="{{ page.image }}" style="max-height: 60px"/>
-						{% else %}
-                            {% include musios-logo-template.svg color="white" circle-color="rgb(26, 127, 55)" %}
+                <div class="row m-3 d-flex align-items-center border p-3 project-row">
+					<div class="col-1 d-flex justify-content-center align-items-center">
+						<div class="project-icon-container">
+							<a href="{{ page.url }}">
+								{% if page.image %}
+									<img class="display: block; margin: auto" class="project-icon" src="{{ project.dir | append: "/" | append: page.image }}"/>
+								{% else %}
+									{% include musios-logo-template.svg color="white" circle-color="rgb(26, 127, 55)" class="project-icon" %}
+								{% endif %}
+							</a>
+						</div>
+					</div>
+					<div class="col-1 d-flex justify-content-center align-items-center">
+						<div class="project-github-icon-container">
+							{% if page.gitrepo %}
+								<a href="{{ page.gitrepo }}">
+									<img class="project-github-icon" src="/assets/images/github-icon.svg" style="width: 50px; height: 50px;"/>
+								</a>
+							{% endif %}
+						</div>
+					</div>
+					<div class="col-8">
+						<h3 class="h5"><a href="{{ page.url }}">{{ page.title }}</a></h3>
+						{{ page.description }}
+
+						{% if page.tags %}
+							<div class="project-tags">
+								{% assign tags_array = page.tags | split: " " %}
+								{% for tag in tags_array %}
+									<span class="badge badge-pill badge-primary">#{{ tag }}</span>
+								{% endfor %}
+							</div>
 						{% endif %}
 					</div>
-					<div class="col-10">
-						<p><b><a href="{{ page.url }}">{{ page.title }}</a></b></p>
-
-						{{ page.description }}
-					</div>
 				</div>
+
 			{% endif %}
 		{% endfor %}
 	{% endfor %}
