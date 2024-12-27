@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1"
-  viewBox="0 0 128 128" class="{{ include.class }}">
+  viewBox="0 0 128 128" class="{{ include.class }}" style="{{ include.style }}">
   <defs>
     <style>
       .circle-color-fill {
