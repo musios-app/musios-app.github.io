@@ -5,13 +5,17 @@
     pre {
         margin: 0;
     }
+
     .rouge-code {
+        position: relative;
         background-color: #f0f0f0;
         border-radius: 3px;
         margin: 0.5em 0;
         overflow: auto;
-        padding: 1em 1em;
+        padding: 1em 3em 1em 1em;
+        // padding-right: 20px;
     }
+
     .rouge-gutter {
         background-color: #f8f8f8;
         border-right: 1px solid #ddd;
@@ -20,6 +24,25 @@
         float: left;
         margin: 0.5em 0;
         padding: 1em 1em;
+    }
+
+    .rouge-code-copy-button {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        background-color: inherit;
+        font-family: "Font Awesome 6 Free";
+        font-weight: 400;
+        font-size: 80%;
+        content: "\f0c5";
+        color: #404040;
+        border: solid 1px #b0b0b0;
+        border-radius: 5px;
+    }
+
+    .rouge-code-copy-button.success {
+        background-color: green;
+        color: white;
     }
 }
 
