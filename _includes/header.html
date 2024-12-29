@@ -1,5 +1,5 @@
 
-<header class="mb-5">
+<header class="mb-5 bg-dark">
     <div class="container-fluid hero">
         <div class="container inner">
             <div class="container align-items-center titles">
@@ -23,24 +23,139 @@
 
             </div>
         </div>
+
     </div>
 
-    {% if site.show_github %}
-        <a id="forkme_banner" href="{{ site.github.repository_url }}">View on GitHub</a>
-    {% endif %}
+<style>
+    .navbar-nav {
+    display: flex;
+    align-items: center;
+}
 
+.nav-item {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+}
+</style>
 
-    <!--
-    <ul>
-    {% for page in site.pages %}
-        <li>{{ page.url }}</li>
-        {% if page.url contains '/projects/' %}
-        <li {% if page.url == page.url %}class="active"{% endif %}>
-            <a href="{{ page.url }}">{{ page.title }}</a>
-        </li>
-        {% endif %}
-    {% endfor %}
-    </ul>
-    -->
+    <div class="container bg-dark navbar-container">
+        <div class="container inner">
+            <nav class="navbar navbar-expand-lg bg-dark navbar-dark align-middle">
+                <div class="container-fluid align-middle">
+                    <button class="navbar-toggler align-middle" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse align-middle" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-middle">
+
+                            <li class="nav-item align-middle">
+                                <a class="nav-link active align-middle" aria-current="page" href="{{ site.url }}/index.html">
+                                    <i class="fa-solid fa-house"></i>
+                                </a>
+                            </li>
+
+                            <li class="nav-item dropdown" data-bs-theme="dark">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Projects
+                                </a>
+                                <ul class="dropdown-menu">
+	                                {% for project in site.projects_homes %}
+		                                {% assign url = project.dir | append: "/" | append: project.home | replace: ".md", ".html" %}
+
+                                        {% for page in site.pages %}
+                                            {% if url == page.url %}
+                                                <li>
+                                                    <a class="dropdown-item" href="{{ page.url }}">{{ page.title }}</a>
+                                                </li>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endfor %}
+                                </ul>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ site.github.repository_url }}">
+                                    <img class="d-inline project-github-icon" src="/assets/images/github-icon-white.svg" style="width: 1rem; height: 1rem"/>
+                                    Github
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link align-middle" href="https://github.com/orgs/musios-app/discussions">Discussions & Support</a>
+                            </li>
+
+                        </ul>
+
+                        <form class="d-flex" id="navbar-search-form" method="get" role="search" action="{% if site.google.cse_id %}{{ "/search/" | prepend: site.baseurl }}{% else %}https://www.google.com/search{% endif %}">
+                            {% if site.google.cse_id %}
+                            {% else %}
+                                <input type="hidden" name="as_sitesearch" value="musios.app" />
+                            {% endif %}
+                            <div class="input-group">
+                                <input class="form-control search-field me-2 rounded" id="navbar-search-field" name="q" placeholder="Search" type="text" aria-label="Search">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-success rounded search-button" id="navbar-search-button" type="submit">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
 
 </header>
+
+
+        <!-- Fixed navbar -->
+        <!--
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    <div class="container">
+        <button type="button" class="navbar-toggler" data-toggle="drawer" data-target="#drawer">
+            <span class="sr-only">Toggle drawer</span>
+            <i class="material-icons">menu</i>
+        </button>
+
+        <a class="navbar-brand" href="{{ site.baseurl }}/">{{ site.title }}</a>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav m-auto">
+                {% if site.navigation %}
+                    {% for link in site.navigation %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ link.url | prepend: site.baseurl }}">{{ link.title }}</a>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    {% for page in site.pages %}
+                        {% if page.title %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </ul>
+            <form action="{% if site.google.cse_id %}{{ "/search/" | prepend: site.baseurl }}{% else %}https://www.google.com/search{% endif %}" class="form-inline" id="navbar-search-form" method="get" role="search">
+                {% if site.google.cse_id %}
+                {% else %}
+                    <input type="hidden" name="as_sitesearch" value="{{ site.baseurl | prepend: site.url }}" />
+                {% endif %}
+                <div class="input-group">
+                    <input class="form-control search-field" id="navbar-search-field" name="q" placeholder="Search" type="text" aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary btn-number search-button" id="navbar-search-button" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</nav>
+-->
