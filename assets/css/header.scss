@@ -69,13 +69,39 @@ header {
 
     .navbar-container {
         background-color: black;
-        // border: solid 1px yellow;
 
         .inner {
             .navbar {
                 margin: 0;
                 padding: 0;
+
+                .input-group .search-field {
+                    margin: 0.2rem;
+                    padding: 0.1rem 0.5rem;
+                }
+        
+                .dropdown-menu {
+                    border: solid 1px grey;
+                    box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.6);
+        
+                    .dropdown-item {
+                        color: rgba(255, 255, 255, 0.75);
+                        border: none;
+                        padding: 0.5rem 1rem;
+        
+                        &:hover {
+                            color: rgba(255, 255, 255, 0.95);
+                            background-color: inherit;
+                            text-decoration: underline;
+                        }
+
+                        &::before {
+                            content: "- ";
+                        }
+                    }
+                }
             }
         }
+
     }
 }

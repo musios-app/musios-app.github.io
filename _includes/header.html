@@ -51,23 +51,23 @@
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-middle">
 
                             <li class="nav-item align-middle">
-                                <a class="nav-link active align-middle" aria-current="page" href="{{ site.url }}/index.html">
+                                <a class="nav-link align-middle" aria-current="page" href="{{ site.url }}/index.html">
                                     <i class="fa-solid fa-house"></i>
                                 </a>
                             </li>
 
-                            <li class="nav-item dropdown" data-bs-theme="dark">
+                            <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Projects
                                 </a>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu bg-dark">
 	                                {% for project in site.projects_homes %}
 		                                {% assign url = project.dir | append: "/" | append: project.home | replace: ".md", ".html" %}
 
                                         {% for page in site.pages %}
                                             {% if url == page.url %}
-                                                <li>
-                                                    <a class="dropdown-item" href="{{ page.url }}">{{ page.title }}</a>
+                                                <li class="nav-item align-middle">
+                                                    <a class="dropdown-item nav-link" href="{{ page.url }}">{{ page.title }}</a>
                                                 </li>
                                             {% endif %}
                                         {% endfor %}
@@ -76,27 +76,27 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ site.github.repository_url }}">
-                                    <img class="d-inline project-github-icon" src="/assets/images/github-icon-white.svg" style="width: 1rem; height: 1rem"/>
-                                    Github
-                                </a>
+                                <a class="nav-link align-middle" href="https://github.com/orgs/musios-app/discussions">Discussion & Support</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link align-middle" href="https://github.com/orgs/musios-app/discussions">Discussions & Support</a>
+                                <a class="nav-link" href="{{ site.github.repository_url }}">
+                                    <i class="fa-brands fa-github"></i> Github
+                                </a>
                             </li>
+
 
                         </ul>
 
-                        <form class="d-flex" id="navbar-search-form" method="get" role="search" action="{% if site.google.cse_id %}{{ "/search/" | prepend: site.baseurl }}{% else %}https://www.google.com/search{% endif %}">
+                        <form id="navbar-search-form" class="d-flex align-middle" method="get" role="search" action="{% if site.google.cse_id %}{{ "/search/" | prepend: site.baseurl }}{% else %}https://www.google.com/search{% endif %}">
                             {% if site.google.cse_id %}
                             {% else %}
                                 <input type="hidden" name="as_sitesearch" value="musios.app" />
                             {% endif %}
-                            <div class="input-group">
+                            <div class="input-group align-middle">
                                 <input class="form-control search-field me-2 rounded" id="navbar-search-field" name="q" placeholder="Search" type="text" aria-label="Search">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-success rounded search-button" id="navbar-search-button" type="submit">
+                                <div class="input-group-append align-middle">
+                                    <button class="btn btn-outline-success rounded search-button align-middle" id="navbar-search-button" type="submit">
                                         <i class="fa fa-search"></i>
                                     </button>
                                 </div>
