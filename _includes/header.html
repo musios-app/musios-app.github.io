@@ -88,20 +88,22 @@
 
                         </ul>
 
-                        <form id="navbar-search-form" class="d-flex align-middle" method="get" role="search" action="{% if site.google.cse_id %}{{ "/search/" | prepend: site.baseurl }}{% else %}https://www.google.com/search{% endif %}">
-                            {% if site.google.cse_id %}
-                            {% else %}
-                                <input type="hidden" name="as_sitesearch" value="musios.app" />
-                            {% endif %}
-                            <div class="input-group align-middle">
-                                <input class="form-control search-field me-2 rounded" id="navbar-search-field" name="q" placeholder="Search" type="text" aria-label="Search">
-                                <div class="input-group-append align-middle">
-                                    <button class="btn btn-outline-success rounded search-button align-middle" id="navbar-search-button" type="submit">
+                        <ul class="search-wrapper">
+                            <form id="navbar-search-form" class="d-flex align-middle" method="get" role="search" action="{% if site.google.cse_id %}{{ "/search/" | prepend: site.baseurl }}{% else %}https://www.google.com/search{% endif %}">
+                                {% if site.google.cse_id %}
+                                {% else %}
+                                    <input type="hidden" name="as_sitesearch" value="musios.app" />
+                                {% endif %}
+
+                                <div class="input-group align-middle">
+                                    <input class="form-control search-field me-2 rounded" id="navbar-search-field" name="q" placeholder="Search" type="text" aria-label="Search"/>
+                                    <button class="btn outline-none rounded search-button align-middle py-0 px-2" id="navbar-search-button" type="submit">
                                         <i class="fa fa-search"></i>
                                     </button>
-                                </div>
-                            </div>
-                        </form>
+
+                                </div>                                
+                            </form>
+                        </div>
 
                     </div>
                 </div>

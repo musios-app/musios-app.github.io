@@ -75,10 +75,30 @@ header {
                 margin: 0;
                 padding: 0;
 
-                .input-group .search-field {
-                    margin: 0.2rem;
-                    padding: 0.1rem 0.5rem;
+                .search-wrapper {
+                    display: flex;
+                    justify-content: center;
+                    margin: 0.3rem;
+                    padding: 0.1rem;
+                    border-radius: 0.5rem;
+                    background-color: rgba(255, 255, 255, 0.85);
+                    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.99);
+        
+                    .search-field {
+                        background-color: inherit;
+
+                        margin: 0.2rem;
+                        padding: 0.1rem 0.5rem;
+
+                        button {
+                            box-shadow: none;
+                        }
+                    }
                 }
+                // .input-group .search-field {
+                //     margin: 0.2rem;
+                //     padding: 0.1rem 0.5rem;
+                // }
         
                 .dropdown-menu {
                     border: solid 1px grey;
