@@ -12,15 +12,31 @@ The `musios-app.github.io` repo is the primary content for the [musios.app](http
 * Site navigation
 * Acts as a container for project to be added
 
+## Local development
+
+Setup: see the reference to get `ruby`, `gem`, `bundler` etc installed
+
+Run the local Jekyll development environment
+
+```bash
+bundle exec jekyll serve
+```
+
+Ref: [How to set up a GitHub pages website on a Mac](https://open-research.gemmadanks.com/tutorials/how-to-set-up-github-pages-website/)
+
 ## Deployment
 
 GitHub pages deployment:
 
 * Jekyll for rendering/publication
-* `Plain-Webcomic` theme by [Plain-Webcomic theme](https://peahatlanding.github.io/Plain-Webcomic) by [Nico](https://peahatlanding.github.io/).
+* Custom theme that uses Material UI and Bootstrap
 * Submodules for including each project
 
-## Add a Project
+## Managing (sub-) Project
+
+Ref: [How to Use the Git Submodule Init and Update Commands](https://www.geeksforgeeks.org/how-to-use-the-git-submodule-init-and-update-command/)
+
+### Add the project to /projects
 
 Copy the Git URL for the project/repo to be added.
 
@@ -41,18 +57,19 @@ git commit -m 'add new submodule <repo-name>' .gitmodules projects/<repo-name>
 git push
 ```
 
-When the submodule changes
+
+### Updating when the submodule changes
+
+**Changes do not propagate automatically.** So, when the submodule changes...
 
 ```bash
+cd projects/<module>
 git submodule update
 ```
-
-Ref: [How to Use the Git Submodule Init and Update Commands](https://www.geeksforgeeks.org/how-to-use-the-git-submodule-init-and-update-command/)
 
 
 ## GitHub Action - Build & Deploy
 
 A `git push` automatically triggers a GitHub Action to build the site with Jekyll then deploy to [https://musios.app](https://musios.app).  
 Monitor progress on the [Actions page](https://github.com/musios-app/musios-app.github.io/actions).
-
 
