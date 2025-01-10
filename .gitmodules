@@ -1,12 +1,10 @@
+
 [submodule "docs/equal-loudness"]
 	path = projects/equal-loudness
 	url = https://github.com/musios-app/equal-loudness.git
 [submodule "projects/speaker-loudness-calibration"]
 	path = projects/speaker-loudness-calibration
 	url = https://github.com/musios-app/speaker-loudness-calibration.git
-[submodule "projects/gp-support-act"]
-	path = projects/gp-support-act
-	url = https://github.com/musios-app/gp-support-act.git
 [submodule "projects/logic-pro-scripter"]
 	path = projects/logic-pro-scripter
 	url = https://github.com/musios-app/logic-pro-scripter.git
