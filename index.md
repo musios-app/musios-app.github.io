@@ -3,7 +3,7 @@ layout: default
 title: musios.app Home
 ---
 
-**musios.app** is a collection of tools, software, and documentations for music software and DAWs. The projects cover home studios and live performance.  It's all licensed as open source. Musios.app is maintained by <a href='https://github.com/andrewjhunt'>Andrew Hunt</a> with the source available through [musios-app](https://github.com/musios-app) on GitHub. Got bugs, feedback and contributions... then create an issue in the GitHub project [musios-app](https://github.com/musios-app).
+**musios.app** is a collection of tools, software, and documentations for music software and DAWs. The projects cover home studios and live performance.  It's all licensed as open source. Musios.app is maintained by <a href='https://github.com/andrewjhunt'>Andrew Hunt</a> with the source available through [musios-app](https://github.com/musios-app) on GitHub. Got bugs, feedback and contributions, then create an issue in the GitHub project [musios-app](https://github.com/musios-app).
 
 
 <h3>Tools & Doc</h3>
@@ -42,7 +42,7 @@ title: musios.app Home
 							<div class="project-tags">
 								{% assign tags_array = page.tags | split: " " %}
 								{% for tag in tags_array %}
-									<span class="badge badge-pill badge-primary">#{{ tag }}</span>
+									<span class="badge badge-pill badge-primary">#{{ tag }}</span><br/>
 								{% endfor %}
 							</div>
 						{% endif %}
