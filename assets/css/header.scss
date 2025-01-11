@@ -116,7 +116,9 @@ header {
                         }
 
                         &::before {
-                            content: "- ";
+                            content: "\266B";
+                            padding-right: 8px;
+                            opacity: 75%;
                         }
                     }
                 }
