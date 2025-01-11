@@ -3,7 +3,7 @@
 
 $hero-height: 12.0rem;
 $title-height: 6.0rem;
-$logo-height: $title-height * 0.7;
+$logo-height-desktop: $title-height * 0.7;
 
 $header-text-color: rgba(255, 255, 255, 0.80);
 $header-text-color-hover: rgba(255, 255, 255, 0.95);
@@ -13,60 +13,89 @@ header {
 
     box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.6);
 
-    .hero {
-        position: relative;
-        height: $hero-height;
+    .hero-mobile {
+        background: black;
         background-image: url("/assets/images/background-colors-crop.jpg");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
 
-        .titles {
-            display: flex;
-            position: relative;
-            top: ($hero-height - $title-height - 1rem);
-            max-width: 800px;
-            height: $title-height;
-
-            margin-left: auto;
-            margin-right: auto;
-            padding: none;
-
-            border-radius: $title-height/8;
-            border: solid 1px rgba(0,0,0,0.8);
-            box-shadow: 0 0 0.5rem rgba(0, 0, 0, 1);
-
-            background-color: rgba(40,40,40,0.95);
-
-            #project_title, #project_tagline {
-                display: inline-block;
-                line-height: normal;
-                color: $header-text-color;
-            }
-    
-            #project_title {
-                font-size: 2.5rem;
-                font-weight: bold;
-            }    
-    
-            #project_tagline {
-                font-size: 1.0rem;
-                font-weight: normal;
-            }
-    
+        .container.inner {
+            background-color: rgba(0, 0, 0, 0.5);
         }
+
+        .site-logo {
+            width: 3rem; 
+            height: 3rem; 
+            box-shadow: none;
+            opacity: 0.9;
+            margin: auto;
+            background-color: none;
+        }
+
+        .site_title {
+            font-size: calc(var(--mdb-body-font-size) * 1.6);
+            font-weight: bold;
+            color: $header-text-color;
+        }    
+    
+        .site_tagline {
+            font-size: calc(var(--mdb-body-font-size) * 1.0);
+            font-weight: normal;
+            color: $header-text-color;
+        }
+    }
+
+    .hero-desktop {
+        height: $hero-height;
+        position: relative;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url("/assets/images/background-colors-crop.jpg");
 
         .logo-container {
             img {
-                width: $logo-height; 
-                height: $logo-height; 
+                width: $logo-height-desktop; 
+                height: $logo-height-desktop; 
                 box-shadow: none;
                 opacity: 0.9;
                 margin: auto;
                 background-color: none;
             }
         }
+
+        .site_title {
+            font-size: calc(var(--mdb-body-font-size) * 2);
+            font-weight: bold;
+            color: $header-text-color;
+        }    
+    
+        .site_tagline {
+            font-size: calc(var(--mdb-body-font-size) * 1.2);
+            font-weight: normal;
+            color: $header-text-color;
+        }
+    
+        .titles {
+            display: flex;
+            position: relative;
+            top: ($hero-height - $title-height - 1rem);
+            max-width: 800px;
+            height: $title-height;
+    
+            margin-left: auto;
+            margin-right: auto;
+            padding: none;
+    
+            border-radius: $title-height/8;
+            border: solid 1px rgba(0,0,0,0.8);
+            box-shadow: 0 0 0.5rem rgba(0, 0, 0, 1);
+    
+            background-color: rgba(40,40,40,0.95);
+        }
     }
+
 
     .navbar-container {
         .navbar {
