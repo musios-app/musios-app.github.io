@@ -43,20 +43,14 @@ img {
 
     .project-row {
         border-radius: 5px;
-        background-color: #f8f8f8
-    }
-
-    .project-icon-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 85px;
-        height: 55px;
+        background-color: #f8f8fa
     }
 
     .project-icon {
-        width: auto;
-        height: 55px;
+        // width: auto;
+        // height: 55px;
+        max-width: 80%;
+        max-width: 40px;
     }
 
     .project-github-icon-container {
