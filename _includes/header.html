@@ -2,26 +2,26 @@
 <header class="mb-5 bg-dark">
     <div class="container-fluid hero">
         <div class="container inner">
-            <div class="container align-items-center titles">
-                <div class="col-2">
-                    <div class="logo-container p-2">
-                        <a class="ml-4" href="{{ site.url }}/index.html">
-                            <img src="/assets/images/musios-logo-white.svg"/>
-                        </a>
+
+                <div class="container align-items-center titles">
+                    <div class="col-2">
+                        <div class="logo-container p-2">
+                            <a class="ml-4" href="{{ site.url }}/index.html">
+                                <img src="/assets/images/musios-logo-white.svg"/>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-8">
+                        <div class="text-center h-100">
+                            <h1 id="project_title">{{ site.title | default: site.github.repository_name }}</h1>
+                            <h2 id="project_tagline">{{ site.description }}</h2>
+                        </div>
+                    </div>
+
+                    <div class="col-2">
                     </div>
                 </div>
-
-                <div class="col-8">
-                    <div class="text-center h-100">
-                        <h1 id="project_title">{{ site.title | default: site.github.repository_name }}</h1>
-                        <h2 id="project_tagline">{{ site.description }}</h2>
-                    </div>
-                </div>
-
-                <div class="col-2">
-                </div>
-
-            </div>
         </div>
 
     </div>
