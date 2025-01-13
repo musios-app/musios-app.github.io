@@ -25,7 +25,7 @@ defaults:
 
 projects_homes:
     - dir: "/projects/support-act"
-      home: "index.md"
+      home: "README.md"
     - dir: "/projects/web-sheet-music-midi"
       home: "README.md"
     - dir: "/projects/numaxpiano-midi-controller"
