@@ -17,3 +17,6 @@
 [submodule "projects/support-act"]
 	path = projects/support-act
 	url = https://github.com/musios-app/support-act.git
+[submodule "projects/spotify-playlist-to-gigperformer"]
+	path = projects/spotify-playlist-to-gigperformer
+	url = https://github.com/musios-app/spotify-playlist-to-gigperformer.git
