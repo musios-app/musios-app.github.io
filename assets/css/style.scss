@@ -5,11 +5,13 @@
 
 $primary-color: #424142;
 $background-color: #faffff;
+$body-background-image: linear-gradient(to right, rgba(197,114,48,0.1) 0%, rgba(197,114,48,0.05) 10%, rgba(69,48,188,0.05) 90%, rgba(69,48,188,0.1) 100%);
 $panel-background: white;
 
 
 body {
     background-color: $background-color;
+    background-image: $body-background-image;
 }
 
 h1 { font-size: 2.0rem; margin-top: 2.0rem; }
