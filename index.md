@@ -38,7 +38,7 @@ title: musios.app Home
 							{% endif %}
 						</div>
 					</div>
-					<div class="col-2 d-none d-md-block">
+					<div class="col-2 d-none">
 						{% if page.tags %}
 							<div class="project-tags">
 								{% assign tags_array = page.tags | split: " " %}
