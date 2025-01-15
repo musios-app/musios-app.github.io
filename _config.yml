@@ -26,7 +26,7 @@ defaults:
 projects_homes:
     - dir: "/projects/support-act"
       home: "index.html"
-    - dir: "/projects/web-sheet-music-midi"
+    - dir: "/projects/spotify-playlist-to-gigperformer"
       home: "README.md"
     - dir: "/projects/numaxpiano-midi-controller"
       home: "README.md"
@@ -36,6 +36,10 @@ projects_homes:
       home: "README.md"
     - dir: "/projects/speaker-loudness-calibration"
       home: "README.md"
+
+    # - dir: "/projects/web-sheet-music-midi"
+    #   home: "README.md"
+
 
 author:
     name: Andrew Hunt (musios)
