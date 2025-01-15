@@ -21,9 +21,10 @@
                     <ul class="dropdown-menu bg-dark">
                         {% for project in site.projects_homes %}
                             {% assign url = project.dir | append: "/" | append: project.home | replace: ".md", ".html" %}
+                    		{% assign url2 = url | replace: "/index.html", "/" %}
 
                             {% for page in site.pages %}
-                                {% if url == page.url %}
+                    			{% if url == page.url or url2 == page.url %}
                                     <li class="nav-item align-middle">
                                         <a class="dropdown-item nav-link" href="{{ page.url }}">{{ page.title }}</a>
                                     </li>
