@@ -16,11 +16,14 @@ The `musios-app.github.io` repo is the primary content for the [musios.app](http
 
 Setup: see the reference to get `ruby`, `gem`, `bundler` etc installed
 
-Run the local Jekyll development environment
+Run the local Jekyll development environment with all the config files included.
 
 ```bash
-bundle exec jekyll serve
+bundle exec jekyll serve --config _config.yml
 ```
+
+<!-- bundle exec jekyll serve --config _config.yml,`echo projects/*/_config.yml | tr " " ","` -->
+
 
 Ref: [How to set up a GitHub pages website on a Mac](https://open-research.gemmadanks.com/tutorials/how-to-set-up-github-pages-website/)
 
