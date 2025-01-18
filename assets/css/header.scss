@@ -24,7 +24,7 @@ header {
             background-color: rgba(0, 0, 0, 0.5);
         }
 
-        .site-logo {
+        .banner-logo {
             width: 3rem; 
             height: 3rem; 
             box-shadow: none;
@@ -33,13 +33,13 @@ header {
             background-color: none;
         }
 
-        .site_title {
+        .banner-title {
             font-size: calc(var(--mdb-body-font-size) * 1.6);
             font-weight: bold;
             color: $header-text-color;
         }    
     
-        .site_tagline {
+        .banner-tagline {
             font-size: calc(var(--mdb-body-font-size) * 1.0);
             font-weight: normal;
             color: $header-text-color;
@@ -65,13 +65,13 @@ header {
             }
         }
 
-        .site_title {
+        .banner-title {
             font-size: calc(var(--mdb-body-font-size) * 2);
             font-weight: bold;
             color: $header-text-color;
         }    
     
-        .site_tagline {
+        .banner-tagline {
             font-size: calc(var(--mdb-body-font-size) * 1.2);
             font-weight: normal;
             color: $header-text-color;
