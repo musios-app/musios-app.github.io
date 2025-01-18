@@ -7,53 +7,87 @@ domain: musios.app
 url: "https://musios.app"
 baseurl: "/"
 
+author:
+  name: Andrew Hunt (musios)
+  site: http://musios.app
+
+title_separator: "-"
+
 lang: en
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+  - kramdown-parser-gfm
+  - jekyll-seo-tag
+  - jekyll-og-image
 
 theme: minima
 markdown: kramdown
 
 kramdown:
-    syntax_highlighter_opts:
-        block:
-            line_numbers: true
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
 
 defaults:
-    - scope:
-          path: "" # means all files in the project
-      values:
-          layout: "default"
+  - scope:
+      path: "" # means all files in the project
+    values:
+      layout: "default"
 
 projects_homes:
-    - dir: "/projects/support-act"
-      home: "index.html"
-    - dir: "/projects/spotify-playlist-to-gigperformer"
-      home: "README.md"
-    - dir: "/projects/numaxpiano-midi-controller"
-      home: "README.md"
-    - dir: "/projects/logic-pro-scripter"
-      home: "README.md"
-    - dir: "/projects/equal-loudness"
-      home: "README.md"
-    - dir: "/projects/speaker-loudness-calibration"
-      home: "README.md"
+  - dir: "/projects/support-act"
+    home: "index.html"
+  - dir: "/projects/spotify-playlist-to-gigperformer"
+    home: "README.md"
+  - dir: "/projects/numaxpiano-midi-controller"
+    home: "README.md"
+  - dir: "/projects/logic-pro-scripter"
+    home: "README.md"
+  - dir: "/projects/equal-loudness"
+    home: "README.md"
+  - dir: "/projects/speaker-loudness-calibration"
+    home: "README.md"
 
-    # - dir: "/projects/web-sheet-music-midi"
-    #   home: "README.md"
+  # - dir: "/projects/web-sheet-music-midi"
+  #   home: "README.md"
 
 
-author:
-    name: Andrew Hunt (musios)
-    site: http://musios.app
+favicon:
+  path: /assets/images/musios-logo-black-circle.png
+  # path: /assets/images/musios-logo-black-rect.png
+
+# _config.yml
+og_image:
+  output_dir: "assets/images/og"
+  domain: "igor.works"
+  border_bottom:
+    width: 20
+    fill:
+      - "#4285F4"
+
+# og_image:
+#   output_dir: "assets/images/og"
+#   domain: "musios.app"
+#   force: true
+#   verbose: true
+#   image: "/assets/images/musios-logo-black-circle.png"
+#   border_bottom:
+#     width: 20
+#     fill:
+#       - "#F08080"
+#   header:
+#     font_family: "Roboto, Regular"
+#     color: "#933333"
+#   content:
+#     font_family: "Roboto, Regular"
+#     color: "#333333"
 
 exclude:
-    - CNAME
-    - Gemfile
-    - Gemfile.lock
-    - node_modules
-    - _README.md
-    
-
-plugins:
-    - jekyll-sitemap
-    - jekyll-feed
-    - kramdown-parser-gfm
+  - CNAME
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - _README.md
+  
