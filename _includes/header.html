@@ -1,3 +1,5 @@
+{%- assign banner_title = page.title | default: site.title | default: site.github.repository_name | replace: '|', '&#124;' -%}
+{%- assign banner_tagline = page.description | default: site.description | replace: '|', '&#124;' -%}
 
 <header class="mb-5 bg-dark">
 
@@ -5,11 +7,10 @@
         <div class="container inner py-2">
             <div class="text-center h-100">
                 <a class="ml-4" href="{{ site.url }}/index.html">
-                    <img class="site-logo" src="/assets/images/musios-logo-white.svg"/>
+                    <img class="banner-logo" src="/assets/images/musios-logo-white.svg"/>
                 </a>
-
-                <h1 class="site_title">{{ site.title | default: site.github.repository_name }}</h1>
-                <h2 class="site_tagline">{{ site.description }}</h2>
+                <h1 class="banner-title">{{ banner_title }}</h1>
+                <h2 class="banner-tagline">{{ banner_tagline }}</h2>
             </div>
         </div>
     </div>
@@ -20,15 +21,15 @@
                 <div class="col-2">
                     <div class="logo-container p-2">
                         <a class="ml-4" href="{{ site.url }}/index.html">
-                            <img class="site-logo" src="/assets/images/musios-logo-white.svg"/>
+                            <img class="banner-logo" src="/assets/images/musios-logo-white.svg"/>
                         </a>
                     </div>
                 </div>
 
                 <div class="col-8">
                     <div class="text-center h-100">
-                        <h1 class="site_title">{{ site.title | default: site.github.repository_name }}</h1>
-                        <h2 class="site_tagline">{{ site.description }}</h2>
+                        <h1 class="banner-title">{{ banner_title }}</h1>
+                        <h2 class="banner-tagline">{{ banner_tagline }}</h2>
                     </div>
                 </div>
 
