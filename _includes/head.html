@@ -2,10 +2,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="description" content="">
-<meta name="author" content="">
+{%- if site.favicon.path -%}
+  <link rel="shortcut icon" type="image/png" href="{{ site.favicon.path }}">
+{%- endif -%}
 
-<link rel="icon" type="image/png" href="/assets/images/musios-logo-black-circle.png">
+{% seo %}
 
 <!-- Font Awesome -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
@@ -16,6 +17,7 @@
 <!-- Material Design for Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/8.1.0/mdb.min.css" rel="stylesheet"/>
 
+<!-- custom theme for musios.app -->
 <link rel="stylesheet" href="{{ site.url }}/assets/css/style.css">
 <link rel="stylesheet" href="{{ site.url }}/assets/css/header.css">
 <link rel="stylesheet" href="{{ site.url }}/assets/css/rouge-syntax.css">
