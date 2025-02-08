@@ -20,7 +20,6 @@ plugins:
   - jekyll-feed
   - kramdown-parser-gfm
   - jekyll-seo-tag
-  - jekyll-og-image
 
 theme: minima
 markdown: kramdown
@@ -59,13 +58,13 @@ projects_homes:
 favicon:
   path: /assets/images/musios-logo-black-circle.png
 
-og_image:
-  output_dir: "assets/images/og"
-  domain: "igor.works"
-  border_bottom:
-    width: 20
-    fill:
-      - "#4285F4"
+# og_image:
+#   output_dir: "assets/images/og"
+#   domain: "igor.works"
+#   border_bottom:
+#     width: 20
+#     fill:
+#       - "#4285F4"
 
 # og_image:
 #   output_dir: "assets/images/og"
