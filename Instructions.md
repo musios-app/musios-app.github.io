@@ -66,7 +66,9 @@ git push
 
 ### Updating when the submodule changes
 
-**Changes do not propagate automatically.** So, when the submodule changes...
+**Changes do not propagate automatically.** 
+
+So, when the submodule changes...
 
 ```bash
 cd projects/<module>
