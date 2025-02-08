@@ -15,7 +15,7 @@ header {
 
     .hero-mobile {
         background: black;
-        background-image: url("/assets/images/background-colors-crop.jpg");
+        background-image: url("/assets/images/header-bg.webp");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -49,10 +49,10 @@ header {
     .hero-desktop {
         height: $hero-height;
         position: relative;
-        background-position: center;
         background-repeat: no-repeat;
+        background-position: center bottom;
         background-size: cover;
-        background-image: url("/assets/images/background-colors-crop.jpg");
+        background-image: url("/assets/images/header-bg.webp");
 
         .logo-container {
             img {
