@@ -20,7 +20,8 @@ plugins:
   - jekyll-feed
   - kramdown-parser-gfm
   - jekyll-seo-tag
-
+  - jekyll-github-metadata
+  
 theme: minima
 markdown: kramdown
 
