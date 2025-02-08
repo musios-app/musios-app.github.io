@@ -25,6 +25,8 @@ plugins:
 theme: minima
 markdown: kramdown
 
+show_dir_listing: false
+
 kramdown:
   syntax_highlighter_opts:
     block:
@@ -56,9 +58,7 @@ projects_homes:
 
 favicon:
   path: /assets/images/musios-logo-black-circle.png
-  # path: /assets/images/musios-logo-black-rect.png
 
-# _config.yml
 og_image:
   output_dir: "assets/images/og"
   domain: "igor.works"
@@ -90,4 +90,6 @@ exclude:
   - Gemfile.lock
   - node_modules
   - _README.md
-  
+  - sheet-viewer.html
+  - gen-numaxpiano-gp-rigsetup.html
+
