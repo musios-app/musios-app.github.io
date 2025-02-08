@@ -19,11 +19,14 @@ Setup: see the reference to get `ruby`, `gem`, `bundler` etc installed
 Run the local Jekyll development environment with all the config files included.
 
 ```bash
+# HTTP server
 bundle exec jekyll serve --config _config.yml
+
+# with HTTPS/SSL
+bundle exec jekyll serve --ssl-key .localhost-ssl/key.pem --ssl-cert .localhost-ssl/cert.pem
 ```
 
-<!-- bundle exec jekyll serve --config _config.yml,`echo projects/*/_config.yml | tr " " ","` -->
-
+Ref: [Running Jekyll locally with SSL](https://claytonerrington.com/blog/securing-jekyll-with-ssl-locally/)
 
 Ref: [How to set up a GitHub pages website on a Mac](https://open-research.gemmadanks.com/tutorials/how-to-set-up-github-pages-website/)
 
