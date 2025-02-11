@@ -16,10 +16,10 @@ title: musios.app Home
 			{% if url == page.url or url2 == page.url %}
 
                 <div class="row my-3 d-flex align-items-center border p-3 project-row">
-					<div class="col-1 d-none d-sm-block">
+					<div class="col-1 d-none d-sm-block align-items-center text-center" style="min-width: 120px">
 						<a href="{{ page.url }}">
 							{% if page.icon %}
-								<img class="display: block; margin: auto" class="project-icon" src="{{ project.dir | append: "/" | append: page.icon }}"/>
+								<img class="project-icon" src="{{ project.dir | append: "/" | append: page.icon }}"/>
 							{% else %}
 								{% include musios-logo-template.svg color="white" circle-color="rgb(26, 127, 55)" class="project-icon" %}
 							{% endif %}
