@@ -46,13 +46,24 @@ header {
         }
     }
 
+
+    @keyframes swipe {
+        from {
+            background-position: right, center;
+        }
+    }
+  
     .hero-desktop {
         height: $hero-height;
         position: relative;
         background-repeat: no-repeat;
         background-position: center bottom;
         background-size: cover;
-        background-image: url("/assets/images/header-bg.webp");
+        background:
+            linear-gradient(to right,transparent 45%,#00000050,transparent 55%),
+            url(https://musios.app/assets/images/header-bg.webp) center;
+        background-size: 300% 100%, cover;
+        animation: swipe 5s linear infinite;
 
         .logo-container {
             img {
