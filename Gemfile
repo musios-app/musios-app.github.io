@@ -9,6 +9,7 @@ group :jekyll_plugins do
   gem "kramdown-parser-gfm"
   gem 'jekyll-seo-tag'
   gem "jekyll-github-metadata"
+  # gem "_plugins/spotify-gp-vite-build"
   # gem "jekyll-menus"
 end
 

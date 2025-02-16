@@ -10,7 +10,7 @@ title: musios.app Home
 	News
 </h3>
 
-2025-02-15: Coming soon... a web version of [Spotify Playlist to Gig Performer .gig file](/projects/spotify-playlist-to-gigperformer)
+2025-02-15: Coming soon... a web version of [Spotify Playlist to Gig Performer .gig file](/projects/spotify-playlist-to-gigperformer/tool)
 
 <h3>Tools & Doc</h3>
 

@@ -92,5 +92,5 @@ exclude:
   - _README.md
   - sheet-viewer.html
   - gen-numaxpiano-gp-rigsetup.html
-  - "/projects/spotify-playlist-to-gigperformer/app"
+  - "/projects/spotify-playlist-to-gigperformer/src"
 

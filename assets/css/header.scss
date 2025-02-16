@@ -77,13 +77,13 @@ header {
         }
 
         .banner-title {
-            font-size: calc(var(--mdb-body-font-size) * 2);
+            font-size: calc(var(--mdb-body-font-size) * 1.6);
             font-weight: bold;
             color: $header-text-color;
         }    
     
         .banner-tagline {
-            font-size: calc(var(--mdb-body-font-size) * 1.2);
+            font-size: calc(var(--mdb-body-font-size) * 1.1);
             font-weight: normal;
             color: $header-text-color;
         }
