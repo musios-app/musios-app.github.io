@@ -89,10 +89,9 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - node_modules
-  - */node_modules
-  - */*/node_modules
   - _README.md
   - sheet-viewer.html
   - gen-numaxpiano-gp-rigsetup.html
   - "/projects/spotify-playlist-to-gigperformer/src"
+  - "/projects/spotify-playlist-to-gigperformer/node_modules"
 
