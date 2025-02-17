@@ -13,7 +13,7 @@ title: musios.app Home
 		<Badge pill bg="success">
         	2025-02-17
       	</Badge>: A web version of <a href="/projects/spotify-playlist-to-gigperformer/tool">Spotify Playlist to Gig Performer .gig file</a> that aumatically creates a .Gig file.
-		See the <a href="/projects/spotify-playlist-to-gigperformer/README.html">Project</a> for more information and docucmentation.
+		See the <a href="/projects/spotify-playlist-to-gigperformer/README.html">Project</a> for more information and documentation.
 	</div>
 </div>
 
