@@ -247,8 +247,6 @@ const lightboxOptions = {
 	size: 'fullscreen'
 };
 
-console.log('lightboxOptions', lightboxOptions);
-
 Lightbox.initialize = function (e) {
 	e.preventDefault();
 	console.log('lightboxOptions', lightboxOptions);
