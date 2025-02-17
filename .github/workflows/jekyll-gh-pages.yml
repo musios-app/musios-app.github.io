@@ -32,8 +32,9 @@ jobs:
           submodules: true
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        
       - name: Build submodule vite
-      - run: cd projects/spotify-playlist-to-gigperformer && npm run build
+        run: cd projects/spotify-playlist-to-gigperformer && npm run build
 
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
