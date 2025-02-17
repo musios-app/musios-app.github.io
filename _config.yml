@@ -89,6 +89,8 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - node_modules
+  - */node_modules
+  - */*/node_modules
   - _README.md
   - sheet-viewer.html
   - gen-numaxpiano-gp-rigsetup.html
