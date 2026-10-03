@@ -3,7 +3,7 @@ layout: default
 title: musios.app Home
 ---
 
-**musios.app** is a collection of tools, software, and documentations for music software and DAWs. The projects cover home studios and live performance.  It's all licensed as open source. Musios.app is maintained by <a href='https://github.com/andrewjhunt'>Andrew Hunt</a> with the source available through [musios-app](https://github.com/musios-app) on GitHub. Got bugs, feedback and contributions, then create an issue in the GitHub project [musios-app](https://github.com/musios-app).
+**musios.app** is a collection of tools, software, and documentations for music software and DAWs. The projects cover home studios and live performance. Musios.app is maintained by <a href='https://github.com/andrewjhunt'>Andrew Hunt</a> with the source available through [musios-app](https://github.com/musios-app) on GitHub. Got bugs, feedback and contributions, then create an issue in the GitHub project [musios-app](https://github.com/musios-app).
 
 <div class="row" style="display: none; background-color: #f8e8e8; padding: 12px 24px; border: 2px solid red; border-radius: 5px">
 	<div class="col-1 text-start">
