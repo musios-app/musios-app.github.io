@@ -38,8 +38,13 @@ jobs:
         with:
           node-version: 24
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          package_json_file: projects/spotify-playlist-to-gigperformer/package.json
+
       - name: Build submodule vite
-        run: cd projects/spotify-playlist-to-gigperformer && npm install && npm run build
+        run: cd projects/spotify-playlist-to-gigperformer && pnpm install --frozen-lockfile && pnpm run build
 
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1

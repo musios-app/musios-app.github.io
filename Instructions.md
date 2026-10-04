@@ -26,10 +26,10 @@ bundle exec jekyll serve --config _config.yml
 bundle exec jekyll serve --ssl-key .localhost-ssl/key.pem --ssl-cert .localhost-ssl/cert.pem
 ```
 
-The Spotify playlist tool (`projects/spotify-playlist-to-gigperformer`) is a Vite project.
+The Spotify playlist tool (`projects/spotify-playlist-to-gigperformer`) is a Vite project that uses pnpm (the version is pinned in its `package.json`).
 `_plugins/spotify-gp-vite-build.rb` rebuilds it before every local render, but only if `node_modules` exists in that folder.
 Otherwise it prints "Skipping ... build" and the site uses whatever `tool/` is already on disk.
-To rebuild it locally, run `npm install` in that folder first.
+To rebuild it locally, run `pnpm install` in that folder first.
 Production does not use this plugin (see Deployment).
 
 Ref: [Running Jekyll locally with SSL](https://claytonerrington.com/blog/securing-jekyll-with-ssl-locally/)
@@ -112,7 +112,7 @@ Monitor progress on the [Actions page](https://github.com/musios-app/musios-app.
 How the build works:
 
 1. Checks out the repo with submodules.
-2. Sets up Node (pinned to a version in the workflow) and runs `npm install && npm run build` in `projects/spotify-playlist-to-gigperformer`. This is the only place the Vite project is built in production.
+2. Sets up Node (pinned to a version in the workflow) and pnpm (the version comes from the submodule's `package.json`), then runs `pnpm install --frozen-lockfile && pnpm run build` in `projects/spotify-playlist-to-gigperformer`. This is the only place the Vite project is built in production.
 3. Builds with `actions/jekyll-build-pages`, which runs in Docker with the `github-pages` gem. Custom plugins in `_plugins/` do **not** run there.
 4. Uploads and deploys the result.
 
