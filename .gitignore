@@ -32,3 +32,8 @@ pids
 
 # Hidden files
 _DELETE*
+
+# TEMPORARY (Oct 2026): web-sheet-music-midi is not ready to go live and was removed
+# as a submodule. The local clone stays in place, so keep it out of the site repo.
+# REINSTATE: delete this line, then re-add the submodule (see Instructions.md).
+projects/web-sheet-music-midi/

@@ -1,4 +1,9 @@
 Jekyll::Hooks.register :site, :pre_render do |site|
-    puts "Building projects/spotify-playlist-to-gigperformer Vite project..."
-    system("cd projects/spotify-playlist-to-gigperformer && npm run build")
+  dir = "projects/spotify-playlist-to-gigperformer"
+  if File.directory?("#{dir}/node_modules")
+    puts "Building #{dir} Vite project..."
+    system("cd #{dir} && npm run build")
+  else
+    puts "Skipping #{dir} build (run npm install there to enable it)"
   end
+end
