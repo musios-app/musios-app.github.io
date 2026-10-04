@@ -87,6 +87,8 @@ exclude:
   - node_modules
   - _README.md
   - gen-numaxpiano-gp-rigsetup.html
+  # TEMPORARY (Oct 2026): not ready to go live. REINSTATE: delete this line.
+  - "/projects/web-sheet-music-midi"
   - "/projects/spotify-playlist-to-gigperformer/src"
   - "/projects/spotify-playlist-to-gigperformer/node_modules"
 
