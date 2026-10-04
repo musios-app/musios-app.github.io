@@ -1,5 +1,6 @@
 source "https://rubygems.org"
-# ruby 3.9.3
+# Local development only: production builds in GitHub's Docker image (see Instructions.md).
+# Tested locally with ruby 3.3.5.
 
 gem "github-pages"
 
@@ -9,7 +10,5 @@ group :jekyll_plugins do
   gem "kramdown-parser-gfm"
   gem 'jekyll-seo-tag'
   gem "jekyll-github-metadata"
-  # gem "_plugins/spotify-gp-vite-build"
-  # gem "jekyll-menus"
 end
 
