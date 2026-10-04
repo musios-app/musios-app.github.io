@@ -3,46 +3,56 @@ layout: default
 title: Songwriting Coach
 description: A coach for song lyrics, from a first idea to a finished draft, for Claude.
 sitemap: false
+noindex: true
 ---
 
 # Songwriting Coach
 
-Author: Andrew Hunt (musios)
-
 The Songwriting Coach helps you write song lyrics, from a first idea to a finished draft. Before you have lyrics, it helps you find and sharpen an idea. Once you have a draft, it reviews it the way a songwriting teacher would: eight assessments with over 40 checks, covering the emotional arc, story, clichés, rhyme and rhythm, singability, point of view, continuity and where your strongest lines sit. Pick a whole assessment or just the checks you want.
 
-Feedback starts with what's working, marks each point as a strength, observation, concern or issue, and stays your song: the coach suggests what to look at, and only writes lines if you ask. Rhyme and syllable analysis runs in a small script inside your conversation, and it can draw an interactive rhyme map and a status board showing how far through the assessments your song is.
+### Examples
+
+The coach lets you get going from wherever you are in the songwriting process. Examples:
+
+* [Conversation starts with lyrics](conversations/first-session.html)
+* [Conversation starts from an idea](conversations/idea-first.html): a memory, a title, a phrase, a feeling.
+* [Conversation starts from a question](conversations/question-first.html)
 
 ## Download
 
-| Platform | Current version | Download |
-|---|---|---|
-| Claude (claude.ai, desktop app, Claude Code) | 2.5.1 | [songwriting-coach.skill](downloads/songwriting-coach.skill) |
-| ChatGPT | 🗓️ planned | – |
-| Gemini | 🗓️ planned | – |
+| Platform | Download |
+|---|---|
+| Claude (claude.ai, desktop app, Claude Code) | [songwriting-coach.skill](downloads/songwriting-coach.skill) (v2.5.1) |
 
 ## Availability
+
+<style>
+  .status-list { list-style: none; padding-left: 0; }
+</style>
 
 **Claude**
 - ✅ claude.ai (web)
 - ✅ Claude Code (macOS)
-- ❓ Claude desktop app (macOS)
-- ❓ Claude desktop app (Windows)
+- ✅ Claude Desktop app (macOS)
+- ✅ Claude iOS app
+- ❓ Claude Desktop app (Windows)
 - ❓ Claude Code (Windows)
-- ❓ Claude iOS app
 - ❓ Claude Android app
+{: .status-list}
 
 **ChatGPT**
 - 🗓️ ChatGPT (web, desktop, mobile)
+{: .status-list}
 
 **Gemini**
 - 🗓️ Gemini app
+{: .status-list}
 
 Legend: ✅ works · ❓ not tested, should work · ❌ doesn't work · 🗓️ planned · – not supported
 
 ## Install, update, remove
 
-### claude.ai and the Claude desktop app
+### claude.ai and the Claude Desktop app
 
 - **Install:** download `songwriting-coach.skill` above, then Customize > Skills > + > Upload skill > select the file, and toggle it on
 - **Update:** download the new `.skill` and upload it the same way, confirming "Upload and replace"
@@ -62,7 +72,7 @@ Not available yet.
 
 ### Notes
 
-- Claude desktop app and claude.ai share one skill list: install once, it appears in both.
+- Claude Desktop app and claude.ai share one skill list: install once, it appears in both.
 - A `.skill` file is a zip. Rename it to `.zip` if your unzip tool doesn't recognise it.
 - Claude Code keeps its own skills. Install there separately.
 
@@ -74,6 +84,8 @@ Not available yet.
   - **Dictionary gaps.** Slang, names, and invented words get estimated pronunciations.
 - **Can't hear music.** Rhythm and singability are judged from the lyric text and whatever you describe about the melody.
 - **AI has limits.** It can misread meaning, irony, or slang, and its judgments are informed opinion, not rules.
+- **Replies vary.** Ask the same question twice and you may get different answers, and what gets flagged can change from run to run. Treat each assessment as one reader's view, not a measurement.
+- **Disagree with it.** You can, and should, push back on the coach's findings. Telling it what you intended helps it understand your song.
 - **Can't check originality.** It can't confirm a line or title isn't close to an existing song.
 - **Won't quote other songs' lyrics at length** (copyright).
 
