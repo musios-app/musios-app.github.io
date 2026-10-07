@@ -8,7 +8,7 @@ noindex: true
 
 # Songwriting Coach
 
-The Songwriting Coach helps you write song lyrics, from a first idea to a finished draft. Before you have lyrics, it helps you find and sharpen an idea. Once you have a draft, it reviews it the way a songwriting teacher would: eight assessments with over 40 checks, covering the emotional arc, story, clichés, rhyme and rhythm, singability, point of view, continuity and where your strongest lines sit. Pick a whole assessment or just the checks you want.
+The Songwriting Coach helps you write song lyrics, from a first idea to a finished draft. Before you have lyrics, it helps you find and sharpen an idea. Once you have a draft, it reviews it the way a songwriting teacher would: [eight assessments with over 40 checks](conversations/assessments-checks.html), covering the emotional arc, story, clichés, rhyme and rhythm, singability, point of view, continuity and where your strongest lines sit. Pick a whole assessment or just the checks you want.
 
 ### Examples
 
@@ -17,12 +17,14 @@ The coach lets you get going from wherever you are in the songwriting process. E
 * [Conversation starts with lyrics](conversations/first-session.html)
 * [Conversation starts from an idea](conversations/idea-first.html): a memory, a title, a phrase, a feeling.
 * [Conversation starts from a question](conversations/question-first.html)
+* [Conversation starts from a rhyme map](conversations/rhyme-first.html)
+* [Assessments & checks](conversations/assessments-checks.html)
 
 ## Download
 
 | Platform | Download |
 |---|---|
-| Claude (claude.ai, desktop app, Claude Code) | [songwriting-coach.skill](downloads/songwriting-coach.skill) (v2.5.1) |
+| Claude (claude.ai, desktop app, Claude Code) | [songwriting-coach.skill](downloads/songwriting-coach.skill) (v2.5.2) |
 
 ## Availability
 
@@ -50,6 +52,8 @@ The coach lets you get going from wherever you are in the songwriting process. E
 
 Legend: ✅ works · ❓ not tested, should work · ❌ doesn't work · 🗓️ planned · – not supported
 
+**Works best on** the most capable Claude models (Opus or Sonnet, 4.5 or later). Whatever the model, check its reading of your song against your own.
+
 ## Install, update, remove
 
 ### claude.ai and the Claude Desktop app
@@ -65,6 +69,7 @@ The Code execution feature must be turned on in your Claude settings for the rhy
 - **Install:** unzip `songwriting-coach.skill` into `~/.claude/skills/songwriting-coach/` (the folder must contain `SKILL.md`). The rhyme and syllable script needs Node 22.6 or later.
 - **Update:** replace the contents of `~/.claude/skills/songwriting-coach/` with the new version
 - **Remove:** delete the `~/.claude/skills/songwriting-coach/` folder
+- **Start:** type `/songwriting-coach`. It always loads the coach. Saying "songwriting coach" or "I want to write a song" usually works too, mostly on larger models.
 
 ### ChatGPT, Gemini
 

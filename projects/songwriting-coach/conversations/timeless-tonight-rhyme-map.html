@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rhyme Map</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #FAFAF7; color: #1A1A2E; font-family: 'Lora', serif; font-size: 14px; line-height: 1.9; padding: 48px 40px 80px; max-width: 900px; margin: 0 auto; }
+  h1 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 600; color: #1A1A2E; margin-bottom: 6px; }
+  .subtitle { font-size: 11px; color: #5A5270; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #E4DFF5; }
+
+  /* Controls */
+  .controls { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
+  .toggle { display: flex; align-items: center; gap: 7px; font-size: 11px; color: #5A5270; cursor: pointer; border: 1px solid #E4DFF5; border-radius: 4px; padding: 6px 12px; transition: border-color 0.15s, color 0.15s, background-color 0.15s; user-select: none; }
+  .toggle:hover { border-color: #7C5CFC; color: #7C5CFC; background: #F0ECFF; }
+  .toggle.active { border-color: #7C5CFC; color: #7C5CFC; background: #F3F0FF; }
+  .toggle .dot { width: 8px; height: 8px; border-radius: 50%; background: #E4DFF5; transition: background 0.15s; flex-shrink: 0; }
+  .toggle.active .dot { background: #7C5CFC; }
+
+  /* Legend */
+  .legend { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 2px 16px; margin-bottom: 32px; padding: 16px 20px; background: #F3F0FF; border: 1px solid #E4DFF5; border-radius: 6px; }
+  .legend-title { grid-column: 1 / -1; font-size: 10px; letter-spacing: 0.13em; text-transform: uppercase; color: #5A5270; margin-bottom: 8px; }
+  .legend-item { display: flex; align-items: flex-start; gap: 6px; font-size: 11px; color: #5A5270; margin-bottom: 4px; cursor: pointer; border-radius: 4px; padding: 4px 6px; transition: background 0.15s, opacity 0.2s; }
+  .legend-item:hover { background: rgba(124,92,252,0.08); }
+  .legend-swatch { width: 11px; height: 11px; border-radius: 2px; flex-shrink: 0; margin-top: 3px; }
+  .legend-label { color: #1A1A2E; }
+  .legend-words { color: #5A5270; }
+
+  /* Sections */
+  .section-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #5A5270; margin: 20px 0 6px 2px; font-weight: 600; }
+  .stanza { padding: 13px 18px; background: #FAFAF7; border: 1px solid #E4DFF5; border-radius: 4px; margin-bottom: 4px; }
+  .line { padding: 1px 0; white-space: pre-wrap; display: flex; align-items: baseline; gap: 12px; }
+  .line-text { flex: 1; font-family: 'Lora', serif; }
+  .line-label { font-size: 10px; color: #9B92B8; letter-spacing: 0.06em; min-width: 14px; text-align: right; flex-shrink: 0; transition: color 0.15s; font-family: 'JetBrains Mono', monospace; }
+  .spacer { height: 16px; }
+
+  /* Word highlights */
+  .rh-word { cursor: pointer; }
+  .rh-syl { border-radius: 3px; padding: 0 2px; transition: filter 0.15s; }
+  .rh-syl.slant { text-decoration: underline dashed; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+
+  /* Notes */
+  .notes { font-size: 11px; color: #5A5270; margin-top: 32px; padding: 14px 18px; border: 1px dashed #E4DFF5; border-radius: 4px; line-height: 1.9; background: #F3F0FF; }
+  .notes strong { color: #1A1A2E; font-weight: 600; }
+  .notes .key { margin-top: 10px; padding-top: 8px; border-top: 1px solid #E4DFF5; font-size: 10.5px; font-family: 'JetBrains Mono', monospace; }
+  .unresolved { font-size: 11px; color: #5A5270; margin-top: 10px; }
+
+  /* Isolation state */
+  body.isolated .rh-word { opacity: 0.50; transition: opacity 0.2s; }
+  body.isolated .rh-word.active { opacity: 1; }
+  body.isolated .rh-word.active .rh-syl { filter: brightness(0.85); }
+  body.isolated { color: rgba(90,82,112,0.55); transition: color 0.2s; }
+  body.isolated .legend-item { opacity: 0.40; }
+  body.isolated .legend-item.active { opacity: 1; background: rgba(124,92,252,0.1); }
+  body.isolated .line-label { color: #9B92B8; }
+  body.isolated .line-label.active { color: #7C5CFC; }
+</style>
+</head>
+<body>
+
+<h1 id="title"></h1>
+<div class="subtitle" id="subtitle"></div>
+
+<div class="controls">
+  <div class="toggle active" id="toggle-stress" title="Highlight the primary stressed syllable within each word">
+    <span class="dot"></span> Stress syllable
+  </div>
+  <div class="toggle" id="toggle-eol" title="Show vowel highlights on end-of-line words only">
+    <span class="dot"></span> End-of-line only
+  </div>
+  <div class="toggle active" id="toggle-scheme" title="Show rhyme scheme labels (A B C…) beside each line">
+    <span class="dot"></span> Scheme labels
+  </div>
+  <div class="toggle active" id="toggle-compact" title="Compact legend: swatch, vowel code, example word, count">
+    <span class="dot"></span> Compact legend
+  </div>
+</div>
+
+<div class="legend" id="legend"></div>
+<div id="lyrics"></div>
+<div class="notes" id="notes"></div>
+
+<script>
+// ─── Injected data ─────────────────────────────────────────────────────────────────────────────────
+const RHYME_DATA = {"analysis":{"title":"Timeless Tonight","meta":{"cmudict_version":"0.7b","dialect":"North American English","unresolved_words":["ahhh"]},"sections":[{"label":"[Verse 1]","rhyme_scheme":"ABCC","lines":[{"text":"My heart is sliding into the bar","end_word":"bar","rhyme_tail":["AA","R"],"rhyme_vowel":"AA","rhyme_type":"perfect","rhyme_label":"A"},{"text":"Primal instincts, dirty martinis","end_word":"martinis","rhyme_tail":["IY","N","IY","Z"],"rhyme_vowel":"IY","rhyme_type":"perfect","rhyme_label":"B"},{"text":"Lights 'n shadow mask wrong 'n right","end_word":"right","rhyme_tail":["AY","T"],"rhyme_vowel":"AY","rhyme_type":"perfect","rhyme_label":"C"},{"text":"We're timeless tonight","end_word":"tonight","rhyme_tail":["AY","T"],"rhyme_vowel":"AY","rhyme_type":"perfect","rhyme_label":"C"}]},{"label":"[Verse 2]","rhyme_scheme":"ABCD","lines":[{"text":"Velvety corner her eyes ablaze","end_word":"ablaze","rhyme_tail":["EY","Z"],"rhyme_vowel":"EY","rhyme_type":"perfect","rhyme_label":"A"},{"text":"Not looking for sirens, why today?","end_word":"today","rhyme_tail":["EY"],"rhyme_vowel":"EY","rhyme_type":"slant","rhyme_label":"B"},{"text":"Control's deserting, my body's flirting","end_word":"flirting","rhyme_tail":["ER","T","IH","NG"],"rhyme_vowel":"ER","rhyme_type":"perfect","rhyme_label":"C"},{"text":"Feels timeless tonight","end_word":"tonight","rhyme_tail":["AY","T"],"rhyme_vowel":"AY","rhyme_type":"perfect","rhyme_label":"D"}]},{"label":"[Verse 3]","rhyme_scheme":"AABC","lines":[{"text":"Our lips whispering, words are smoke","end_word":"smoke","rhyme_tail":["OW","K"],"rhyme_vowel":"OW","rhyme_type":"perfect","rhyme_label":"A"},{"text":"Anticipation, thoughts choke","end_word":"choke","rhyme_tail":["OW","K"],"rhyme_vowel":"OW","rhyme_type":"perfect","rhyme_label":"A"},{"text":"Perfume's a lure, never sure","end_word":"sure","rhyme_tail":["UH","R"],"rhyme_vowel":"UH","rhyme_type":"perfect","rhyme_label":"B"},{"text":"What's timeless tonight","end_word":"tonight","rhyme_tail":["AY","T"],"rhyme_vowel":"AY","rhyme_type":"perfect","rhyme_label":"C"}]},{"label":"[Pre-Chorus]","rhyme_scheme":"AAB","lines":[{"text":"Follow you, show no doubt","end_word":"doubt","rhyme_tail":["AW","T"],"rhyme_vowel":"AW","rhyme_type":"perfect","rhyme_label":"A"},{"text":"Tomorrow I'm flying out","end_word":"out","rhyme_tail":["AW","T"],"rhyme_vowel":"AW","rhyme_type":"perfect","rhyme_label":"A"},{"text":"Indulge me, release me","end_word":"me","rhyme_tail":["IY"],"rhyme_vowel":"IY","rhyme_type":"slant","rhyme_label":"B"}]},{"label":"[Chorus]","rhyme_scheme":"ABCD","lines":[{"text":"Tonight the moon rides the Milky Way","end_word":"way","rhyme_tail":["EY"],"rhyme_vowel":"EY","rhyme_type":"slant","rhyme_label":"A"},{"text":"Beams wash our room, my being awakens","end_word":"awakens","rhyme_tail":["EY","K","AH","N","Z"],"rhyme_vowel":"EY","rhyme_type":"perfect","rhyme_label":"B"},{"text":"Let taboo light my life","end_word":"life","rhyme_tail":["AY","F"],"rhyme_vowel":"AY","rhyme_type":"perfect","rhyme_label":"C"},{"text":"Ahhh, timeless tonight","end_word":"tonight","rhyme_tail":["AY","T"],"rhyme_vowel":"AY","rhyme_type":"perfect","rhyme_label":"D"}]},{"label":"[Verse 4]","rhyme_scheme":"AABC","lines":[{"text":"Street lights below, my city's a maze","end_word":"maze","rhyme_tail":["EY","Z"],"rhyme_vowel":"EY","rhyme_type":"perfect","rhyme_label":"A"},{"text":"Where will I land? my mind's ablaze","end_word":"ablaze","rhyme_tail":["EY","Z"],"rhyme_vowel":"EY","rhyme_type":"perfect","rhyme_label":"A"},{"text":"I'll take my time, find my way","end_word":"way","rhyme_tail":["EY"],"rhyme_vowel":"EY","rhyme_type":"slant","rhyme_label":"B"},{"text":"It's my life tonight","end_word":"tonight","rhyme_tail":["AY","T"],"rhyme_vowel":"AY","rhyme_type":"perfect","rhyme_label":"C"}]},{"label":"[Pre-Chorus]","rhyme_scheme":"AAB","lines":[{"text":"Follow you, show no doubt","end_word":"doubt","rhyme_tail":["AW","T"],"rhyme_vowel":"AW","rhyme_type":"perfect","rhyme_label":"A"},{"text":"Tomorrow I'm flying out","end_word":"out","rhyme_tail":["AW","T"],"rhyme_vowel":"AW","rhyme_type":"perfect","rhyme_label":"A"},{"text":"Indulge me, release me","end_word":"me","rhyme_tail":["IY"],"rhyme_vowel":"IY","rhyme_type":"slant","rhyme_label":"B"}]},{"label":"[Chorus]","rhyme_scheme":"ABCDD","lines":[{"text":"Tonight the moon rides the Milky Way","end_word":"way","rhyme_tail":["EY"],"rhyme_vowel":"EY","rhyme_type":"slant","rhyme_label":"A"},{"text":"Beams wash our room, my being awakens","end_word":"awakens","rhyme_tail":["EY","K","AH","N","Z"],"rhyme_vowel":"EY","rhyme_type":"perfect","rhyme_label":"B"},{"text":"Let taboo light my life","end_word":"life","rhyme_tail":["AY","F"],"rhyme_vowel":"AY","rhyme_type":"perfect","rhyme_label":"C"},{"text":"Ahhh, timeless tonight","end_word":"tonight","rhyme_tail":["AY","T"],"rhyme_vowel":"AY","rhyme_type":"perfect","rhyme_label":"D"},{"text":"Oh, we're timeless tonight","end_word":"tonight","rhyme_tail":["AY","T"],"rhyme_vowel":"AY","rhyme_type":"perfect","rhyme_label":"D"}]}],"rhyme_groups":[{"tail":["AY","T"],"vowel":"AY","rhyme_type":"perfect","members":[{"word":"right","section":"[Verse 1]","line_index":2},{"word":"tonight","section":"[Verse 1]","line_index":3},{"word":"tonight","section":"[Verse 2]","line_index":3},{"word":"tonight","section":"[Verse 3]","line_index":3},{"word":"tonight","section":"[Chorus]","line_index":3},{"word":"tonight","section":"[Verse 4]","line_index":3},{"word":"tonight","section":"[Chorus]","line_index":3},{"word":"tonight","section":"[Chorus]","line_index":4}]},{"tail":["EY"],"vowel":"EY","rhyme_type":"slant","members":[{"word":"today","section":"[Verse 2]","line_index":1},{"word":"way","section":"[Chorus]","line_index":0},{"word":"way","section":"[Verse 4]","line_index":2},{"word":"way","section":"[Chorus]","line_index":0}]},{"tail":["AW","T"],"vowel":"AW","rhyme_type":"perfect","members":[{"word":"doubt","section":"[Pre-Chorus]","line_index":0},{"word":"out","section":"[Pre-Chorus]","line_index":1},{"word":"doubt","section":"[Pre-Chorus]","line_index":0},{"word":"out","section":"[Pre-Chorus]","line_index":1}]},{"tail":["EY","Z"],"vowel":"EY","rhyme_type":"perfect","members":[{"word":"ablaze","section":"[Verse 2]","line_index":0},{"word":"maze","section":"[Verse 4]","line_index":0},{"word":"ablaze","section":"[Verse 4]","line_index":1}]},{"tail":["OW","K"],"vowel":"OW","rhyme_type":"perfect","members":[{"word":"smoke","section":"[Verse 3]","line_index":0},{"word":"choke","section":"[Verse 3]","line_index":1}]},{"tail":["IY"],"vowel":"IY","rhyme_type":"slant","members":[{"word":"me","section":"[Pre-Chorus]","line_index":2},{"word":"me","section":"[Pre-Chorus]","line_index":2}]},{"tail":["EY","K","AH","N","Z"],"vowel":"EY","rhyme_type":"perfect","members":[{"word":"awakens","section":"[Chorus]","line_index":1},{"word":"awakens","section":"[Chorus]","line_index":1}]},{"tail":["AY","F"],"vowel":"AY","rhyme_type":"perfect","members":[{"word":"life","section":"[Chorus]","line_index":2},{"word":"life","section":"[Chorus]","line_index":2}]}],"word_map":{"my":{"vowel":"AY","tail":["AY"],"tail_type":"slant","span":[0,2],"syllables":[{"chars":[0,2],"vowel":"AY","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["M","AY1"],"stress":1,"ipa_approx":"","text":""}]},"heart":{"vowel":"AA","tail":["AA","R","T"],"tail_type":"perfect","span":[0,5],"syllables":[{"chars":[0,5],"vowel":"AA","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["HH","AA1","R","T"],"stress":1,"ipa_approx":"","text":""}]},"is":{"vowel":"IH","tail":["IH","Z"],"tail_type":"perfect","span":[0,2],"syllables":[{"chars":[0,2],"vowel":"IH","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["IH1","Z"],"stress":1,"ipa_approx":"","text":""}]},"sliding":{"vowel":"AY","tail":["AY","D","IH","NG"],"tail_type":"perfect","span":[2,4],"syllables":[{"chars":[0,3],"vowel":"AY","stress":1},{"chars":[3,7],"vowel":"IH","stress":0}],"phonetic_stream":[{"syllable_index":0,"phonemes":["S","L","AY1"],"stress":1,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["D","IH0","NG"],"stress":0,"ipa_approx":"","text":""}]},"into":{"vowel":"IH","tail":["IH","N","T","UW"],"tail_type":"perfect","span":[0,3],"syllables":[{"chars":[0,2],"vowel":"IH","stress":1},{"chars":[2,4],"vowel":"UW","stress":0}],"phonetic_stream":[{"syllable_index":0,"phonemes":["IH1","N"],"stress":1,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["T","UW0"],"stress":0,"ipa_approx":"","text":""}]},"the":{"vowel":"AH","tail":["AH"],"tail_type":"slant","span":[0,3],"syllables":[{"chars":[0,3],"vowel":"AH","stress":0}],"phonetic_stream":[{"syllable_index":0,"phonemes":["DH","AH0"],"stress":0,"ipa_approx":"","text":""}]},"bar":{"vowel":"AA","tail":["AA","R"],"tail_type":"perfect","span":[0,3],"syllables":[{"chars":[0,3],"vowel":"AA","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["B","AA1","R"],"stress":1,"ipa_approx":"","text":""}]},"primal":{"vowel":"AY","tail":["AY","M","AH","L"],"tail_type":"perfect","span":[2,4],"syllables":[{"chars":[0,3],"vowel":"AY","stress":1},{"chars":[3,6],"vowel":"AH","stress":0}],"phonetic_stream":[{"syllable_index":0,"phonemes":["P","R","AY1"],"stress":1,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["M","AH0","L"],"stress":0,"ipa_approx":"","text":""}]},"instincts":{"vowel":"IH","tail":["IH","N","S","T","IH","NG","K","T","S"],"tail_type":"perfect","span":[0,3],"syllables":[{"chars":[0,3],"vowel":"IH","stress":1},{"chars":[3,9],"vowel":"IH","stress":0}],"phonetic_stream":[{"syllable_index":0,"phonemes":["IH1","N"],"stress":1,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["S","T","IH0","NG","K","T","S"],"stress":0,"ipa_approx":"","text":""}]},"dirty":{"vowel":"ER","tail":["ER","T","IY"],"tail_type":"perfect","span":[1,4],"syllables":[{"chars":[0,3],"vowel":"ER","stress":1},{"chars":[3,5],"vowel":"IY","stress":0}],"phonetic_stream":[{"syllable_index":0,"phonemes":["D","ER1"],"stress":1,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["T","IY0"],"stress":0,"ipa_approx":"","text":""}]},"martinis":{"vowel":"IY","tail":["IY","N","IY","Z"],"tail_type":"perfect","span":[4,6],"syllables":[{"chars":[0,3],"vowel":"AA","stress":0},{"chars":[3,5],"vowel":"IY","stress":1},{"chars":[5,8],"vowel":"IY","stress":0}],"phonetic_stream":[{"syllable_index":0,"phonemes":["M","AA0","R"],"stress":0,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["T","IY1"],"stress":1,"ipa_approx":"","text":""},{"syllable_index":2,"phonemes":["N","IY0","Z"],"stress":0,"ipa_approx":"","text":""}]},"lights":{"vowel":"AY","tail":["AY","T","S"],"tail_type":"perfect","span":[0,6],"syllables":[{"chars":[0,6],"vowel":"AY","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["L","AY1","T","S"],"stress":1,"ipa_approx":"","text":""}]},"n":{"vowel":"EH","tail":["EH","N"],"tail_type":"perfect","span":[0,1],"syllables":[{"chars":[0,1],"vowel":"EH","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["EH1","N"],"stress":1,"ipa_approx":"","text":""}]},"shadow":{"vowel":"AE","tail":["AE","D","OW"],"tail_type":"perfect","span":[2,4],"syllables":[{"chars":[0,3],"vowel":"AE","stress":1},{"chars":[3,6],"vowel":"OW","stress":2}],"phonetic_stream":[{"syllable_index":0,"phonemes":["SH","AE1"],"stress":1,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["D","OW2"],"stress":2,"ipa_approx":"","text":""}]},"mask":{"vowel":"AE","tail":["AE","S","K"],"tail_type":"perfect","span":[0,4],"syllables":[{"chars":[0,4],"vowel":"AE","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["M","AE1","S","K"],"stress":1,"ipa_approx":"","text":""}]},"wrong":{"vowel":"AO","tail":["AO","NG"],"tail_type":"perfect","span":[0,5],"syllables":[{"chars":[0,5],"vowel":"AO","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["R","AO1","NG"],"stress":1,"ipa_approx":"","text":""}]},"right":{"vowel":"AY","tail":["AY","T"],"tail_type":"perfect","span":[0,5],"syllables":[{"chars":[0,5],"vowel":"AY","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["R","AY1","T"],"stress":1,"ipa_approx":"","text":""}]},"we're":{"vowel":"IY","tail":["IY","R"],"tail_type":"perfect","span":[0,5],"syllables":[{"chars":[0,5],"vowel":"IY","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["W","IY1","R"],"stress":1,"ipa_approx":"","text":""}]},"timeless":{"vowel":"AY","tail":["AY","M","L","AH","S"],"tail_type":"perfect","span":[1,3],"syllables":[{"chars":[0,2],"vowel":"AY","stress":1},{"chars":[2,8],"vowel":"AH","stress":0}],"phonetic_stream":[{"syllable_index":0,"phonemes":["T","AY1"],"stress":1,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["M","L","AH0","S"],"stress":0,"ipa_approx":"","text":""}]},"tonight":{"vowel":"AY","tail":["AY","T"],"tail_type":"perfect","span":[3,7],"syllables":[{"chars":[0,2],"vowel":"AH","stress":0},{"chars":[2,7],"vowel":"AY","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["T","AH0"],"stress":0,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["N","AY1","T"],"stress":1,"ipa_approx":"","text":""}]},"velvety":{"vowel":"EH","tail":["EH","L","V","AH","T","IY"],"tail_type":"perfect","span":[1,4],"syllables":[{"chars":[0,3],"vowel":"EH","stress":1},{"chars":[3,5],"vowel":"AH","stress":0},{"chars":[5,7],"vowel":"IY","stress":0}],"phonetic_stream":[{"syllable_index":0,"phonemes":["V","EH1","L"],"stress":1,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["V","AH0"],"stress":0,"ipa_approx":"","text":""},{"syllable_index":2,"phonemes":["T","IY0"],"stress":0,"ipa_approx":"","text":""}]},"corner":{"vowel":"AO","tail":["AO","R","N","ER"],"tail_type":"perfect","span":[1,4],"syllables":[{"chars":[0,3],"vowel":"AO","stress":1},{"chars":[3,6],"vowel":"ER","stress":0}],"phonetic_stream":[{"syllable_index":0,"phonemes":["K","AO1"],"stress":1,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["R","N","ER0"],"stress":0,"ipa_approx":"","text":""}]},"her":{"vowel":"ER","tail":["ER"],"tail_type":"slant","span":[0,3],"syllables":[{"chars":[0,3],"vowel":"ER","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["HH","ER1"],"stress":1,"ipa_approx":"","text":""}]},"eyes":{"vowel":"AY","tail":["AY","Z"],"tail_type":"perfect","span":[0,4],"syllables":[{"chars":[0,4],"vowel":"AY","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["AY1","Z"],"stress":1,"ipa_approx":"","text":""}]},"ablaze":{"vowel":"EY","tail":["EY","Z"],"tail_type":"perfect","span":[3,5],"syllables":[{"chars":[0,2],"vowel":"AH","stress":0},{"chars":[2,6],"vowel":"EY","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["AH0"],"stress":0,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["B","L","EY1","Z"],"stress":1,"ipa_approx":"","text":""}]},"not":{"vowel":"AA","tail":["AA","T"],"tail_type":"perfect","span":[0,3],"syllables":[{"chars":[0,3],"vowel":"AA","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["N","AA1","T"],"stress":1,"ipa_approx":"","text":""}]},"looking":{"vowel":"UH","tail":["UH","K","IH","NG"],"tail_type":"perfect","span":[1,4],"syllables":[{"chars":[0,3],"vowel":"UH","stress":1},{"chars":[3,7],"vowel":"IH","stress":0}],"phonetic_stream":[{"syllable_index":0,"phonemes":["L","UH1"],"stress":1,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["K","IH0","NG"],"stress":0,"ipa_approx":"","text":""}]},"for":{"vowel":"AO","tail":["AO","R"],"tail_type":"perfect","span":[0,3],"syllables":[{"chars":[0,3],"vowel":"AO","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["F","AO1","R"],"stress":1,"ipa_approx":"","text":""}]},"sirens":{"vowel":"AY","tail":["AY","R","AH","N","Z"],"tail_type":"perfect","span":[1,3],"syllables":[{"chars":[0,2],"vowel":"AY","stress":1},{"chars":[2,6],"vowel":"AH","stress":0}],"phonetic_stream":[{"syllable_index":0,"phonemes":["S","AY1"],"stress":1,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["R","AH0","N","Z"],"stress":0,"ipa_approx":"","text":""}]},"why":{"vowel":"AY","tail":["AY"],"tail_type":"slant","span":[0,3],"syllables":[{"chars":[0,3],"vowel":"AY","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["W","AY1"],"stress":1,"ipa_approx":"","text":""}]},"today":{"vowel":"EY","tail":["EY"],"tail_type":"slant","span":[3,5],"syllables":[{"chars":[0,2],"vowel":"AH","stress":0},{"chars":[2,5],"vowel":"EY","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["T","AH0"],"stress":0,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["D","EY1"],"stress":1,"ipa_approx":"","text":""}]},"control's":{"vowel":"OW","tail":["OW","L","Z"],"tail_type":"perfect","span":[5,9],"syllables":[{"chars":[0,4],"vowel":"AH","stress":0},{"chars":[4,9],"vowel":"OW","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["K","AH0","N"],"stress":0,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["T","R","OW1","L","Z"],"stress":1,"ipa_approx":"","text":""}]},"deserting":{"vowel":"EH","tail":["EH","Z","ER","T","IH","NG"],"tail_type":"perfect","span":[1,3],"syllables":[{"chars":[0,2],"vowel":"EH","stress":1},{"chars":[2,5],"vowel":"ER","stress":0},{"chars":[5,9],"vowel":"IH","stress":0}],"phonetic_stream":[{"syllable_index":0,"phonemes":["D","EH1"],"stress":1,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["Z","ER0"],"stress":0,"ipa_approx":"","text":""},{"syllable_index":2,"phonemes":["T","IH0","NG"],"stress":0,"ipa_approx":"","text":""}]},"body's":{"vowel":"AA","tail":["AA","D","IY","Z"],"tail_type":"perfect","span":[1,3],"syllables":[{"chars":[0,2],"vowel":"AA","stress":1},{"chars":[2,6],"vowel":"IY","stress":0}],"phonetic_stream":[{"syllable_index":0,"phonemes":["B","AA1"],"stress":1,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["D","IY0","Z"],"stress":0,"ipa_approx":"","text":""}]},"flirting":{"vowel":"ER","tail":["ER","T","IH","NG"],"tail_type":"perfect","span":[2,5],"syllables":[{"chars":[0,4],"vowel":"ER","stress":1},{"chars":[4,8],"vowel":"IH","stress":0}],"phonetic_stream":[{"syllable_index":0,"phonemes":["F","L","ER1"],"stress":1,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["T","IH0","NG"],"stress":0,"ipa_approx":"","text":""}]},"feels":{"vowel":"IY","tail":["IY","L","Z"],"tail_type":"perfect","span":[0,5],"syllables":[{"chars":[0,5],"vowel":"IY","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["F","IY1","L","Z"],"stress":1,"ipa_approx":"","text":""}]},"our":{"vowel":"AW","tail":["AW","ER"],"tail_type":"perfect","span":[0,3],"syllables":[{"chars":[0,2],"vowel":"AW","stress":1},{"chars":[2,3],"vowel":"ER","stress":0}],"phonetic_stream":[{"syllable_index":0,"phonemes":["AW1"],"stress":1,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["ER0"],"stress":0,"ipa_approx":"","text":""}]},"lips":{"vowel":"IH","tail":["IH","P","S"],"tail_type":"perfect","span":[0,4],"syllables":[{"chars":[0,4],"vowel":"IH","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["L","IH1","P","S"],"stress":1,"ipa_approx":"","text":""}]},"whispering":{"vowel":"IH","tail":["IH","S","P","ER","IH","NG"],"tail_type":"perfect","span":[2,5],"syllables":[{"chars":[0,4],"vowel":"IH","stress":1},{"chars":[4,6],"vowel":"ER","stress":0},{"chars":[6,10],"vowel":"IH","stress":0}],"phonetic_stream":[{"syllable_index":0,"phonemes":["W","IH1","S"],"stress":1,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["P","ER0"],"stress":0,"ipa_approx":"","text":""},{"syllable_index":2,"phonemes":["IH0","NG"],"stress":0,"ipa_approx":"","text":""}]},"words":{"vowel":"ER","tail":["ER","D","Z"],"tail_type":"perfect","span":[0,5],"syllables":[{"chars":[0,5],"vowel":"ER","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["W","ER1","D","Z"],"stress":1,"ipa_approx":"","text":""}]},"are":{"vowel":"AA","tail":["AA","R"],"tail_type":"perfect","span":[0,3],"syllables":[{"chars":[0,3],"vowel":"AA","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["AA1","R"],"stress":1,"ipa_approx":"","text":""}]},"smoke":{"vowel":"OW","tail":["OW","K"],"tail_type":"perfect","span":[0,5],"syllables":[{"chars":[0,5],"vowel":"OW","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["S","M","OW1","K"],"stress":1,"ipa_approx":"","text":""}]},"anticipation":{"vowel":"EY","tail":["EY","SH","AH","N"],"tail_type":"perfect","span":[7,9],"syllables":[{"chars":[0,2],"vowel":"AE","stress":0},{"chars":[2,4],"vowel":"IH","stress":2},{"chars":[4,6],"vowel":"AH","stress":0},{"chars":[6,8],"vowel":"EY","stress":1},{"chars":[8,12],"vowel":"AH","stress":0}],"phonetic_stream":[{"syllable_index":0,"phonemes":["AE0","N"],"stress":0,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["T","IH2"],"stress":2,"ipa_approx":"","text":""},{"syllable_index":2,"phonemes":["S","AH0"],"stress":0,"ipa_approx":"","text":""},{"syllable_index":3,"phonemes":["P","EY1"],"stress":1,"ipa_approx":"","text":""},{"syllable_index":4,"phonemes":["SH","AH0","N"],"stress":0,"ipa_approx":"","text":""}]},"thoughts":{"vowel":"AO","tail":["AO","T","S"],"tail_type":"perfect","span":[0,8],"syllables":[{"chars":[0,8],"vowel":"AO","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["TH","AO1","T","S"],"stress":1,"ipa_approx":"","text":""}]},"choke":{"vowel":"OW","tail":["OW","K"],"tail_type":"perfect","span":[0,5],"syllables":[{"chars":[0,5],"vowel":"OW","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["CH","OW1","K"],"stress":1,"ipa_approx":"","text":""}]},"perfume's":{"vowel":"UW","tail":["UW","M"],"tail_type":"perfect","span":[4,6],"syllables":[{"chars":[0,3],"vowel":"ER","stress":0},{"chars":[3,9],"vowel":"UW","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["P","ER0"],"stress":0,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["F","Y","UW1","M"],"stress":1,"ipa_approx":"","text":""}]},"a":{"vowel":"AH","tail":["AH"],"tail_type":"slant","span":[0,1],"syllables":[{"chars":[0,1],"vowel":"AH","stress":0}],"phonetic_stream":[{"syllable_index":0,"phonemes":["AH0"],"stress":0,"ipa_approx":"","text":""}]},"lure":{"vowel":"UH","tail":["UH","R"],"tail_type":"perfect","span":[0,4],"syllables":[{"chars":[0,4],"vowel":"UH","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["L","UH1","R"],"stress":1,"ipa_approx":"","text":""}]},"never":{"vowel":"EH","tail":["EH","V","ER"],"tail_type":"perfect","span":[1,3],"syllables":[{"chars":[0,2],"vowel":"EH","stress":1},{"chars":[2,5],"vowel":"ER","stress":0}],"phonetic_stream":[{"syllable_index":0,"phonemes":["N","EH1"],"stress":1,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["V","ER0"],"stress":0,"ipa_approx":"","text":""}]},"sure":{"vowel":"UH","tail":["UH","R"],"tail_type":"perfect","span":[0,4],"syllables":[{"chars":[0,4],"vowel":"UH","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["SH","UH1","R"],"stress":1,"ipa_approx":"","text":""}]},"what's":{"vowel":"AH","tail":["AH","T","S"],"tail_type":"perfect","span":[0,6],"syllables":[{"chars":[0,6],"vowel":"AH","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["W","AH1","T","S"],"stress":1,"ipa_approx":"","text":""}]},"follow":{"vowel":"AA","tail":["AA","L","OW"],"tail_type":"perfect","span":[1,4],"syllables":[{"chars":[0,3],"vowel":"AA","stress":1},{"chars":[3,6],"vowel":"OW","stress":0}],"phonetic_stream":[{"syllable_index":0,"phonemes":["F","AA1"],"stress":1,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["L","OW0"],"stress":0,"ipa_approx":"","text":""}]},"you":{"vowel":"UW","tail":["UW"],"tail_type":"slant","span":[0,3],"syllables":[{"chars":[0,3],"vowel":"UW","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["Y","UW1"],"stress":1,"ipa_approx":"","text":""}]},"show":{"vowel":"OW","tail":["OW"],"tail_type":"slant","span":[0,4],"syllables":[{"chars":[0,4],"vowel":"OW","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["SH","OW1"],"stress":1,"ipa_approx":"","text":""}]},"no":{"vowel":"OW","tail":["OW"],"tail_type":"slant","span":[0,2],"syllables":[{"chars":[0,2],"vowel":"OW","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["N","OW1"],"stress":1,"ipa_approx":"","text":""}]},"doubt":{"vowel":"AW","tail":["AW","T"],"tail_type":"perfect","span":[0,5],"syllables":[{"chars":[0,5],"vowel":"AW","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["D","AW1","T"],"stress":1,"ipa_approx":"","text":""}]},"tomorrow":{"vowel":"AA","tail":["AA","R","OW"],"tail_type":"perfect","span":[3,6],"syllables":[{"chars":[0,2],"vowel":"AH","stress":0},{"chars":[2,5],"vowel":"AA","stress":1},{"chars":[5,8],"vowel":"OW","stress":2}],"phonetic_stream":[{"syllable_index":0,"phonemes":["T","AH0"],"stress":0,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["M","AA1"],"stress":1,"ipa_approx":"","text":""},{"syllable_index":2,"phonemes":["R","OW2"],"stress":2,"ipa_approx":"","text":""}]},"i'm":{"vowel":"AY","tail":["AY","M"],"tail_type":"perfect","span":[0,3],"syllables":[{"chars":[0,3],"vowel":"AY","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["AY1","M"],"stress":1,"ipa_approx":"","text":""}]},"flying":{"vowel":"AY","tail":["AY","IH","NG"],"tail_type":"perfect","span":[2,6],"syllables":[{"chars":[0,3],"vowel":"AY","stress":1},{"chars":[3,6],"vowel":"IH","stress":0}],"phonetic_stream":[{"syllable_index":0,"phonemes":["F","L","AY1"],"stress":1,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["IH0","NG"],"stress":0,"ipa_approx":"","text":""}]},"out":{"vowel":"AW","tail":["AW","T"],"tail_type":"perfect","span":[0,3],"syllables":[{"chars":[0,3],"vowel":"AW","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["AW1","T"],"stress":1,"ipa_approx":"","text":""}]},"indulge":{"vowel":"AH","tail":["AH","L","JH"],"tail_type":"perfect","span":[3,6],"syllables":[{"chars":[0,2],"vowel":"IH","stress":2},{"chars":[2,7],"vowel":"AH","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["IH2","N"],"stress":2,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["D","AH1","L","JH"],"stress":1,"ipa_approx":"","text":""}]},"me":{"vowel":"IY","tail":["IY"],"tail_type":"slant","span":[0,2],"syllables":[{"chars":[0,2],"vowel":"IY","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["M","IY1"],"stress":1,"ipa_approx":"","text":""}]},"release":{"vowel":"IY","tail":["IY","S"],"tail_type":"perfect","span":[3,6],"syllables":[{"chars":[0,2],"vowel":"IY","stress":0},{"chars":[2,7],"vowel":"IY","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["R","IY0"],"stress":0,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["L","IY1","S"],"stress":1,"ipa_approx":"","text":""}]},"moon":{"vowel":"UW","tail":["UW","N"],"tail_type":"perfect","span":[0,4],"syllables":[{"chars":[0,4],"vowel":"UW","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["M","UW1","N"],"stress":1,"ipa_approx":"","text":""}]},"rides":{"vowel":"AY","tail":["AY","D","Z"],"tail_type":"perfect","span":[0,5],"syllables":[{"chars":[0,5],"vowel":"AY","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["R","AY1","D","Z"],"stress":1,"ipa_approx":"","text":""}]},"milky":{"vowel":"IH","tail":["IH","L","K","IY"],"tail_type":"perfect","span":[1,4],"syllables":[{"chars":[0,3],"vowel":"IH","stress":1},{"chars":[3,5],"vowel":"IY","stress":0}],"phonetic_stream":[{"syllable_index":0,"phonemes":["M","IH1","L"],"stress":1,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["K","IY0"],"stress":0,"ipa_approx":"","text":""}]},"way":{"vowel":"EY","tail":["EY"],"tail_type":"slant","span":[0,3],"syllables":[{"chars":[0,3],"vowel":"EY","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["W","EY1"],"stress":1,"ipa_approx":"","text":""}]},"beams":{"vowel":"IY","tail":["IY","M","Z"],"tail_type":"perfect","span":[0,5],"syllables":[{"chars":[0,5],"vowel":"IY","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["B","IY1","M","Z"],"stress":1,"ipa_approx":"","text":""}]},"wash":{"vowel":"AA","tail":["AA","SH"],"tail_type":"perfect","span":[0,4],"syllables":[{"chars":[0,4],"vowel":"AA","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["W","AA1","SH"],"stress":1,"ipa_approx":"","text":""}]},"room":{"vowel":"UW","tail":["UW","M"],"tail_type":"perfect","span":[0,4],"syllables":[{"chars":[0,4],"vowel":"UW","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["R","UW1","M"],"stress":1,"ipa_approx":"","text":""}]},"being":{"vowel":"IY","tail":["IY","IH","NG"],"tail_type":"perfect","span":[1,5],"syllables":[{"chars":[0,3],"vowel":"IY","stress":1},{"chars":[3,5],"vowel":"IH","stress":0}],"phonetic_stream":[{"syllable_index":0,"phonemes":["B","IY1"],"stress":1,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["IH0","NG"],"stress":0,"ipa_approx":"","text":""}]},"awakens":{"vowel":"EY","tail":["EY","K","AH","N","Z"],"tail_type":"perfect","span":[2,4],"syllables":[{"chars":[0,1],"vowel":"AH","stress":0},{"chars":[1,3],"vowel":"EY","stress":1},{"chars":[3,7],"vowel":"AH","stress":0}],"phonetic_stream":[{"syllable_index":0,"phonemes":["AH0"],"stress":0,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["W","EY1"],"stress":1,"ipa_approx":"","text":""},{"syllable_index":2,"phonemes":["K","AH0","N","Z"],"stress":0,"ipa_approx":"","text":""}]},"let":{"vowel":"EH","tail":["EH","T"],"tail_type":"perfect","span":[0,3],"syllables":[{"chars":[0,3],"vowel":"EH","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["L","EH1","T"],"stress":1,"ipa_approx":"","text":""}]},"taboo":{"vowel":"UW","tail":["UW"],"tail_type":"slant","span":[3,5],"syllables":[{"chars":[0,2],"vowel":"AE","stress":0},{"chars":[2,5],"vowel":"UW","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["T","AE0"],"stress":0,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["B","UW1"],"stress":1,"ipa_approx":"","text":""}]},"light":{"vowel":"AY","tail":["AY","T"],"tail_type":"perfect","span":[0,5],"syllables":[{"chars":[0,5],"vowel":"AY","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["L","AY1","T"],"stress":1,"ipa_approx":"","text":""}]},"life":{"vowel":"AY","tail":["AY","F"],"tail_type":"perfect","span":[0,4],"syllables":[{"chars":[0,4],"vowel":"AY","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["L","AY1","F"],"stress":1,"ipa_approx":"","text":""}]},"street":{"vowel":"IY","tail":["IY","T"],"tail_type":"perfect","span":[0,6],"syllables":[{"chars":[0,6],"vowel":"IY","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["S","T","R","IY1","T"],"stress":1,"ipa_approx":"","text":""}]},"below":{"vowel":"OW","tail":["OW"],"tail_type":"slant","span":[3,5],"syllables":[{"chars":[0,2],"vowel":"IH","stress":0},{"chars":[2,5],"vowel":"OW","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["B","IH0"],"stress":0,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["L","OW1"],"stress":1,"ipa_approx":"","text":""}]},"city's":{"vowel":"IH","tail":["IH","T","IY","Z"],"tail_type":"perfect","span":[1,3],"syllables":[{"chars":[0,2],"vowel":"IH","stress":1},{"chars":[2,6],"vowel":"IY","stress":0}],"phonetic_stream":[{"syllable_index":0,"phonemes":["S","IH1"],"stress":1,"ipa_approx":"","text":""},{"syllable_index":1,"phonemes":["T","IY0","Z"],"stress":0,"ipa_approx":"","text":""}]},"maze":{"vowel":"EY","tail":["EY","Z"],"tail_type":"perfect","span":[0,4],"syllables":[{"chars":[0,4],"vowel":"EY","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["M","EY1","Z"],"stress":1,"ipa_approx":"","text":""}]},"where":{"vowel":"EH","tail":["EH","R"],"tail_type":"perfect","span":[0,5],"syllables":[{"chars":[0,5],"vowel":"EH","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["W","EH1","R"],"stress":1,"ipa_approx":"","text":""}]},"will":{"vowel":"IH","tail":["IH","L"],"tail_type":"perfect","span":[0,4],"syllables":[{"chars":[0,4],"vowel":"IH","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["W","IH1","L"],"stress":1,"ipa_approx":"","text":""}]},"i":{"vowel":"AY","tail":["AY"],"tail_type":"slant","span":[0,1],"syllables":[{"chars":[0,1],"vowel":"AY","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["AY1"],"stress":1,"ipa_approx":"","text":""}]},"land":{"vowel":"AE","tail":["AE","N","D"],"tail_type":"perfect","span":[0,4],"syllables":[{"chars":[0,4],"vowel":"AE","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["L","AE1","N","D"],"stress":1,"ipa_approx":"","text":""}]},"mind's":{"vowel":"AY","tail":["AY","N","D","Z"],"tail_type":"perfect","span":[0,6],"syllables":[{"chars":[0,6],"vowel":"AY","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["M","AY1","N","D","Z"],"stress":1,"ipa_approx":"","text":""}]},"i'll":{"vowel":"AY","tail":["AY","L"],"tail_type":"perfect","span":[0,4],"syllables":[{"chars":[0,4],"vowel":"AY","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["AY1","L"],"stress":1,"ipa_approx":"","text":""}]},"take":{"vowel":"EY","tail":["EY","K"],"tail_type":"perfect","span":[0,4],"syllables":[{"chars":[0,4],"vowel":"EY","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["T","EY1","K"],"stress":1,"ipa_approx":"","text":""}]},"time":{"vowel":"AY","tail":["AY","M"],"tail_type":"perfect","span":[0,4],"syllables":[{"chars":[0,4],"vowel":"AY","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["T","AY1","M"],"stress":1,"ipa_approx":"","text":""}]},"find":{"vowel":"AY","tail":["AY","N","D"],"tail_type":"perfect","span":[0,4],"syllables":[{"chars":[0,4],"vowel":"AY","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["F","AY1","N","D"],"stress":1,"ipa_approx":"","text":""}]},"it's":{"vowel":"IH","tail":["IH","T","S"],"tail_type":"perfect","span":[0,4],"syllables":[{"chars":[0,4],"vowel":"IH","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["IH1","T","S"],"stress":1,"ipa_approx":"","text":""}]},"oh":{"vowel":"OW","tail":["OW"],"tail_type":"slant","span":[0,2],"syllables":[{"chars":[0,2],"vowel":"OW","stress":1}],"phonetic_stream":[{"syllable_index":0,"phonemes":["OW1"],"stress":1,"ipa_approx":"","text":""}]}}}};
+
+// ─── Helpers ─────────────────────────────────────────────────────────────────────────────────────
+function hexToRgb(hex) {
+  const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return m ? `${parseInt(m[1],16)},${parseInt(m[2],16)},${parseInt(m[3],16)}` : '0,0,0';
+}
+
+// ─── Palette ──────────────────────────────────────────────────────────────────────────────────────
+const PALETTE = [
+  { vowel:"AY", color:"#e8593c", bg:"rgba(232,89,60,0.18)" },
+  { vowel:"EY", color:"#c9a227", bg:"rgba(201,162,39,0.18)" },
+  { vowel:"OW", color:"#3db88a", bg:"rgba(61,184,138,0.18)" },
+  { vowel:"UW", color:"#5b9fd6", bg:"rgba(91,159,214,0.18)" },
+  { vowel:"IY", color:"#b87fc8", bg:"rgba(184,127,200,0.18)" },
+  { vowel:"AW", color:"#e0784a", bg:"rgba(224,120,74,0.18)" },
+  { vowel:"AA", color:"#8ab8d6", bg:"rgba(138,184,214,0.18)" },
+  { vowel:"ER", color:"#9fb870", bg:"rgba(159,184,112,0.18)" },
+  { vowel:"IH", color:"#d4a060", bg:"rgba(212,160,96,0.18)" },
+  { vowel:"AE", color:"#c06080", bg:"rgba(192,96,128,0.18)" },
+  { vowel:"AO", color:"#60a0b0", bg:"rgba(96,160,176,0.18)" },
+  { vowel:"UH", color:"#a08060", bg:"rgba(160,128,96,0.18)" },
+  { vowel:"OY", color:"#a0c040", bg:"rgba(160,192,64,0.18)" },
+  { vowel:"OE", color:"#c080a0", bg:"rgba(192,128,160,0.18)" },
+];
+const PALETTE_BY_VOWEL = Object.fromEntries(PALETTE.map(p => [p.vowel, p]));
+
+// ─── State ───────────────────────────────────────────────────────────────────────────────────────
+let selectedFamily = null;
+let showStress    = true;
+let endOfLineOnly = false;
+let showScheme    = true;
+let compactLegend = true;
+
+// ─── Colour map ───────────────────────────────────────────────────────────────────────────────────
+function buildColourMap(wordMap) {
+  const familyCounts = {};
+  for (const d of Object.values(wordMap)) {
+    const syls = d?.syllables;
+    if (syls) {
+      for (const s of syls) {
+        if (s.vowel) familyCounts[s.vowel] = (familyCounts[s.vowel] ?? 0) + 1;
+      }
+    } else if (d?.vowel) {
+      familyCounts[d.vowel] = (familyCounts[d.vowel] ?? 0) + 1;
+    }
+  }
+  const active = Object.entries(familyCounts)
+    .filter(([, n]) => n >= 2)
+    .sort((a, b) => b[1] - a[1]);
+  const colourMap = {};
+  const used = [];
+  for (const [v] of active) {
+    const matched = PALETTE_BY_VOWEL[v];
+    if (matched && !used.includes(matched)) { colourMap[v] = matched; used.push(matched); }
+    else { for (const p of PALETTE) { if (!used.includes(p)) { colourMap[v] = p; used.push(p); break; } } }
+  }
+  return colourMap;
+}
+
+// ─── Tokenise ─────────────────────────────────────────────────────────────────────────────────────
+function tokenize(text) {
+  return (text.match(/[A-Za-z']+|[^A-Za-z']+/g) ?? []).map(t => ({
+    text: t,
+    isWord: /[A-Za-z']/.test(t[0]),
+    key: t.toLowerCase().replace(/^'|'$/, ''),
+  }));
+}
+
+// ─── Render a single word token ───────────────────────────────────────────────────────────────────────────────────
+function renderWordToken(token, wordMap, colourMap, isEndWord) {
+  const span = document.createElement('span');
+  span.className = 'rh-word';
+  const key = token.key;
+  const data = wordMap[key];
+
+  if (!data || (endOfLineOnly && !isEndWord)) {
+    span.textContent = token.text;
+    return span;
+  }
+
+  // ── New path: per-syllable data ────────────────────────────────────────────────────────────────────────────────────────────────
+  if (data.syllables) {
+    const hasColour = data.syllables.some(s => s.vowel && colourMap[s.vowel]);
+    if (!hasColour) { span.textContent = token.text; return span; }
+
+    if (data.vowel) {
+      span.dataset.family = data.vowel;
+      span.title = `${data.vowel} vowel`;
+      span.addEventListener('click', e => { e.stopPropagation(); toggleFamily(data.vowel); });
+    }
+
+    const isMulti = data.syllables.length > 1;
+    for (const syl of data.syllables) {
+      const [s, e] = syl.chars;
+      const text = token.text.slice(s, e);
+      const colour = syl.vowel ? colourMap[syl.vowel] : null;
+      if (!colour) { span.appendChild(document.createTextNode(text)); continue; }
+      const sylEl = document.createElement('span');
+      sylEl.textContent = text;
+      sylEl.dataset.family = syl.vowel;
+      sylEl.style.color = colour.color;
+      // Stress markers only on polysyllabic words — on monosyllabic words the
+      // colour alone is sufficient and a border on every word is visual noise
+      if (showStress && isMulti) {
+        if (syl.stress === 1) {
+          sylEl.style.border = `1px solid ${colour.color}`;
+          sylEl.style.borderRadius = '3px';
+          sylEl.style.padding = '0 1px';
+        } else if (syl.stress === 2) {
+          sylEl.style.textDecoration = 'underline';
+          sylEl.style.textUnderlineOffset = '2px';
+          sylEl.style.textDecorationThickness = '1px';
+          sylEl.style.textDecorationColor = colour.color;
+        }
+      }
+      span.appendChild(sylEl);
+    }
+    return span;
+  }
+
+  // ── Legacy path: no syllables field (pre-update API response) ────────────────────────────────────────────────────────────────────────────────────────
+  const colour = data.vowel ? colourMap[data.vowel] : null;
+  if (!colour) { span.textContent = token.text; return span; }
+
+  span.dataset.family = data.vowel;
+  span.title = `${data.vowel} vowel`;
+  span.addEventListener('click', e => { e.stopPropagation(); toggleFamily(data.vowel); });
+
+  if (showStress && data.span) {
+    const [s, e] = data.span;
+    const pre = token.text.slice(0, s);
+    const mid = token.text.slice(s, e);
+    const post = token.text.slice(e);
+    if (pre) span.appendChild(document.createTextNode(pre));
+    const syl = document.createElement('span');
+    syl.style.cssText = `color:${colour.color};border:1px solid ${colour.color};border-radius:3px;padding:0 1px;`;
+    syl.textContent = mid;
+    span.appendChild(syl);
+    if (post) span.appendChild(document.createTextNode(post));
+  } else {
+    span.style.color = colour.color;
+    span.textContent = token.text;
+  }
+  return span;
+}
+
+// ─── Render lyrics ────────────────────────────────────────────────────────────────────────────────────────
+function renderLyrics(analysis, colourMap) {
+  const container = document.getElementById('lyrics');
+  container.innerHTML = '';
+
+  for (const section of analysis.sections) {
+    if (section.label) {
+      const lbl = document.createElement('div');
+      lbl.className = 'section-label';
+      lbl.textContent = section.label;
+      container.appendChild(lbl);
+    }
+
+    let stanza = null;
+    for (const line of section.lines) {
+      if (!stanza) { stanza = document.createElement('div'); stanza.className = 'stanza'; container.appendChild(stanza); }
+
+      const lineEl = document.createElement('div');
+      lineEl.className = 'line';
+
+      const textEl = document.createElement('span');
+      textEl.className = 'line-text';
+
+      const tokens = tokenize(line.text);
+      const lastWordIdx = tokens.reduce((last, t, i) => t.isWord ? i : last, -1);
+      tokens.forEach((tok, i) => {
+        const isEndWord = tok.isWord && tok.key === line.end_word && i === lastWordIdx;
+        if (tok.isWord) {
+          textEl.appendChild(renderWordToken(tok, analysis.word_map, colourMap, isEndWord));
+        } else {
+          textEl.appendChild(document.createTextNode(tok.text));
+        }
+      });
+
+      lineEl.appendChild(textEl);
+
+      const labelEl = document.createElement('span');
+      labelEl.className = 'line-label' + (line.rhyme_vowel ? ' active' : '');
+      labelEl.dataset.label = line.rhyme_label;
+      labelEl.textContent = showScheme ? (line.rhyme_label !== '?' ? line.rhyme_label : '') : '';
+      lineEl.appendChild(labelEl);
+
+      stanza.appendChild(lineEl);
+    }
+  }
+}
+
+// ─── Render legend ────────────────────────────────────────────────────────────────────────────────────────
+function renderLegend(analysis, colourMap) {
+  const container = document.getElementById('legend');
+  container.innerHTML = '';
+
+  container.style.gridTemplateColumns = compactLegend
+    ? 'repeat(auto-fill, minmax(160px, 1fr))'
+    : 'repeat(auto-fill, minmax(200px, 1fr))';
+
+  const title = document.createElement('div');
+  title.className = 'legend-title';
+  title.textContent = 'Active vowel families · click to isolate';
+  container.appendChild(title);
+
+  const familyWords = {};
+  for (const [w, d] of Object.entries(analysis.word_map)) {
+    if (d?.vowel && colourMap[d.vowel]) {
+      (familyWords[d.vowel] = familyWords[d.vowel] ?? []).push(w);
+    }
+  }
+
+  for (const [v, c] of Object.entries(colourMap)) {
+    const words = (familyWords[v] ?? []).sort((a, b) => a.length - b.length);
+    const item = document.createElement('div');
+    item.className = 'legend-item';
+    item.dataset.family = v;
+
+    const swatch = document.createElement('span');
+    swatch.className = 'legend-swatch';
+    swatch.style.background = c.color;
+    item.appendChild(swatch);
+
+    if (compactLegend) {
+      // Prefer shortest single-syllable word as the example
+      const mono = words.filter(wd => {
+        const d = analysis.word_map[wd];
+        return d?.syllables ? d.syllables.length === 1 : true;
+      });
+      const example = (mono[0] ?? words[0] ?? v).toLowerCase();
+      const textEl = document.createElement('span');
+      textEl.style.fontSize = '11px';
+      const vLabel = document.createElement('span');
+      vLabel.style.color = c.color;
+      vLabel.style.letterSpacing = '0.04em';
+      vLabel.textContent = v;
+      const rest = document.createElement('span');
+      rest.style.color = '#6b6760';
+      rest.textContent = ` · "${example}" (${words.length})`;
+      textEl.appendChild(vLabel);
+      textEl.appendChild(rest);
+      item.appendChild(textEl);
+    } else {
+      const info = document.createElement('div');
+      const label = document.createElement('span');
+      label.className = 'legend-label';
+      label.textContent = `${v} vowel`;
+      const wds = document.createElement('div');
+      wds.className = 'legend-words';
+      wds.textContent = words.slice(0, 14).join(', ') + (words.length > 14 ? '…' : '');
+      info.appendChild(label);
+      info.appendChild(wds);
+      item.appendChild(info);
+    }
+
+    item.addEventListener('click', e => { e.stopPropagation(); toggleFamily(v); });
+    container.appendChild(item);
+  }
+}
+
+// ─── Render notes ─────────────────────────────────────────────────────────────────────────────────────────
+function renderNotes(analysis) {
+  const el = document.getElementById('notes');
+  const unresolved = analysis.meta?.unresolved_words ?? [];
+  el.innerHTML = `<strong>Notes</strong><br>
+— Each syllable is coloured by its own vowel (cmudict ARPAbet)<br>
+— Bordered syllable = primary stress · underlined syllable = secondary stress<br>
+— Click any word or legend row to isolate that vowel family · click again to clear
+${unresolved.length ? `<div class="unresolved">Unresolved (not in cmudict): ${unresolved.join(', ')}</div>` : ''}
+<div class="key">lyric-analysis-api · cmu-pronouncing-dictionary · North American English</div>`;
+}
+
+// ─── Isolation ────────────────────────────────────────────────────────────────────────────────────────────────
+function toggleFamily(fam) {
+  if (selectedFamily === fam) {
+    selectedFamily = null;
+    document.body.classList.remove('isolated');
+    document.querySelectorAll('.rh-word.active').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.legend-item.active').forEach(el => el.classList.remove('active'));
+  } else {
+    selectedFamily = fam;
+    document.body.classList.add('isolated');
+    document.querySelectorAll('.rh-word').forEach(el => {
+      el.classList.toggle('active', el.dataset.family === fam);
+    });
+    document.querySelectorAll('.legend-item').forEach(el => {
+      el.classList.toggle('active', el.dataset.family === fam);
+    });
+  }
+}
+
+// ─── Full re-render ───────────────────────────────────────────────────────────────────────────────────────────
+function rerender() {
+  const a = RHYME_DATA.analysis;
+  const colourMap = buildColourMap(a.word_map);
+  renderLegend(a, colourMap);
+  renderLyrics(a, colourMap);
+  renderNotes(a);
+  selectedFamily = null;
+  document.body.classList.remove('isolated');
+}
+
+// ─── Controls ───────────────────────────────────────────────────────────────────────────────────────────────
+function initControls() {
+  const tStress  = document.getElementById('toggle-stress');
+  const tEol     = document.getElementById('toggle-eol');
+  const tScheme  = document.getElementById('toggle-scheme');
+  const tCompact = document.getElementById('toggle-compact');
+
+  tStress.addEventListener('click', () => {
+    showStress = !showStress;
+    tStress.classList.toggle('active', showStress);
+    rerender();
+  });
+  tEol.addEventListener('click', () => {
+    endOfLineOnly = !endOfLineOnly;
+    tEol.classList.toggle('active', endOfLineOnly);
+    rerender();
+  });
+  tScheme.addEventListener('click', () => {
+    showScheme = !showScheme;
+    tScheme.classList.toggle('active', showScheme);
+    document.querySelectorAll('.line-label').forEach(el => {
+      el.textContent = showScheme ? (el.dataset.label !== '?' ? el.dataset.label : '') : '';
+    });
+  });
+  tCompact.addEventListener('click', () => {
+    compactLegend = !compactLegend;
+    tCompact.classList.toggle('active', compactLegend);
+    const a = RHYME_DATA.analysis;
+    renderLegend(a, buildColourMap(a.word_map));
+  });
+
+  document.addEventListener('click', () => {
+    if (selectedFamily) { selectedFamily = null; document.body.classList.remove('isolated'); document.querySelectorAll('.active').forEach(el => el.classList.remove('active')); }
+  });
+}
+
+// ─── Init ──────────────────────────────────────────────────────────────────────────────────────────────────────
+function init() {
+  if (!RHYME_DATA) { document.body.innerHTML = '<p style="color:#6b6760;padding:48px">No data injected.</p>'; return; }
+  const a = RHYME_DATA.analysis;
+  document.title = `${a.title} — Rhyme Map`;
+  document.getElementById('title').textContent = a.title;
+  document.getElementById('subtitle').innerHTML =
+    'Rhyme map · each syllable coloured by its vowel · ' +
+    '<span style="border:1px solid currentColor;border-radius:2px;padding:0 2px">bordered</span>' +
+    ' = primary stress · <span style="text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px">underlined</span>' +
+    ' = secondary stress';
+  initControls();
+  rerender();
+}
+
+init();
+</script>
+</body>
+</html>
