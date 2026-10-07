@@ -150,5 +150,17 @@ Written when work on the site was parked, so a later session doesn't have to red
 * The home page says nothing about licensing. Each project states its own licence.
 * The home page says the source is available through musios-app on GitHub. That is not true of `songwriting-coach` (private source), so revisit it if that page is ever listed.
 * `assets/lightbox/lightbox-for-bootstrap5-MODIFIED.js` has an uncommitted `console.log` on purpose.
+* `_plugins/spotify-gp-vite-build.rb` has an uncommitted change on purpose (Oct 2026): it only rebuilds the Vite tool when its sources are newer than `tool/index.html`, because Vite writes into `tool/`, which Jekyll watches, so each build triggered the next. It belongs to the spotify work, so don't commit it with other changes.
 * `numaxpiano-midi-controller` and `support-act` show as modified (`?`) in `git status` because of untracked files inside them. They are not changes to this repo.
+
+### Songwriting Coach releases
+
+`projects/songwriting-coach/` is written by `python publish_site.py` in the songwriting-coach repo (see "Projects that are plain folders" above). After a run:
+
+* `git status` here should show changes only under `projects/songwriting-coach/`. Stage that folder only, never `git add -A`, and push only when asked.
+* Each release adds a versioned `songwriting-coach-<version>.skill` (about 1 MB), updates `songwriting-coach.skill`, and leaves older versioned files in place.
+* Accepted on purpose, so don't review these again each release:
+  * Pages written with front matter (`index.md` and the conversation pages) are unlisted: `sitemap: false` and `noindex: true`, which `_includes/head.html` turns into a robots noindex tag.
+  * A saved page embedded in a conversation, such as `conversations/timeless-tonight-rhyme-map.html`, is a standalone file with no front matter. It doesn't go through the layout, so it has no `noindex` tag and no `sitemap: false`. It is only linked from the iframe in its conversation page. It may also load Google Fonts, so a visitor's browser contacts Google.
+  * The pages are unlisted, not secret: the repo is public, so the `.skill` files can be downloaded by anyone who finds them.
 
