@@ -23,10 +23,6 @@
 .chat .banner { background: #1c1216; color: #ffb36b; font: .95rem ui-monospace, Menlo, monospace;
   padding: 10px 16px; border-radius: 10px; margin: 4px 0 12px; overflow-x: auto; }
 .chat .banner .title { text-align: center; white-space: pre; }
-.chat .banner .help { margin-top: 10px; text-align: left; }
-.chat .banner .hl { margin-top: .4em; }
-.chat .banner .hi { display: flex; gap: .6em; }
-.chat .banner .hi span:first-child { flex: none; }
 .chat iframe.embed { width: 100%; height: 760px; border: 1px solid #dfe7e1; border-radius: 10px; background: #fff; margin: 8px 0; }
 .chat .bubble code { background: rgba(128,128,128,.15); padding: 0 4px; border-radius: 4px; }
 .chat .chat-nav { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px;

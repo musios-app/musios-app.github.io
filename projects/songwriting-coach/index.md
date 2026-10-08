@@ -24,7 +24,7 @@ The coach lets you get going from wherever you are in the songwriting process. E
 
 | Platform | Download |
 |---|---|
-| Claude (claude.ai, desktop app, Claude Code) | [songwriting-coach.skill](downloads/songwriting-coach.skill) (v2.5.4) |
+| Claude (claude.ai, desktop app, Claude Code) | [songwriting-coach.skill](downloads/songwriting-coach.skill) (v2.5.5) |
 
 ## Availability
 
