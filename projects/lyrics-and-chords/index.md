@@ -8,7 +8,7 @@ noindex: true
 
 ## Lyrics & Chords Skill
 
-The Lyrics & Chords skill for Claude read song lyric and chord content with structure to help understand of the lyrics.
+The Lyrics & Chords skill for Claude reads song lyric and chord content with structure to help understand the lyrics.
 
 * Reads a wide range of lyric and chord formats (see below)
 * Able to read from [genius.com](https://genius.com), [ultimate-guitar.com](https://ultimate-guitar.com) and other sites - for educational uses only.
@@ -65,8 +65,8 @@ Example JSON object:
 
 | Platform | Download |
 | --- | --- |
-| Claude | [lyrics-and-chords.skill](downloads/lyrics-and-chords.skill) (v0.1.0) |
-| Source code | [lyrics-and-chords-0.1.0-source.zip](downloads/lyrics-and-chords-0.1.0-source.zip) |
+| Claude | [lyrics-and-chords.skill](downloads/lyrics-and-chords.skill) (v0.1.1) |
+| Source code | [lyrics-and-chords-0.1.1-source.zip](downloads/lyrics-and-chords-0.1.1-source.zip) |
 
 ## Availability
 
@@ -74,7 +74,7 @@ The scripts are tested on macOS with Node.js 22. The skill has not yet been test
 
 * ❓ claude.ai (web)
 * ❓ Claude Code
-* ❓ Claude desktop app
+* ❓ Claude Desktop (app)
 
 Legend: ✅ works · ❓ not tested yet
 
@@ -82,7 +82,7 @@ It needs **Node.js 18 or later** wherever the scripts run.
 
 ## Install, update, remove
 
-### claude.ai and the Claude desktop app
+### claude.ai and the Claude Desktop (app)
 
 * **Install:** download `lyrics-and-chords.skill` above, then Customize > Skills > + > Upload skill > select the file, and toggle it on
 * **Update:** download the new `.skill` and upload it the same way, confirming "Upload and replace"
@@ -96,4 +96,4 @@ It needs **Node.js 18 or later** wherever the scripts run.
 
 ## Licence and source
 
-Lyrics & Chords is free software under the **GNU General Public License, version 2 only** (GPL-2.0-only), because it includes [ChordSheetJS](https://github.com/martijnversluis/ChordSheetJS) 18.0.0 by Martijn Versluis, which has the same licence. The licence text is in the `.skill` file as `LICENSE`, and `NOTICE.txt` says what is included. The source for this version is the source download above (commit 193b3d3).
+Lyrics & Chords is free software under the **GNU General Public License, version 2 only** (GPL-2.0-only), because it includes [ChordSheetJS](https://github.com/martijnversluis/ChordSheetJS) 18.0.0 by Martijn Versluis, which has the same licence. The licence text is in the `.skill` file as `LICENSE`, and `NOTICE.txt` says what is included. The source for this version is the source download above (commit 340f3e0).
