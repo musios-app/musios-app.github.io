@@ -168,4 +168,4 @@ What the skill returns: one JSON object, with one line of the song on each row b
 ```
 {% endraw %}
 
-[All examples](../#what-it-reads) · [Next: Genius.com](example-genius.html)
+[All examples](../#lyrics--chords-skill) · [Next: Genius.com](example-genius.html)

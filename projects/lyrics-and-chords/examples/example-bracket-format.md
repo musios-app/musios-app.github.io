@@ -151,4 +151,4 @@ What the skill returns: one JSON object, with one line of the song on each row b
 ```
 {% endraw %}
 
-[Previous: Ultimate Guitar](example-ultimate-guitar.html) · [All examples](../#what-it-reads) · [Next: Unbracketed format](example-unbracketed-format.html)
+[Previous: Ultimate Guitar](example-ultimate-guitar.html) · [All examples](../#lyrics--chords-skill) · [Next: Unbracketed format](example-unbracketed-format.html)

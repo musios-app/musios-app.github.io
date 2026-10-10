@@ -13,7 +13,7 @@ The Lyrics & Chords skill for Claude read song lyric and chord content with stru
 * Reads a wide range of lyric and chord formats (see below)
 * Able to read from [genius.com](https://genius.com), [ultimate-guitar.com](https://ultimate-guitar.com) and other sites - for educational uses only.
 * Identifies and corrects many (not all) common errors
-* Returns a plain reading plus a JSON object that captures the structure in the lyrics (see [Return JSON Object](#return-json-object))
+* Returns a plain reading plus a JSON object (ChordSheetJS format) that captures the structure in the lyrics (see [Return JSON Object](#return-json-object))
 * This skill can be used with other skills, such the [Songwriting Coach](https://musios.app/projects/songwriting-coach/).
 * Source code available (see [Downloads](#download))
 
@@ -65,7 +65,7 @@ Example JSON object:
 
 | Platform | Download |
 | --- | --- |
-| Claude (claude.ai, desktop app, Claude Code) | [lyrics-and-chords.skill](downloads/lyrics-and-chords.skill) (v0.1.0) |
+| Claude | [lyrics-and-chords.skill](downloads/lyrics-and-chords.skill) (v0.1.0) |
 | Source code | [lyrics-and-chords-0.1.0-source.zip](downloads/lyrics-and-chords-0.1.0-source.zip) |
 
 ## Availability
@@ -96,4 +96,4 @@ It needs **Node.js 18 or later** wherever the scripts run.
 
 ## Licence and source
 
-Lyrics & Chords is free software under the **GNU General Public License, version 2 only** (GPL-2.0-only), because it includes [ChordSheetJS](https://github.com/martijnversluis/ChordSheetJS) 18.0.0 by Martijn Versluis, which has the same licence. The licence text is in the `.skill` file as `LICENSE`, and `NOTICE.txt` says what is included. The source for this version is the source download above (commit 6a92381).
+Lyrics & Chords is free software under the **GNU General Public License, version 2 only** (GPL-2.0-only), because it includes [ChordSheetJS](https://github.com/martijnversluis/ChordSheetJS) 18.0.0 by Martijn Versluis, which has the same licence. The licence text is in the `.skill` file as `LICENSE`, and `NOTICE.txt` says what is included. The source for this version is the source download above (commit 193b3d3).

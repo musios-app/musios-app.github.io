@@ -127,4 +127,4 @@ What the skill returns: one JSON object, with one line of the song on each row b
 ```
 {% endraw %}
 
-[Previous: Unbracketed format](example-unbracketed-format.html) · [All examples](../#what-it-reads) · [Next: Chords above words](example-chords-above-words.html)
+[Previous: Unbracketed format](example-unbracketed-format.html) · [All examples](../#lyrics--chords-skill) · [Next: Chords above words](example-chords-above-words.html)

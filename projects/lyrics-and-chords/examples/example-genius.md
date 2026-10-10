@@ -109,4 +109,4 @@ What the skill returns: one JSON object, with one line of the song on each row b
 ```
 {% endraw %}
 
-[Previous: ChordPro](example-chordpro.html) · [All examples](../#what-it-reads) · [Next: Ultimate Guitar](example-ultimate-guitar.html)
+[Previous: ChordPro](example-chordpro.html) · [All examples](../#lyrics--chords-skill) · [Next: Ultimate Guitar](example-ultimate-guitar.html)
