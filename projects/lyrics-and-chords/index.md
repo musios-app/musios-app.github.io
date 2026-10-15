@@ -65,8 +65,8 @@ Example JSON object:
 
 | Platform | Download |
 | --- | --- |
-| Claude | [lyrics-and-chords.skill](downloads/lyrics-and-chords.skill) (v0.1.1) |
-| Source code | [lyrics-and-chords-0.1.1-source.zip](downloads/lyrics-and-chords-0.1.1-source.zip) |
+| Claude | [lyrics-and-chords.skill](downloads/lyrics-and-chords.skill) (v0.1.2) |
+| Source code | [lyrics-and-chords-0.1.2-source.zip](downloads/lyrics-and-chords-0.1.2-source.zip) |
 
 ## Availability
 
@@ -96,4 +96,4 @@ It needs **Node.js 18 or later** wherever the scripts run.
 
 ## Licence and source
 
-Lyrics & Chords is free software under the **GNU General Public License, version 2 only** (GPL-2.0-only), because it includes [ChordSheetJS](https://github.com/martijnversluis/ChordSheetJS) 18.0.0 by Martijn Versluis, which has the same licence. The licence text is in the `.skill` file as `LICENSE`, and `NOTICE.txt` says what is included. The source for this version is the source download above (commit 340f3e0).
+Lyrics & Chords is free software under the **GNU General Public License, version 2 only** (GPL-2.0-only), because it includes [ChordSheetJS](https://github.com/martijnversluis/ChordSheetJS) 18.0.0 by Martijn Versluis, which has the same licence. The licence text is in the `.skill` file as `LICENSE`, and `NOTICE.txt` says what is included. The source for this version is the source download above (commit 49eb3c7).
