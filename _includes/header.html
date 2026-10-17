@@ -1,5 +1,5 @@
 {%- assign banner_title = page.title | default: site.title | default: site.github.repository_name | replace: '|', '&#124;' -%}
-{%- assign banner_tagline = page.description | default: site.description | replace: '|', '&#124;' -%}
+{%- assign banner_tagline = page.tagline | default: page.description | default: site.description | replace: '|', '&#124;' -%}
 
 <header class="mb-5 bg-dark">
 
