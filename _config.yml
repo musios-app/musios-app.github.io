@@ -37,12 +37,26 @@ defaults:
       path: "" # means all files in the project
     values:
       layout: "default"
+  # TEMPORARY (Oct 2026): support-act and spotify-playlist-to-gigperformer are hidden. Their pages
+  # still work for anyone with the link, but they are not indexed and not in the sitemap.
+  # REINSTATE: delete these two scopes and uncomment the two projects_homes entries below.
+  - scope:
+      path: "projects/support-act"
+    values:
+      noindex: true
+      sitemap: false
+  - scope:
+      path: "projects/spotify-playlist-to-gigperformer"
+    values:
+      noindex: true
+      sitemap: false
 
 projects_homes:
-  - dir: "/projects/support-act"
-    home: "index.html"
-  - dir: "/projects/spotify-playlist-to-gigperformer"
-    home: "README.md"
+  # TEMPORARY (Oct 2026): hidden from the home page and the navbar. REINSTATE: uncomment.
+  # - dir: "/projects/support-act"
+  #   home: "index.html"
+  # - dir: "/projects/spotify-playlist-to-gigperformer"
+  #   home: "README.md"
   - dir: "/projects/numaxpiano-midi-controller"
     home: "README.md"
   - dir: "/projects/logic-pro-scripter"

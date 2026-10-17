@@ -5,6 +5,9 @@ title: musios.app Home
 
 **musios.app** is a collection of tools, software, and documentations for music software and DAWs. The projects cover home studios and live performance. Musios.app is maintained by <a href='https://github.com/andrewjhunt'>Andrew Hunt</a> with the source available through [musios-app](https://github.com/musios-app) on GitHub. Got bugs, feedback and contributions, then create an issue in the GitHub project [musios-app](https://github.com/musios-app).
 
+{% comment %}
+TEMPORARY (Oct 2026): the Spotify project is hidden, and this announcement (already display:none) links to it.
+REINSTATE: remove the comment tags around the block below.
 <div class="row" style="display: none; background-color: #f8e8e8; padding: 12px 24px; border: 2px solid red; border-radius: 5px">
 	<div class="col-1 text-start">
 		<img class="project-icon" src="/assets/images/new-badge.svg" style="height: 50px" />
@@ -16,6 +19,7 @@ title: musios.app Home
 		See the <a href="/projects/spotify-playlist-to-gigperformer/README.html">Project</a> for more information and documentation.
 	</div>
 </div>
+{% endcomment %}
 
 
 <h3>Tools & Doc</h3>

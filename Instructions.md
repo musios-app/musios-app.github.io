@@ -104,6 +104,15 @@ To bring it back:
 2. Run `git submodule add https://github.com/musios-app/web-sheet-music-midi.git projects/web-sheet-music-midi`, and check `git status` afterwards because the folder already exists.
 3. Add `- dir: "/projects/web-sheet-music-midi"` with `home: "README.md"` to `projects_homes` in `_config.yml`.
 
+`support-act` and `spotify-playlist-to-gigperformer` are hidden in a lighter way (Oct 2026). They stay submodules and their pages still work for anyone with the link, but they are not listed or indexed:
+
+* `_config.yml`, `projects_homes`: both entries are commented out, so they are off the home page and the navbar
+* `_config.yml`, `defaults`: two scopes set `noindex: true` and `sitemap: false` for their folders. This reaches the pages Jekyll processes (for example the spotify `README.html`). It does not reach plain static files, because Jekyll 3.10 (the `github-pages` gem) does not apply `defaults` to them, such as the built tool at `/projects/spotify-playlist-to-gigperformer/tool/`
+* `index.md`: the hidden Spotify announcement is wrapped in a Liquid comment, because crawlers follow links in `display:none` blocks
+* There is no `robots.txt`, and don't add a `Disallow`: Google has to be able to fetch a page to see its `noindex`. Pages already in Google drop out only when it next crawls them
+
+To bring them back: delete the two `defaults` scopes, uncomment the two `projects_homes` entries, and remove the comment tags in `index.md`.
+
 ## GitHub Action - Build & Deploy
 
 A `git push` automatically triggers a GitHub Action (`.github/workflows/jekyll-gh-pages.yml`) to build the site with Jekyll then deploy to [https://musios.app](https://musios.app).  
