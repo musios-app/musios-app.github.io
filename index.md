@@ -44,7 +44,14 @@ REINSTATE: remove the comment tags around the block below.
 					</div>
 					<div class="col">
 						<h3 class="h5"><a href="{{ page.url }}">{{ page.title }}</a></h3>
-						{{ page.description }}
+						{%- comment -%} A description that starts "Beta." gets the same warning badge as the project page heading. {%- endcomment -%}
+						{%- assign desc = page.description | default: "" -%}
+						{%- assign desc_start = desc | slice: 0, 5 -%}
+						{%- if desc_start == "Beta." -%}
+							<span class="badge text-bg-warning me-1">BETA</span> {{ desc | remove_first: "Beta." | strip }}
+						{%- else -%}
+							{{ desc }}
+						{%- endif %}
 					</div>
 					<div class="col-1 d-none d-md-block">
 						<div class="project-github-icon-container">
