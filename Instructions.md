@@ -84,11 +84,12 @@ git submodule update
 
 ### Projects that are plain folders
 
-`projects/songwriting-coach/` is a normal folder, not a submodule, because its source repo is private.
-It holds the download page (`index.md`, with `sitemap: false`) and the `.skill` files in `downloads/`.
-`python publish_site.py` in the songwriting-coach repo writes them on each release, so don't edit or delete them here.
-It is deliberately unlisted: it is not in `projects_homes` in `_config.yml`, so it is not on the home page or in the navbar.
-It is proprietary (all rights reserved), so the site's open-source licence statements don't apply to it.
+`projects/songwriting-coach/` and `projects/lyrics-and-chords/` are normal folders, not submodules. Each holds a download page (`index.md`), its sub-pages (`conversations/` or `examples/`), an `images/icon.svg` and the `.skill` files in `downloads/`. A `python publish_site.py` in the project's own repo writes them on each release, so don't edit or delete them here: edits are overwritten on the next run.
+
+* **Songwriting Coach:** its source repo is private. It is proprietary (all rights reserved), so the site's open-source licence statements don't apply to it, and its front matter has no `gitrepo` (a GitHub link would lead to a 404).
+* **Lyrics & Chords:** its source repo is `musios-app/lyrics-and-chords`, public since 18 Oct 2026 and licensed GPL-2.0-only (it bundles ChordSheetJS). The page names the source commit and offers a source zip for each version. The earlier private repo was renamed `lyrics-and-chords-old-delete-me` and is due to be deleted; the new repo's commit hashes differ from it, because the history was started afresh.
+
+Both are listed on the home page and in the navbar, at the top of `projects_homes` in `_config.yml`, and both are marked Beta (see "Songwriting Coach and Lyrics & Chords releases" below).
 
 ### Projects hidden until they are ready
 
@@ -107,11 +108,17 @@ To bring it back:
 `support-act` and `spotify-playlist-to-gigperformer` are hidden in a lighter way (Oct 2026). They stay submodules and their pages still work for anyone with the link, but they are not listed or indexed:
 
 * `_config.yml`, `projects_homes`: both entries are commented out, so they are off the home page and the navbar
-* `_config.yml`, `defaults`: two scopes set `noindex: true` and `sitemap: false` for their folders. This reaches the pages Jekyll processes (for example the spotify `README.html`). It does not reach plain static files, because Jekyll 3.10 (the `github-pages` gem) does not apply `defaults` to them, such as the built tool at `/projects/spotify-playlist-to-gigperformer/tool/`
+* `_config.yml`, `defaults`: two scopes set `noindex: true` and `sitemap: false` for their folders. That adds the `noindex` tag to the pages Jekyll processes (for example the spotify `README.html` and `Tool.html`) and removes all of their pages from `sitemap.xml`, plain static files included. It cannot add the `noindex` tag to plain static files, because they do not go through the layout
+* `projects/spotify-playlist-to-gigperformer/index.html` (in the spotify repo): a `<meta name="robots" content="noindex" />` line, because the built tool at `/tool/` and the project root are static files. Vite copies the line into `tool/index.html` on every build
 * `index.md`: the hidden Spotify announcement is wrapped in a Liquid comment, because crawlers follow links in `display:none` blocks
 * There is no `robots.txt`, and don't add a `Disallow`: Google has to be able to fetch a page to see its `noindex`. Pages already in Google drop out only when it next crawls them
 
-To bring them back: delete the two `defaults` scopes, uncomment the two `projects_homes` entries, and remove the comment tags in `index.md`.
+To bring them back:
+
+1. Delete the two `defaults` scopes in `_config.yml`.
+2. Uncomment the two `projects_homes` entries in `_config.yml`.
+3. Remove the Liquid comment tags around the announcement in `index.md`.
+4. For spotify, remove the `noindex` meta line (and its comment) from `index.html` in the spotify repo, commit and push it there, then bump the submodule pointer here.
 
 ## GitHub Action - Build & Deploy
 
@@ -157,19 +164,20 @@ Written when work on the site was parked, so a later session doesn't have to red
 ### Decisions and local state
 
 * The home page says nothing about licensing. Each project states its own licence.
-* The home page says the source is available through musios-app on GitHub. That is not true of `songwriting-coach` (private source), so revisit it if that page is ever listed.
+* The home page says the source is available through musios-app on GitHub. That is not true of `songwriting-coach` (private source), and that project is now listed on the home page (Oct 2026), so the sentence still needs rewording.
 * `assets/lightbox/lightbox-for-bootstrap5-MODIFIED.js` has an uncommitted `console.log` on purpose.
 * `_plugins/spotify-gp-vite-build.rb` has an uncommitted change on purpose (Oct 2026): it only rebuilds the Vite tool when its sources are newer than `tool/index.html`, because Vite writes into `tool/`, which Jekyll watches, so each build triggered the next. It belongs to the spotify work, so don't commit it with other changes.
 * `numaxpiano-midi-controller` and `support-act` show as modified (`?`) in `git status` because of untracked files inside them. They are not changes to this repo.
 
-### Songwriting Coach releases
+### Songwriting Coach and Lyrics & Chords releases
 
-`projects/songwriting-coach/` is written by `python publish_site.py` in the songwriting-coach repo (see "Projects that are plain folders" above). After a run:
+`projects/songwriting-coach/` and `projects/lyrics-and-chords/` are written by the `python publish_site.py` in each project's own repo (see "Projects that are plain folders" above). After a run:
 
-* `git status` here should show changes only under `projects/songwriting-coach/`. Stage that folder only, never `git add -A`, and push only when asked.
-* Each release adds a versioned `songwriting-coach-<version>.skill` (about 1 MB), updates `songwriting-coach.skill`, and leaves older versioned files in place.
+* `git status` here should show changes only under that project's folder. Stage that folder only, never `git add -A`, and push only when asked. Home-list changes (`_config.yml`, `index.md`) are separate commits.
+* Each release adds a versioned file (`songwriting-coach-<version>.skill`, about 1 MB, or `lyrics-and-chords-<version>.skill` with a `-source.zip`), updates the unversioned `.skill`, and leaves older versioned files in place. For Lyrics & Chords, keep one source zip per released version, because the zip is the GPL source offer.
+* **Visibility (decided 18 Oct 2026):** both projects are listed on the home page and navbar, and their pages are public. The main page and its sub-pages (the Songwriting Coach conversations, the Lyrics & Chords examples) are all indexable, because the main page is public: they have no `noindex` or `sitemap: false`. The Lyrics & Chords example pages still carried both lines until that source change is republished, so check they are gone after the next Lyrics & Chords publish.
+* **Beta:** each project's `description` starts with "Beta.", and the home list in `index.md` turns that into the yellow BETA badge. The page heading carries the same badge, and `tagline` (a front-matter field read by `_includes/header.html`, falling back to `description`) gives the banner a short "BETA: …" line. When a project leaves beta, remove "Beta." from the description, the badge from the heading, and "BETA:" from the tagline.
 * Accepted on purpose, so don't review these again each release:
-  * Pages written with front matter (`index.md` and the conversation pages) are unlisted: `sitemap: false` and `noindex: true`, which `_includes/head.html` turns into a robots noindex tag.
-  * A saved page embedded in a conversation, such as `conversations/timeless-tonight-rhyme-map.html`, is a standalone file with no front matter. It doesn't go through the layout, so it has no `noindex` tag and no `sitemap: false`. It is only linked from the iframe in its conversation page. It may also load Google Fonts, so a visitor's browser contacts Google.
-  * The pages are unlisted, not secret: the repo is public, so the `.skill` files can be downloaded by anyone who finds them.
+  * A saved page embedded in a conversation, such as `conversations/timeless-tonight-rhyme-map.html`, is a standalone file with no front matter. It doesn't go through the layout, so it has no `noindex` tag, and it is listed in `sitemap.xml`. It is linked from the iframe in its conversation page. It may also load Google Fonts, so a visitor's browser contacts Google.
+  * The `.skill` files are public: the repo is public, so anyone can download them.
 
