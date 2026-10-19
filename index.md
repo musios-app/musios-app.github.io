@@ -3,7 +3,7 @@ layout: default
 title: musios.app Home
 ---
 
-**musios.app** is a collection of tools, software, and documentations for music software and DAWs. The projects cover home studios and live performance. Musios.app is maintained by <a href='https://github.com/andrewjhunt'>Andrew Hunt</a> with the source available through [musios-app](https://github.com/musios-app) on GitHub. Got bugs, feedback and contributions, then create an issue in the GitHub project [musios-app](https://github.com/musios-app).
+**musios.app** is a collection of tools, software, and documentations for music software and DAWs. The projects cover home studios and live performance. Musios.app is maintained by <a href='https://github.com/andrewjhunt'>Andrew Hunt</a>. Open source projects are available on GitHub.
 
 {% comment %}
 TEMPORARY (Oct 2026): the Spotify project is hidden, and this announcement (already display:none) links to it.

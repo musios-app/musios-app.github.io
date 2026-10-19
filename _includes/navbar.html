@@ -47,11 +47,18 @@
                     <a class="nav-link align-middle" href="{{ issues }}">Issues</a>
                 </li>
 
+                {%- comment -%} Github: the project's repo; the home page goes to the musios-app organisation; pages with no repo (such as Songwriting Coach, which is private) have no link. {%- endcomment -%}
+                {% assign github_link = page.gitrepo %}
+                {% if page.url == "/" %}
+                    {% assign github_link = "https://github.com/musios-app" %}
+                {% endif %}
+                {% if github_link %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ page.gitrepo | site.github.repository_url }}">
+                    <a class="nav-link" href="{{ github_link }}">
                         <i class="fa-brands fa-github"></i> Github
                     </a>
                 </li>
+                {% endif %}
 
             </ul>
 
