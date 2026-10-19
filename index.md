@@ -32,28 +32,39 @@ REINSTATE: remove the comment tags around the block below.
 		{% for page in site.pages %}
 			{% if url == page.url or url2 == page.url %}
 
+                {%- capture icon_html -%}
+					{%- if page.icon -%}
+						<img class="project-icon" src="{{ project.dir | append: "/" | append: page.icon }}"/>
+					{%- else -%}
+						{% include musios-logo-template.svg color="white" circle-color="rgb(26, 127, 55)" class="project-icon" %}
+					{%- endif -%}
+				{%- endcapture -%}
                 <div class="row my-3 d-flex align-items-center border p-3 project-row">
-					<div class="col-1 d-none d-sm-block align-items-center text-center" style="min-width: 120px">
-						<a href="{{ page.url }}">
-							{% if page.icon %}
-								<img class="project-icon" src="{{ project.dir | append: "/" | append: page.icon }}"/>
-							{% else %}
-								{% include musios-logo-template.svg color="white" circle-color="rgb(26, 127, 55)" class="project-icon" %}
-							{% endif %}
-						</a>
+					{%- comment -%} Wide screens (992px and up): the icon sits in its own column on the left. {%- endcomment %}
+					<div class="col-auto project-icon-col text-center d-none d-lg-block">
+						<a href="{{ page.url }}">{{ icon_html }}</a>
 					</div>
 					<div class="col">
 						<h3 class="h5"><a href="{{ page.url }}">{{ page.title }}</a></h3>
-						{%- comment -%} A description that starts "Beta." gets the same warning badge as the project page heading. {%- endcomment -%}
-						{%- assign desc = page.description | default: "" -%}
-						{%- assign desc_start = desc | slice: 0, 5 -%}
-						{%- if desc_start == "Beta." -%}
-							<span class="badge text-bg-warning me-1">BETA</span> {{ desc | remove_first: "Beta." | strip }}
-						{%- else -%}
-							{{ desc }}
-						{%- endif %}
+						<div class="project-desc">
+							{%- comment -%} Below 992px: the title comes first, then the icon sits at the left with the text wrapping around it, and the GitHub icon (if the project has a repo) is directly under it. {%- endcomment %}
+							<div class="project-icon-inline float-start me-3 mb-1 d-lg-none text-center">
+								<a href="{{ page.url }}">{{ icon_html }}</a>
+								{%- if page.gitrepo %}
+								<a href="{{ page.gitrepo }}" class="d-block mt-2"><img class="project-github-icon" src="/assets/images/github-icon.svg" style="width: 32px; height: 32px;"/></a>
+								{%- endif %}
+							</div>
+							{%- comment -%} A description that starts "Beta." gets the same warning badge as the project page heading. {%- endcomment -%}
+							{%- assign desc = page.description | default: "" -%}
+							{%- assign desc_start = desc | slice: 0, 5 -%}
+							{%- if desc_start == "Beta." -%}
+								<span class="badge text-bg-warning me-1">BETA</span> {{ desc | remove_first: "Beta." | strip }}
+							{%- else -%}
+								{{ desc }}
+							{%- endif %}
+						</div>
 					</div>
-					<div class="col-1 d-none d-md-block">
+					<div class="col-1 d-none d-lg-block">
 						<div class="project-github-icon-container">
 							{% if page.gitrepo %}
 								<a href="{{ page.gitrepo }}">

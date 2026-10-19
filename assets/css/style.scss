@@ -43,16 +43,35 @@ img {
 #project-list {
 
     .project-row {
-        border-radius: 5px;
+        border-radius: 24px;
         background-color: #f8f8fa
     }
 
-    .project-icon {
-        // width: auto;
-        // height: 55px;
-        max-height: 50px;
-        max-width: 100px;
+    // Small screens: the icon floats left inside the description; this keeps the box around the float.
+    .project-desc::after {
+        content: "";
+        display: block;
+        clear: both;
     }
+
+    // The icon grows with the screen: phone, large phone or small tablet, iPad, laptop, wide screen.
+    // It is shown on every size; --icon is its width and height (a square box, the picture fits inside).
+    --icon: 56px;
+
+    .project-icon-col {
+        min-width: calc(var(--icon) + 16px);
+    }
+
+    .project-icon {
+        width: var(--icon);
+        height: var(--icon);
+        object-fit: contain;
+    }
+
+    @media (min-width: 576px)  { --icon: 64px; }
+    @media (min-width: 768px)  { --icon: 80px; }
+    @media (min-width: 992px)  { --icon: 96px; }
+    @media (min-width: 1400px) { --icon: 112px; }
 
     .project-github-icon-container {
         display: flex;
