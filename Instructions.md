@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Managing GitHub Pages for this repo
+published: false
 ---
 
 # Managing GitHub Pages for this repo
