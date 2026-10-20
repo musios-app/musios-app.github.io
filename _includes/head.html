@@ -9,7 +9,9 @@
   <link rel="shortcut icon" type="image/png" href="{{ site.favicon.path }}">
 {%- endif -%}
 
-{% seo %}
+{%- comment -%} The single page title is written here (the seo tag's own title is switched off) so the suffix comes from title_suffix in _config.yml. {%- endcomment %}
+<title>{{ page.title | default: site.title }}{{ site.title_suffix }}</title>
+{% seo title=false %}
 
 <!-- Font Awesome -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
