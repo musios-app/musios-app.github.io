@@ -247,9 +247,11 @@ const lightboxOptions = {
 	size: 'fullscreen'
 };
 
+// console.log('lightboxOptions', lightboxOptions);
+
 Lightbox.initialize = function (e) {
 	e.preventDefault();
-	console.log('lightboxOptions', lightboxOptions);
+	// console.log('lightboxOptions', lightboxOptions);
 	const lightbox = new Lightbox(this, lightboxOptions);
 	lightbox.show();
 };
