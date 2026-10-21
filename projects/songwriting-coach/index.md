@@ -8,14 +8,48 @@ icon: images/icon.svg
 
 <img src="images/icon.svg" alt="" class="float-end ms-3 mb-3" width="96" height="96">
 
+## Songwriting Coach Skill  {#songwriting-coach-skill}
 
-## Songwriting Coach Skill <span class="badge text-bg-warning ms-3">BETA</span> {#songwriting-coach-skill}
 
-**BETA** — new features are still being added and tested. Send suggestions and feedback to [songwriting-coach@musios.app](mailto:songwriting-coach@musios.app).
+<span class="badge text-bg-warning ms-3">BETA</span> New features are still being added and tested. Send suggestions and feedback to [songwriting-coach@musios.app](mailto:songwriting-coach@musios.app).
 
-The Songwriting Coach helps you write and improve song lyrics from a first idea to a finished draft. It assists you in the way that a songwriting teacher would: observations, critique, and probing questions.
+The Songwriting Coach helps you write and improve song lyrics from a first idea to a finished draft. It assists you in the way that a songwriting teacher would: observations, critique, and probing questions. The songwriting coach pairs with the Lyrics & Chords skill which helps read and save a wide range of songwriting documents.
 
-***With the Songwriting Coach, you are the songwriter and you hold creative control. The coach is instructed not to present lyrics unless you request that.***
+***With the Songwriting Coach, you are the songwriter and you hold creative control.  The coach is instructed not to write lyrics unless you request that.***
+
+
+<style>
+  .gs-start { border: 1px solid #e8e6dc; border-radius: 24px; background: #f8f8fa; padding: 24px 24px 18px; margin: 1.25rem 0 1.5rem; clear: both; }
+  .gs-note { color: #5d5a55; font-size: .85rem; margin-top: .6rem; padding-top: .5rem; border-top: 1px solid #e8e6dc; }
+  .gs-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 18px 0 12px; padding: 0; list-style: none; }
+  .gs-title { color: #b83eaa; font-weight: 700; font-size: 1.2em; }
+  .gs-dl { color: #b83eaa !important; font-weight: 700; text-decoration: none; overflow-wrap: anywhere; }
+  .gs-dl:hover { color: #9d3490 !important; text-decoration: underline; }
+  .gs-steps li { background: #fff; border: 1px solid #e8e6dc; border-radius: 16px; padding: 12px 14px; }
+  .gs-n { display: inline-flex; width: 26px; height: 26px; border-radius: 50%; background: #b83eaa; color: #fff; font-weight: 700; font-size: .85rem; align-items: center; justify-content: center; margin-right: .5rem; }
+  .gs-steps b { display: block; margin-bottom: .15rem; }
+  .gs-steps .gs-d { color: #5d5a55; font-size: .92rem; }
+  .gs-more { color: #5d5a55; font-size: .92rem; }
+  @media (max-width: 760px) { .gs-start { padding: 18px 16px 14px; border-radius: 20px; } .gs-steps { grid-template-columns: 1fr; } }
+</style>
+<div class="gs-start">
+  <b class="gs-title">Installation</b>
+  For claude.ai chat & code (online), Claude Desktop chat & code (Mac or Windows).
+  For Claude Code in a terminal <a href="#claude-code-mac-terminal">see below</a>
+  <ol class="gs-steps">
+    <li><b><span class="gs-n">1</span>Get the files</b>
+    <span class="gs-d"><a class="gs-dl" href="downloads/songwriting-coach.skill" download>
+      Download songwriting-coach.skill</a>
+    </span>
+    <br/>
+    <span class="gs-d"><a class="gs-dl" href="/projects/lyrics-and-chords/downloads/lyrics-and-chords.skill" download>
+      Download lyrics-and-chords.skill</a>
+    </span></li>
+    <li><b><span class="gs-n">2</span>Add the skills to Claude</b><span class="gs-d">Customize &gt; Skills &gt; Add &gt; Upload skill
+    <br/> Drag and drop the download file</span></li>
+    <li><b><span class="gs-n">3</span>Start a chat with the Songwriting Coach</b><span class="gs-d">Open a new chat and say <i>&ldquo;I want to write a song&rdquo;</i>.</span><div class="gs-note">Works best with Opus or Sonnet 4.5 or later.</div></li>
+  </ol>
+</div>
 
 ## Coaching points
 
@@ -87,13 +121,15 @@ Songwriting is a specialised use of language and structure. Tests reveal this sk
 
 **Recommendation**: install the [Lyrics & Chords skill](/projects/lyrics-and-chords/) at the same time as this skill. It adds the ability to load a wide variety of document formats.
 
-**Installation procedure** for the Songwriting Coach
+**Claude systems**
 
 * claude.ai online (chat or code). Note: tested with Chrome, Safari and other Chromium browsers
 * Claude Desktop app (chat or code) for macOS
 * Claude Desktop app (chat or code) for Windows [not tested]
 * Claude iOS app (chat or code) [not tested]
 * Claude Android app (chat or code) [not tested]
+
+**Installation procedure** 
 
 1. Download [`songwriting-coach.skill`](downloads/songwriting-coach.skill) (v2.5.8)
 2. Open Customize > Skills > Add > Upload skill
