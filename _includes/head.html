@@ -13,6 +13,22 @@
 <title>{{ page.title | default: site.title }}{{ site.title_suffix }}</title>
 {% seo title=false %}
 
+{%- comment -%} Home page only: an Organization item with sameAs, so search engines and AI assistants can identify who is behind the site. {%- endcomment %}
+{%- if page.url == "/" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "{{ site.title }}",
+  "url": "{{ site.url }}/",
+  "logo": "{{ site.url }}{{ site.favicon.path }}",
+  "sameAs": [
+    "https://github.com/musios-app"
+  ]
+}
+</script>
+{%- endif %}
+
 <!-- Font Awesome -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
 
