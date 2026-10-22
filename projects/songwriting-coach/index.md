@@ -4,6 +4,10 @@ title: Songwriting Coach Skill
 description: Beta. A songwriting coach for Claude where you write the lyrics and keep creative control. It includes over 40 checks on narrative arc, rhyme, rhythm, singability, tense, pronouns, and more. Start with a first idea, or from polished lyrics that you've written, or anywhere between.
 tagline: "BETA: A coach for song lyrics, from a first idea to a finished draft."
 icon: images/icon.svg
+software:
+  categories: [Music, Songwriting, Lyrics]
+  version: "2.5.8"
+  download: /projects/songwriting-coach/downloads/songwriting-coach.skill
 ---
 
 <img src="images/icon.svg" alt="" class="float-end ms-3 mb-3" width="96" height="96">
