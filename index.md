@@ -1,6 +1,8 @@
 ---
 layout: default
 title: musios.app Home
+description: Musios is a collection of LLM skills, tools and guides for musicians with Claude Songwriting Coach skill, Logic Pro X scripting and speaker calibration.
+tagline: A collection of tools for music creators and performers
 ---
 
 **musios.app** is a collection of tools, software, and documentations for music software and DAWs. The projects cover home studios and live performance. Musios.app is maintained by <a href='https://github.com/andrewjhunt'>Andrew Hunt</a>. Open source projects are available on GitHub.
