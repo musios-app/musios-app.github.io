@@ -10,8 +10,6 @@ software:
   download: /projects/songwriting-coach/downloads/songwriting-coach.skill
 ---
 
-<img src="images/icon.svg" alt="" class="float-end ms-3 mb-3" width="96" height="96">
-
 ## Songwriting Coach Skill  {#songwriting-coach-skill}
 
 
@@ -23,35 +21,37 @@ The Songwriting Coach helps you write and improve song lyrics from a first idea 
 
 
 <style>
-  .gs-start { border: 1px solid #e8e6dc; border-radius: 24px; background: #f8f8fa; padding: 24px 24px 18px; margin: 1.25rem 0 1.5rem; clear: both; }
+  .gs-start { position: relative; border: 1px solid #e8e6dc; border-radius: 24px; background: #f8f8fa; padding: 24px 24px 18px; margin: 1.25rem 0 1.5rem; clear: both; }
   .gs-note { color: #5d5a55; font-size: .85rem; margin-top: .6rem; padding-top: .5rem; border-top: 1px solid #e8e6dc; }
   .gs-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 18px 0 12px; padding: 0; list-style: none; }
-  .gs-title { color: #b83eaa; font-weight: 700; font-size: 1.2em; }
+  .gs-intro { margin-right: 110px; min-height: 96px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .gs-intro > div { line-height: 1.25; }
+  .gs-title { display: block; color: #b83eaa; font-weight: 700; font-size: 1.2em; line-height: 1.25; }
   .gs-dl { color: #b83eaa !important; font-weight: 700; text-decoration: none; overflow-wrap: anywhere; }
   .gs-dl:hover { color: #9d3490 !important; text-decoration: underline; }
   .gs-steps li { background: #fff; border: 1px solid #e8e6dc; border-radius: 16px; padding: 12px 14px; }
+  .gs-icon { position: absolute; top: 24px; right: 24px; width: 96px; height: 96px; }
   .gs-n { display: inline-flex; width: 26px; height: 26px; border-radius: 50%; background: #b83eaa; color: #fff; font-weight: 700; font-size: .85rem; align-items: center; justify-content: center; margin-right: .5rem; }
-  .gs-steps b { display: block; margin-bottom: .15rem; }
-  .gs-steps .gs-d { color: #5d5a55; font-size: .92rem; }
-  .gs-more { color: #5d5a55; font-size: .92rem; }
-  @media (max-width: 760px) { .gs-start { padding: 18px 16px 14px; border-radius: 20px; } .gs-steps { grid-template-columns: 1fr; } }
+  .gs-steps b { display: block; margin-bottom: .45rem; line-height: 1.25; }
+  .gs-steps .gs-d { color: #5d5a55; font-size: .92rem; line-height: 1.25; }
+  .gs-steps .gs-p { display: block; margin-top: .7rem; }
+  .gs-steps .gs-p:first-child { margin-top: 0; }
+  @media (max-width: 760px) { .gs-intro { display: block; margin-right: 0; min-height: 0; } .gs-start { padding: 18px 16px 14px; border-radius: 20px; } .gs-steps { grid-template-columns: 1fr; } .gs-icon { display: none; } }
 </style>
 <div class="gs-start">
-  <b class="gs-title">Installation</b>
-  For claude.ai chat & code (online), Claude Desktop chat & code (Mac or Windows).
-  For Claude Code in a terminal <a href="#claude-code-mac-terminal">see below</a>
+  <img class="gs-icon" src="images/icon.svg" alt="" width="96" height="96">
+  <div class="gs-intro">
+    <b class="gs-title">Installation</b>
+    <div>For claude.ai chat & code (online), Claude Desktop chat & code (Mac or Windows).
+    For Claude Code in a terminal <a href="#claude-code-mac-terminal">see below</a></div>
+  </div>
   <ol class="gs-steps">
     <li><b><span class="gs-n">1</span>Get the files</b>
-    <span class="gs-d"><a class="gs-dl" href="downloads/songwriting-coach.skill" download>
-      Download songwriting-coach.skill</a>
-    </span>
-    <br/>
-    <span class="gs-d"><a class="gs-dl" href="/projects/lyrics-and-chords/downloads/lyrics-and-chords.skill" download>
-      Download lyrics-and-chords.skill</a>
-    </span></li>
-    <li><b><span class="gs-n">2</span>Add the skills to Claude</b><span class="gs-d">Customize &gt; Skills &gt; Add &gt; Upload skill
-    <br/> Drag and drop the download file</span></li>
-    <li><b><span class="gs-n">3</span>Start a chat with the Songwriting Coach</b><span class="gs-d">Open a new chat and say <i>&ldquo;I want to write a song&rdquo;</i>.</span><div class="gs-note">Works best with Opus or Sonnet 4.5 or later.</div></li>
+    <span class="gs-d"><span class="gs-p"><a class="gs-dl" href="downloads/songwriting-coach.skill" download>
+      Download songwriting-coach.skill</a></span><span class="gs-p"><a class="gs-dl" href="/projects/lyrics-and-chords/downloads/lyrics-and-chords.skill" download>
+      Download lyrics-and-chords.skill</a></span></span></li>
+    <li><b><span class="gs-n">2</span>Add the skills to Claude</b><span class="gs-d"><span class="gs-p">Customize &gt; Skills &gt; Add &gt; Upload skill</span><span class="gs-p">Drag and drop the download file</span></span></li>
+    <li><b><span class="gs-n">3</span>Start a chat with the Songwriting Coach</b><span class="gs-d"><span class="gs-p">Open a new chat and say <i>&ldquo;I want to write a song&rdquo;</i>.</span></span><div class="gs-note">Works best with Opus or Sonnet 4.5 or later.</div></li>
   </ol>
 </div>
 
@@ -148,6 +148,8 @@ Songwriting is a specialised use of language and structure. Tests reveal this sk
 
 ### Claude Code (Mac terminal)
 
+It needs **Node.js 22.6 or later** on your computer.
+
 **Installation procedure:** with Claude Code running in a terminal
 
 1. Download [`songwriting-coach.skill`](downloads/songwriting-coach.skill) (v2.5.8)
@@ -161,7 +163,6 @@ Songwriting is a specialised use of language and structure. Tests reveal this sk
 
 Notes:
 
-* Requires Node 22.6 or later
 * To install by hand, unzip the file into `~/.claude/skills/songwriting-coach/` (the folder must contain `SKILL.md`).
 * A `.skill` file is a zip. Rename it to `.zip` if your unzip tool doesn't recognise it.
 
