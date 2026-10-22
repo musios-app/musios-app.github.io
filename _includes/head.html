@@ -29,6 +29,37 @@
 </script>
 {%- endif %}
 
+{%- comment -%} Pages with a software: entry in their front matter get a SoftwareApplication item (free, no price). Fields: categories (list), version, download, license, repo, operating_system (optional). {%- endcomment %}
+{%- if page.software %}
+{%- assign sw = page.software %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": {{ page.title | jsonify }},
+  "description": {{ page.description | replace_first: "Beta. ", "" | jsonify }},
+  "url": {{ page.url | absolute_url | jsonify }},
+  "applicationCategory": {{ sw.categories | jsonify }},
+  "operatingSystem": {{ sw.operating_system | default: "Any (runs in Claude: claude.ai, Claude Desktop, Claude Code)" | jsonify }},
+  {%- if sw.version %}
+  "softwareVersion": {{ sw.version | jsonify }},
+  {%- endif %}
+  {%- if sw.download %}
+  "downloadUrl": {{ sw.download | absolute_url | jsonify }},
+  {%- endif %}
+  {%- if sw.license %}
+  "license": {{ sw.license | jsonify }},
+  {%- endif %}
+  {%- if sw.repo %}
+  "codeRepository": {{ sw.repo | jsonify }},
+  {%- endif %}
+  "author": { "@type": "Person", "name": {{ site.author.name | jsonify }} },
+  "publisher": { "@type": "Organization", "name": {{ site.title | jsonify }}, "url": {{ site.url | append: "/" | jsonify }} },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+{%- endif %}
+
 <!-- Font Awesome -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
 
