@@ -34,9 +34,10 @@ REINSTATE: remove the comment tags around the block below.
 		{% for page in site.pages %}
 			{% if url == page.url or url2 == page.url %}
 
+                {%- assign repo = page.gitrepo | remove: "https://github.com/" -%}
                 {%- capture icon_html -%}
 					{%- if page.icon -%}
-						<img class="project-icon" src="{{ project.dir | append: "/" | append: page.icon }}"/>
+						<img class="project-icon" src="{{ project.dir | append: "/" | append: page.icon }}" alt="{{ page.title | escape }} icon"/>
 					{%- else -%}
 						{% include musios-logo-template.svg color="white" circle-color="rgb(26, 127, 55)" class="project-icon" %}
 					{%- endif -%}
@@ -53,7 +54,7 @@ REINSTATE: remove the comment tags around the block below.
 							<div class="project-icon-inline float-start me-3 mb-1 d-lg-none text-center">
 								<a href="{{ page.url }}">{{ icon_html }}</a>
 								{%- if page.gitrepo %}
-								<a href="{{ page.gitrepo }}" class="d-block mt-2"><img class="project-github-icon" src="/assets/images/github-icon.svg" style="width: 32px; height: 32px;"/></a>
+								<a href="{{ page.gitrepo }}" class="d-block mt-2"><img class="project-github-icon" src="/assets/images/github-icon.svg" alt="GitHub repository for {{ page.title | escape }} ({{ repo }})" style="width: 32px; height: 32px;"/></a>
 								{%- endif %}
 							</div>
 							{%- comment -%} A description that starts "Beta." gets the same warning badge as the project page heading. {%- endcomment -%}
@@ -70,7 +71,7 @@ REINSTATE: remove the comment tags around the block below.
 						<div class="project-github-icon-container">
 							{% if page.gitrepo %}
 								<a href="{{ page.gitrepo }}">
-									<img class="project-github-icon" src="/assets/images/github-icon.svg" style="width: 32px; height: 32px;"/>
+									<img class="project-github-icon" src="/assets/images/github-icon.svg" alt="GitHub repository for {{ page.title | escape }} ({{ repo }})" style="width: 32px; height: 32px;"/>
 								</a>
 							{% endif %}
 						</div>

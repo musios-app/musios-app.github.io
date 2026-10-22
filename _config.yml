@@ -37,6 +37,7 @@ defaults:
       path: "" # means all files in the project
     values:
       layout: "default"
+      image: /assets/images/musios-logo-black-rect.png # default share image (og:image); a page's own image: overrides it
   # TEMPORARY (Oct 2026): support-act and spotify-playlist-to-gigperformer are hidden. Their pages
   # still work for anyone with the link, but they are not indexed and not in the sitemap.
   # REINSTATE: delete these two scopes and uncomment the two projects_homes entries below.
