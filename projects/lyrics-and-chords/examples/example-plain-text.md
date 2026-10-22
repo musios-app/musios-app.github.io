@@ -1,8 +1,6 @@
 ---
 layout: default
 title: "Example: Plain text"
-sitemap: false
-noindex: true
 ---
 
 # Example: Plain text

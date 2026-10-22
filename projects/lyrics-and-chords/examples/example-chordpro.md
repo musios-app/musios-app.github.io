@@ -1,8 +1,6 @@
 ---
 layout: default
 title: "Example: ChordPro"
-sitemap: false
-noindex: true
 ---
 
 # Example: ChordPro

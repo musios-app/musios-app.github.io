@@ -1,8 +1,6 @@
 ---
 layout: default
 title: "Example: Ultimate Guitar"
-sitemap: false
-noindex: true
 ---
 
 # Example: Ultimate Guitar

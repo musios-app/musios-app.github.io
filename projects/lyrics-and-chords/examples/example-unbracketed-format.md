@@ -1,8 +1,6 @@
 ---
 layout: default
 title: "Example: Unbracketed format"
-sitemap: false
-noindex: true
 ---
 
 # Example: Unbracketed format

@@ -1,8 +1,6 @@
 ---
 layout: default
 title: "Example: Chords above words"
-sitemap: false
-noindex: true
 ---
 
 # Example: Chords above words

@@ -1,8 +1,6 @@
 ---
 layout: default
 title: "Example: Bracket format"
-sitemap: false
-noindex: true
 ---
 
 # Example: Bracket format

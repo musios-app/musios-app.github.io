@@ -1,8 +1,6 @@
 ---
 layout: default
 title: "Example: Word documents"
-sitemap: false
-noindex: true
 ---
 
 # Example: Word documents

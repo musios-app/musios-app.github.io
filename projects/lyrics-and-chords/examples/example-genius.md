@@ -1,8 +1,6 @@
 ---
 layout: default
 title: "Example: Genius.com"
-sitemap: false
-noindex: true
 ---
 
 # Example: Genius.com
