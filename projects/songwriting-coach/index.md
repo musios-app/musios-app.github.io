@@ -6,7 +6,7 @@ tagline: "BETA: A coach for song lyrics, from a first idea to a finished draft."
 icon: images/icon.svg
 software:
   categories: [Music, Songwriting, Lyrics]
-  version: "2.5.9"
+  version: "0.2.0"
   download: /projects/songwriting-coach/downloads/songwriting-coach.skill
 ---
 
@@ -86,6 +86,8 @@ The coach lets you get going from wherever you are in the songwriting process. E
 
 **Help** is always available to guide you through the many coaching points above. Just ask for "Help" or "What's next?" or anything like this.
 
+**Song status:** ask for "status" at any time to see a board of the checks run so far, with a colour for each finding. It opens in your browser and updates as you work.
+
 You can ask the coach to change coaching style:
 
 * Change the level of detail in its responses to Concise, Moderate or Comprehensive
@@ -135,7 +137,7 @@ Songwriting is a specialised use of language and structure. Tests reveal this sk
 
 **Installation procedure** 
 
-1. Download [`songwriting-coach.skill`](downloads/songwriting-coach.skill) (v2.5.9)
+1. Download [`songwriting-coach.skill`](downloads/songwriting-coach.skill) (v0.2.0)
 2. Open Customize > Skills > Add > Upload skill
 3. Drag the `.skill` file into the drop zone and press Upload
 4. Check the skill's toggle is on
@@ -152,7 +154,7 @@ It needs **Node.js 22.6 or later** on your computer.
 
 **Installation procedure:** with Claude Code running in a terminal
 
-1. Download [`songwriting-coach.skill`](downloads/songwriting-coach.skill) (v2.5.9)
+1. Download [`songwriting-coach.skill`](downloads/songwriting-coach.skill) (v0.2.0)
 2. Drag the file into the terminal window where Claude Code is running
 3. Ask Claude to install it ("install this skill") and follow its instructions
 4. Start by typing `/songwriting-coach` to load the coach. Saying "songwriting coach" or "I want to write a song" usually works too, mostly on larger models.
