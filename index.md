@@ -24,10 +24,16 @@ REINSTATE: remove the comment tags around the block below.
 {% endcomment %}
 
 
-<h3>Tools & Doc</h3>
+{%- comment -%} Two sections. A project is listed under "For Songwriters" when its projects_homes entry in _config.yml has group: songwriters; the rest go under "For Live and Studio Music". {%- endcomment -%}
+{% assign sections = "songwriters|For Songwriters with Claude and ChatGPT,other|For Live and Studio Music" | split: "," %}
+{% for section in sections %}
+{% assign parts = section | split: "|" %}
+<h2>{{ parts[1] }}</h2>
 
-<div id="project-list" class="container align-middle">
+<div class="project-list container align-middle">
 	{% for project in site.projects_homes %}
+		{% assign group = project.group | default: "other" %}
+		{% if group == parts[0] %}
 		{% assign url = project.dir | append: "/" | append: project.home | replace: ".md", ".html" %}
 		{% assign url2 = url | replace: "/index.html", "/" %}
 
@@ -90,5 +96,7 @@ REINSTATE: remove the comment tags around the block below.
 
 			{% endif %}
 		{% endfor %}
+		{% endif %}
 	{% endfor %}
 </div>
+{% endfor %}

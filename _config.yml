@@ -60,8 +60,10 @@ projects_homes:
   #   home: "README.md"
   - dir: "/projects/songwriting-coach"
     home: "index.md"
+    group: songwriters
   - dir: "/projects/lyrics-and-chords"
     home: "index.md"
+    group: songwriters
   - dir: "/projects/numaxpiano-midi-controller"
     home: "README.md"
   - dir: "/projects/logic-pro-scripter"
