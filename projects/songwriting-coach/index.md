@@ -1,40 +1,47 @@
 ---
 layout: default
 title: Songwriting Coach Skill
-description: Beta. A songwriting coach for Claude and ChatGPT where you write the lyrics and keep creative control. It includes over 40 checks on narrative arc, rhyme, rhythm, singability, tense, pronouns, and more. Start with a first idea, or from polished lyrics that you've written, or anywhere between.
+description: Beta. A songwriting coach for Claude and ChatGPT where you write the lyrics and keep creative control. It includes over 50 checks on narrative arc, rhyme, rhythm, singability, tense, pronouns, and more. Start with a first idea, or from polished lyrics that you've written, or anywhere between.
 tagline: "BETA: A coach for song lyrics, from a first idea to a finished draft."
 icon: images/icon.svg
 software:
   categories: [Music, Songwriting, Lyrics]
-  version: "0.2.1"
+  version: "0.2.2"
   download: /projects/songwriting-coach/downloads/songwriting-coach.skill
 ---
 
-## Songwriting Coach Skill  {#songwriting-coach-skill}
+## Songwriting Coach Skill for Claude and ChatGPT {#songwriting-coach-skill}
 
+*<span class="badge text-bg-warning ms-3">BETA</span> New features are still being introduced. Send suggestions and feedback to [songwriting-coach@musios.app](mailto:songwriting-coach@musios.app).*
 
-<span class="badge text-bg-warning ms-3">BETA</span> New features are still being added and tested. Send suggestions and feedback to [songwriting-coach@musios.app](mailto:songwriting-coach@musios.app).
+The Songwriting Coach provides songwriters with structured, constructive insights to help develop and refine their lyrics. Unlike most AI lyric tools, which write lyrics for you, the Songwriting Coach lets you retain full creative control and it is instructed not to write lyrics unless you request that.
 
-The Songwriting Coach helps you write and improve song lyrics from a first idea to a finished draft. It assists you in the way that a songwriting teacher would: observations, critique, and probing questions. The songwriting coach pairs with the Lyrics & Chords skill which helps read and save a wide range of songwriting documents.
+The Songwriting Coach can be used by songwriters of all experience levels who want to develop their craft and refine their original works. It's easy to install and brings over 50 checks that help identify strengths and places to focus improvement in narrative, structure, phrasing, rhyme, emotional impact, and more.
 
-***With the Songwriting Coach, you are the songwriter and you hold creative control.  The coach is instructed not to write lyrics unless you request that.***
+The songwriting coach pairs with the Lyrics & Chords skill which helps read and save a wide range of songwriting documents.
 
+<!-- 
+Distinctive value: This is not a ghostwriter. It is guide or reviewer that is available whenever you need feedback or direction.
+
+The Songwriting Coach helps you write and improve song lyrics from a first idea to a finished draft. It assists you in the way that a songwriting teacher would: observations, critique, and probing questions. The songwriting coach pairs with the Lyrics & Chords skill which helps read and save a wide range of songwriting documents. -->
+
+<!-- *With the Songwriting Coach, you are the songwriter and you hold creative control. The coach is instructed not to present lyrics unless you request that.* -->
 
 <style>
-  .gs-start { position: relative; border: 1px solid #e8e6dc; border-radius: 24px; background: #f8f8fa; padding: 16px 20px 10px; margin: 1rem 0 1rem; clear: both; }
+  .gs-start { position: relative; border: 1px solid #e8e6dc; border-radius: 24px; background: #f8f8fa; padding: 10px 14px 6px; margin: 2rem 0 2rem; clear: both; }
   .gs-note { color: #5d5a55; font-size: .85rem; margin-top: .6rem; padding-top: .5rem; border-top: 1px solid #e8e6dc; }
-  .gs-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 10px 0 8px; padding: 0; list-style: none; }
-  .gs-intro { margin-right: 80px; min-height: 67px; display: flex; flex-direction: column; justify-content: center; }
+  .gs-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 6px 0 6px; padding: 0; list-style: none; }
+  .gs-intro { display: flex; flex-direction: row; align-items: center; gap: 10px; padding: 10px 0 8px; }
   .gs-intro > div { line-height: 1.25; }
-  .gs-title { display: block; color: var(--gs-text, #b83eaa); font-weight: 700; font-size: 1.2em; line-height: 1.25; }
+  .gs-title { display: block; color: var(--gs-text, #b83eaa); font-weight: 700; font-size: 1.1em; line-height: 1.25; }
   .gs-dl-table th, .gs-dl-table td { padding: .35rem .75rem !important; }
   .gs-dl { color: var(--gs-text, #b83eaa) !important; font-weight: 700; text-decoration: none; overflow-wrap: anywhere; }
   .gs-dl:hover { color: var(--gs-hover, #9d3490) !important; text-decoration: underline; }
-  .gs-steps li { background: #fff; border: 1px solid #e8e6dc; border-radius: 16px; padding: 12px 14px; }
-  .gs-icon { position: absolute; top: 16px; right: 20px; width: 67px; height: 67px; }
+  .gs-steps li { background: #fff; border: 1px solid #e8e6dc; border-radius: 14px; padding: 8px 11px; }
+  .gs-icon { display: none; flex: none; width: 40px; height: 40px; } /* logos hidden for now: delete display:none to show them */
   .gs-n { display: inline-flex; width: 26px; height: 26px; border-radius: 50%; background: var(--gs-accent, #b83eaa); color: #fff; font-weight: 700; font-size: .85rem; align-items: center; justify-content: center; margin-right: .5rem; }
-  .gs-claude, .gs-chatgpt { border-color: var(--gs-accent); border-width: 2px; }
-  .gs-claude .gs-steps li, .gs-chatgpt .gs-steps li { border-color: rgba(var(--gs-rgb), .75); border-width: 1px; }
+  .gs-claude, .gs-chatgpt { border-color: rgba(var(--gs-rgb), .55); border-width: 1px; }
+  .gs-claude .gs-steps li, .gs-chatgpt .gs-steps li { border-color: rgba(var(--gs-rgb), .4); border-width: 1px; }
   .gs-claude { --gs-accent: #d97757; --gs-rgb: 217, 119, 87; --gs-text: #b85c3e; --gs-hover: #9a4a30; }
   .gs-chatgpt { --gs-accent: #74aa9c; --gs-rgb: 116, 170, 156; --gs-text: #4f8b7b; --gs-hover: #3b6e60; }
   .gs-chatgpt code, .gs-claude code { color: var(--gs-text); }
@@ -44,7 +51,7 @@ The Songwriting Coach helps you write and improve song lyrics from a first idea 
   .gs-steps .gs-d { color: #5d5a55; font-size: .92rem; line-height: 1.25; }
   .gs-steps .gs-p { display: block; margin-top: .7rem; }
   .gs-steps .gs-p:first-child { margin-top: 0; }
-  @media (max-width: 760px) { .gs-intro { display: block; margin-right: 0; min-height: 0; } .gs-start { padding: 18px 16px 14px; border-radius: 20px; } .gs-steps { grid-template-columns: 1fr; } .gs-icon { display: none; } }
+  @media (max-width: 760px) { .gs-start { padding: 14px 12px 10px; border-radius: 20px; } .gs-steps { grid-template-columns: 1fr; } }
 </style>
 <script>
 document.addEventListener("click", function (event) {
@@ -66,8 +73,8 @@ document.addEventListener("click", function (event) {
 });
 </script>
 <div class="gs-start gs-claude">
-  <img class="gs-icon" src="images/claude-icon.svg" alt="Claude" width="67" height="67">
   <div class="gs-intro">
+    <img class="gs-icon" src="images/claude-icon.svg" alt="Claude" width="40" height="40">
     <b class="gs-title">Installation for Claude</b>
   </div>
   <ol class="gs-steps">
@@ -81,8 +88,8 @@ document.addEventListener("click", function (event) {
 </div>
 
 <div class="gs-start gs-chatgpt" id="chatgpt-install">
-  <img class="gs-icon" src="images/chatgpt-logo.svg" alt="ChatGPT" width="67" height="67">
   <div class="gs-intro">
+    <img class="gs-icon" src="images/chatgpt-logo.svg" alt="ChatGPT" width="40" height="40">
     <b class="gs-title">Installation for ChatGPT</b>
   </div>
   <ol class="gs-steps">
@@ -94,7 +101,7 @@ document.addEventListener("click", function (event) {
 
 ## Coaching notes
 
-The Songwriting Coach can help you find and sharpen a song idea. Feedback starts with what's working, and marks each point as a strength, observation, concern or issue. If you have a draft, it can review with [over 40 coaching notes](conversations/assessments-checks.html) in these groups.
+The Songwriting Coach can help you find and sharpen a song idea. Feedback starts with what's working, and marks each point as a strength, observation, concern or issue. If you have a draft, it can review with [over 50 coaching notes](conversations/assessments-checks.html) in these groups.
 
 * Song Idea Development
 * Song Idea Assessment / Sharpening
@@ -176,7 +183,7 @@ Songwriting is a specialised use of language and structure. Tests reveal this sk
 
 **Installation procedure** 
 
-1. Download [`songwriting-coach.skill`](downloads/songwriting-coach.skill) (v0.2.1)
+1. Download [`songwriting-coach.skill`](downloads/songwriting-coach.skill) (v0.2.2)
 2. Open Customize > Skills > Add > Upload skill
 3. Drag the `.skill` file into the drop zone and press Upload
 4. Check the skill's toggle is on
@@ -193,7 +200,7 @@ It needs **Node.js 22.6 or later** on your computer.
 
 **Installation procedure:** with Claude Code running in a terminal
 
-1. Download [`songwriting-coach.skill`](downloads/songwriting-coach.skill) (v0.2.1)
+1. Download [`songwriting-coach.skill`](downloads/songwriting-coach.skill) (v0.2.2)
 2. Drag the file into the terminal window where Claude Code is running
 3. Ask Claude to install it ("install this skill") and follow its instructions
 4. Start by typing `/songwriting-coach` to load the coach. Saying "songwriting coach" or "I want to write a song" usually works too, mostly on larger models.
