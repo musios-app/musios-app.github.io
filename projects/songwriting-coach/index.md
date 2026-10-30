@@ -21,37 +21,53 @@ The Songwriting Coach helps you write and improve song lyrics from a first idea 
 
 
 <style>
-  .gs-start { position: relative; border: 1px solid #e8e6dc; border-radius: 24px; background: #f8f8fa; padding: 24px 24px 18px; margin: 1.25rem 0 1.5rem; clear: both; }
+  .gs-start { position: relative; border: 1px solid #e8e6dc; border-radius: 24px; background: #f8f8fa; padding: 16px 20px 10px; margin: 1rem 0 1rem; clear: both; }
   .gs-note { color: #5d5a55; font-size: .85rem; margin-top: .6rem; padding-top: .5rem; border-top: 1px solid #e8e6dc; }
-  .gs-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 18px 0 12px; padding: 0; list-style: none; }
-  .gs-intro { margin-right: 110px; min-height: 96px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .gs-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 10px 0 8px; padding: 0; list-style: none; }
+  .gs-intro { margin-right: 80px; min-height: 67px; display: flex; flex-direction: column; justify-content: center; }
   .gs-intro > div { line-height: 1.25; }
-  .gs-title { display: block; color: #b83eaa; font-weight: 700; font-size: 1.2em; line-height: 1.25; }
-  .gs-dl { color: #b83eaa !important; font-weight: 700; text-decoration: none; overflow-wrap: anywhere; }
-  .gs-dl:hover { color: #9d3490 !important; text-decoration: underline; }
+  .gs-title { display: block; color: var(--gs-text, #b83eaa); font-weight: 700; font-size: 1.2em; line-height: 1.25; }
+  .gs-dl-table th, .gs-dl-table td { padding: .35rem .75rem !important; }
+  .gs-dl { color: var(--gs-text, #b83eaa) !important; font-weight: 700; text-decoration: none; overflow-wrap: anywhere; }
+  .gs-dl:hover { color: var(--gs-hover, #9d3490) !important; text-decoration: underline; }
   .gs-steps li { background: #fff; border: 1px solid #e8e6dc; border-radius: 16px; padding: 12px 14px; }
-  .gs-icon { position: absolute; top: 24px; right: 24px; width: 96px; height: 96px; }
-  .gs-n { display: inline-flex; width: 26px; height: 26px; border-radius: 50%; background: #b83eaa; color: #fff; font-weight: 700; font-size: .85rem; align-items: center; justify-content: center; margin-right: .5rem; }
+  .gs-icon { position: absolute; top: 16px; right: 20px; width: 67px; height: 67px; }
+  .gs-n { display: inline-flex; width: 26px; height: 26px; border-radius: 50%; background: var(--gs-accent, #b83eaa); color: #fff; font-weight: 700; font-size: .85rem; align-items: center; justify-content: center; margin-right: .5rem; }
+  .gs-claude, .gs-chatgpt { border-color: var(--gs-accent); border-width: 2px; }
+  .gs-claude .gs-steps li, .gs-chatgpt .gs-steps li { border-color: rgba(var(--gs-rgb), .75); border-width: 1px; }
+  .gs-claude { --gs-accent: #d97757; --gs-rgb: 217, 119, 87; --gs-text: #b85c3e; --gs-hover: #9a4a30; }
+  .gs-chatgpt { --gs-accent: #74aa9c; --gs-rgb: 116, 170, 156; --gs-text: #4f8b7b; --gs-hover: #3b6e60; }
+  .gs-chatgpt code { color: var(--gs-text); }
   .gs-steps b { display: block; margin-bottom: .45rem; line-height: 1.25; }
   .gs-steps .gs-d { color: #5d5a55; font-size: .92rem; line-height: 1.25; }
   .gs-steps .gs-p { display: block; margin-top: .7rem; }
   .gs-steps .gs-p:first-child { margin-top: 0; }
   @media (max-width: 760px) { .gs-intro { display: block; margin-right: 0; min-height: 0; } .gs-start { padding: 18px 16px 14px; border-radius: 20px; } .gs-steps { grid-template-columns: 1fr; } .gs-icon { display: none; } }
 </style>
-<div class="gs-start">
-  <img class="gs-icon" src="images/icon.svg" alt="" width="96" height="96">
+<div class="gs-start gs-claude">
+  <img class="gs-icon" src="images/claude-icon.svg" alt="Claude" width="67" height="67">
   <div class="gs-intro">
-    <b class="gs-title">Installation</b>
-    <div>For claude.ai chat & code (online), Claude Desktop chat & code (Mac or Windows).
-    For Claude Code in a terminal <a href="#claude-code-mac-terminal">see below</a></div>
+    <b class="gs-title">Installation for Claude</b>
   </div>
   <ol class="gs-steps">
     <li><b><span class="gs-n">1</span>Get the files</b>
     <span class="gs-d"><span class="gs-p"><a class="gs-dl" href="downloads/songwriting-coach.skill" download>
       Download songwriting-coach.skill</a></span><span class="gs-p"><a class="gs-dl" href="/projects/lyrics-and-chords/downloads/lyrics-and-chords.skill" download>
       Download lyrics-and-chords.skill</a></span></span></li>
-    <li><b><span class="gs-n">2</span>Add the skills to Claude</b><span class="gs-d"><span class="gs-p">Customize &gt; Skills &gt; Add &gt; Upload skill</span><span class="gs-p">Drag and drop the download file</span></span></li>
+    <li><b><span class="gs-n">2</span>Add the skills to Claude</b><span class="gs-d"><span class="gs-p">Open claude.ai<br/>Or open Claude Desktop app (Mac or Windows)<br/>Or <a href="#claude-code-mac-terminal">Claude Code in a terminal</a></span><span class="gs-p">Customize &gt; Skills &gt; Add &gt; Upload skill</span><span class="gs-p">Drag and drop the download file</span></span></li>
     <li><b><span class="gs-n">3</span>Start a chat with the Songwriting Coach</b><span class="gs-d"><span class="gs-p">Open a new chat and say <i>&ldquo;I want to write a song&rdquo;</i>.</span></span><div class="gs-note">Works best with Opus or Sonnet 4.5 or later.</div></li>
+  </ol>
+</div>
+
+<div class="gs-start gs-chatgpt" id="chatgpt-install">
+  <img class="gs-icon" src="images/chatgpt-logo.svg" alt="ChatGPT" width="67" height="67">
+  <div class="gs-intro">
+    <b class="gs-title">Installation for ChatGPT</b>
+  </div>
+  <ol class="gs-steps">
+    <li><b><span class="gs-n">1</span>Add the marketplace</b><span class="gs-d"><span class="gs-p">Open ChatGPT desktop app (Mac or Windows)</span><span class="gs-p">Plugins &gt; Add plugin marketplace</span><span class="gs-p">Source: <code>musios-app/musios-ai-plugins</code></span></span></li>
+    <li><b><span class="gs-n">2</span>Install the plugins</b><span class="gs-d"><span class="gs-p">Under <i>musios AI</i>, install <i>Songwriting Coach</i> and <i>Lyrics &amp; Chords</i></span></span></li>
+    <li><b><span class="gs-n">3</span>Start a chat with the Songwriting Coach</b><span class="gs-d"><span class="gs-p">Open a new chat in <b style="display:inline">Work</b> mode (it works only there)</span><span class="gs-p">Say <i>&ldquo;I want to write a song&rdquo;</i></span></span></li>
   </ol>
 </div>
 
@@ -167,6 +183,14 @@ Notes:
 
 * To install by hand, unzip the file into `~/.claude/skills/songwriting-coach/` (the folder must contain `SKILL.md`).
 * A `.skill` file is a zip. Rename it to `.zip` if your unzip tool doesn't recognise it.
+
+## ChatGPT: installation, update, removal {#chatgpt}
+
+It works only in the ChatGPT desktop app's **Work** mode (plain Chat cannot use skills). It needs no Node.js of your own: it uses the one inside the app. The rhyme map works; the song dynamics graph does not yet. Install the [Lyrics & Chords skill](/projects/lyrics-and-chords/) at the same time.
+
+* **Install:** Plugins > Add plugin marketplace > source `musios-app/musios-ai-plugins`, then install *Songwriting Coach* (and *Lyrics & Chords*) under *musios AI*. Then open a new chat in Work mode and say "I want to write a song". Saying "songwriting coach" alone may not load it.
+* **Update:** in a Work session type: *Update my musios AI plugins to the latest versions*
+* **Remove:** Plugins > Songwriting Coach > Manage > Uninstall
 
 <!-- 
 Install:
