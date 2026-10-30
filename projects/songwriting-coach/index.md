@@ -37,13 +37,34 @@ The Songwriting Coach helps you write and improve song lyrics from a first idea 
   .gs-claude .gs-steps li, .gs-chatgpt .gs-steps li { border-color: rgba(var(--gs-rgb), .75); border-width: 1px; }
   .gs-claude { --gs-accent: #d97757; --gs-rgb: 217, 119, 87; --gs-text: #b85c3e; --gs-hover: #9a4a30; }
   .gs-chatgpt { --gs-accent: #74aa9c; --gs-rgb: 116, 170, 156; --gs-text: #4f8b7b; --gs-hover: #3b6e60; }
-  .gs-chatgpt code { color: var(--gs-text); }
+  .gs-chatgpt code, .gs-claude code { color: var(--gs-text); }
+  .gs-copy { display: inline-flex; align-items: center; margin-left: .2rem; padding: 3px; vertical-align: middle; color: var(--gs-text); background: none; border: 0; border-radius: 6px; cursor: pointer; }
+  .gs-copy:hover, .gs-copy:focus-visible { background: rgba(var(--gs-rgb), .18); }
   .gs-steps b { display: block; margin-bottom: .45rem; line-height: 1.25; }
   .gs-steps .gs-d { color: #5d5a55; font-size: .92rem; line-height: 1.25; }
   .gs-steps .gs-p { display: block; margin-top: .7rem; }
   .gs-steps .gs-p:first-child { margin-top: 0; }
   @media (max-width: 760px) { .gs-intro { display: block; margin-right: 0; min-height: 0; } .gs-start { padding: 18px 16px 14px; border-radius: 20px; } .gs-steps { grid-template-columns: 1fr; } .gs-icon { display: none; } }
 </style>
+<script>
+document.addEventListener("click", function (event) {
+  var button = event.target.closest(".gs-copy");
+  if (!button) return;
+  var text = button.getAttribute("data-copy");
+  var label = button.innerHTML;
+  function done() { button.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>'; setTimeout(function () { button.innerHTML = label; }, 1500); }
+  function fallback() {
+    var box = document.createElement("textarea");
+    box.value = text;
+    document.body.appendChild(box);
+    box.select();
+    try { document.execCommand("copy"); done(); } catch (problem) {}
+    document.body.removeChild(box);
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, fallback);
+  else fallback();
+});
+</script>
 <div class="gs-start gs-claude">
   <img class="gs-icon" src="images/claude-icon.svg" alt="Claude" width="67" height="67">
   <div class="gs-intro">
@@ -55,7 +76,7 @@ The Songwriting Coach helps you write and improve song lyrics from a first idea 
       Download songwriting-coach.skill</a></span><span class="gs-p"><a class="gs-dl" href="/projects/lyrics-and-chords/downloads/lyrics-and-chords.skill" download>
       Download lyrics-and-chords.skill</a></span></span></li>
     <li><b><span class="gs-n">2</span>Add the skills to Claude</b><span class="gs-d"><span class="gs-p">Open claude.ai<br/>Or open Claude Desktop app (Mac or Windows)</span><span class="gs-p">Customize &gt; Skills &gt; Add &gt; Upload skill</span><span class="gs-p">Drag and drop the files together then Upload</span></span></li>
-    <li><b><span class="gs-n">3</span>Start a chat with the Songwriting Coach</b><span class="gs-d"><span class="gs-p">Open a new chat and say <i>&ldquo;I want to write a song&rdquo;</i>.</span></span><div class="gs-note">Works best with Opus or Sonnet 4.5 or later.</div></li>
+    <li><b><span class="gs-n">3</span>Start a chat with the Songwriting Coach</b><span class="gs-d"><span class="gs-p">Open a new chat and say <code>I want to write a song</code> <button type="button" class="gs-copy" data-copy="I want to write a song" aria-label="Copy I want to write a song" title="Copy"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="9" width="11" height="11" rx="2"/><path d="M9 4h9a2 2 0 0 1 2 2v9"/></svg></button></span></span><div class="gs-note">Works best with Opus or Sonnet 4.5 or later.</div></li>
   </ol>
 </div>
 
@@ -65,9 +86,9 @@ The Songwriting Coach helps you write and improve song lyrics from a first idea 
     <b class="gs-title">Installation for ChatGPT</b>
   </div>
   <ol class="gs-steps">
-    <li><b><span class="gs-n">1</span>Add the marketplace</b><span class="gs-d"><span class="gs-p">Open ChatGPT desktop app (Mac or Windows)</span><span class="gs-p">Plugins &gt; Add plugin marketplace</span><span class="gs-p">Source: <code>musios-app/musios-ai-plugins</code></span></span></li>
-    <li><b><span class="gs-n">2</span>Install the plugins</b><span class="gs-d"><span class="gs-p">Under <i>musios AI</i>, install <i>Songwriting Coach</i> and <i>Lyrics &amp; Chords</i></span></span></li>
-    <li><b><span class="gs-n">3</span>Start a chat with the Songwriting Coach</b><span class="gs-d"><span class="gs-p">Open a new chat in <b style="display:inline">Work</b> mode (it works only there)</span><span class="gs-p">Say <i>&ldquo;I want to write a song&rdquo;</i></span></span></li>
+    <li><b><span class="gs-n">1</span>Add the marketplace</b><span class="gs-d"><span class="gs-p">Open ChatGPT desktop app (Mac or Windows)</span><span class="gs-p">Plugins &gt; Add plugin marketplace</span><span class="gs-p">Source: <code>musios-app/musios-ai-plugins</code> <button type="button" class="gs-copy" data-copy="musios-app/musios-ai-plugins" aria-label="Copy musios-app/musios-ai-plugins" title="Copy"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="9" width="11" height="11" rx="2"/><path d="M9 4h9a2 2 0 0 1 2 2v9"/></svg></button></span><span class="gs-p">Leave the other boxes empty</span><span class="gs-p">Click <i>Add marketplace</i></span></span></li>
+    <li><b><span class="gs-n">2</span>Install the plugins</b><span class="gs-d"><span class="gs-p">Plugins &gt; Personal &gt; <i>musios AI</i></span><span class="gs-p">Click <i>Songwriting Coach</i> then <i>Install</i></span><span class="gs-p">Click <i>Lyrics &amp; Chords</i> then <i>Install</i></span></span></li>
+    <li><b><span class="gs-n">3</span>Start a chat with the Songwriting Coach</b><span class="gs-d"><span class="gs-p">Open a new chat in <b style="display:inline">Work</b> mode (it works only there)</span><span class="gs-p">Say <code>I want to write a song</code> <button type="button" class="gs-copy" data-copy="I want to write a song" aria-label="Copy I want to write a song" title="Copy"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="9" width="11" height="11" rx="2"/><path d="M9 4h9a2 2 0 0 1 2 2v9"/></svg></button></span></span></li>
   </ol>
 </div>
 
@@ -190,7 +211,7 @@ Notes:
 
 It works only in the ChatGPT desktop app's **Work** mode (plain Chat cannot use skills). It needs no Node.js of your own: it uses the one inside the app. The rhyme map works; the song dynamics graph does not yet. Install the [Lyrics & Chords skill](/projects/lyrics-and-chords/) at the same time.
 
-* **Install:** Plugins > Add plugin marketplace > source `musios-app/musios-ai-plugins`, then install *Songwriting Coach* (and *Lyrics & Chords*) under *musios AI*. Then open a new chat in Work mode and say "I want to write a song". Saying "songwriting coach" alone may not load it.
+* **Install:** Plugins > Add plugin marketplace > source `musios-app/musios-ai-plugins`, then Plugins > Personal > *musios AI*, click *Songwriting Coach* then *Install*, and the same for *Lyrics & Chords*. Then open a new chat in Work mode and say "I want to write a song". Saying "songwriting coach" alone may not load it.
 * **Update:** in a Work session type: *Update my musios AI plugins to the latest versions*
 * **Remove:** Plugins > Songwriting Coach > Manage > Uninstall
 
