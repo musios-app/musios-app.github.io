@@ -96,3 +96,22 @@ footer {
     font-size: 75%;
 }
 
+
+/* Accessibility: colour contrast (Lighthouse needs 4.5:1 for normal text) */
+
+/* The BETA badge: white text on a fresh green (white on the theme's amber #e4a11b was 2.2:1; this is 5.1:1) */
+.badge.text-bg-warning {
+    background-color: #2e7d32 !important;
+    color: #ffffff !important;
+}
+
+/* Inline code: a slightly darker pink than the theme's #e91e63 (4.3:1 on white) */
+:not(pre) > code {
+    color: #c2185b;
+}
+
+/* Links on the pale grey panels (project list rows, Installation panels): a slightly darker blue than #3b71ca (4.49:1) */
+#project-list h3 a,
+.gs-intro a {
+    color: #3366bb;
+}
