@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Lyrics & Chords Skill"
-description: Beta. A skill for Claude and the ChatGPT desktop app that reads song lyrics and chord sheets in many formats (ChordPro, Genius and Ultimate Guitar pages, plain text, chords above words, Word files), corrects many common errors, and returns a plain reading plus structured JSON. Works with the Songwriting Coach. Free software under the GPL.
+description: Beta. A skill for Claude and ChatGPT that reads song lyrics and chord sheets in many formats (ChordPro, Genius and Ultimate Guitar pages, plain text, chords above words, Word files), corrects many common errors, and returns a plain reading plus structured JSON. Works with the Songwriting Coach. Free software under the GPL.
 tagline: "BETA: Reads a wide range of song lyrics and chord file formats into Claude or ChatGPT."
 icon: images/icon.svg
 gitrepo: https://github.com/musios-app/lyrics-and-chords
@@ -156,4 +156,4 @@ Example JSON object:
 
 ## Licence and source
 
-Lyrics & Chords is free software under the **GNU General Public License, version 2 only** (GPL-2.0-only), because it includes [ChordSheetJS](https://github.com/martijnversluis/ChordSheetJS) 18.0.0 by Martijn Versluis, which has the same licence. The licence text is in the `.skill` file as `LICENSE`, and `NOTICE.txt` says what is included. The source for this version is the source download above (commit 78d5398).
+Lyrics & Chords is free software under the **GNU General Public License, version 2 only** (GPL-2.0-only), because it includes [ChordSheetJS](https://github.com/martijnversluis/ChordSheetJS) 18.0.0 by Martijn Versluis, which has the same licence. The licence text is in the `.skill` file as `LICENSE`, and `NOTICE.txt` says what is included. The source for this version is the source download above (commit 310135c).

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Songwriting Coach Skill
-description: Beta. A songwriting coach for Claude where you write the lyrics and keep creative control. It includes over 40 checks on narrative arc, rhyme, rhythm, singability, tense, pronouns, and more. Start with a first idea, or from polished lyrics that you've written, or anywhere between.
+description: Beta. A songwriting coach for Claude and ChatGPT where you write the lyrics and keep creative control. It includes over 40 checks on narrative arc, rhyme, rhythm, singability, tense, pronouns, and more. Start with a first idea, or from polished lyrics that you've written, or anywhere between.
 tagline: "BETA: A coach for song lyrics, from a first idea to a finished draft."
 icon: images/icon.svg
 software:
