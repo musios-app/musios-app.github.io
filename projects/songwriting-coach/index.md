@@ -50,11 +50,11 @@ The Songwriting Coach helps you write and improve song lyrics from a first idea 
     <b class="gs-title">Installation for Claude</b>
   </div>
   <ol class="gs-steps">
-    <li><b><span class="gs-n">1</span>Get the files</b>
+    <li><b><span class="gs-n">1</span>Download the files</b>
     <span class="gs-d"><span class="gs-p"><a class="gs-dl" href="downloads/songwriting-coach.skill" download>
       Download songwriting-coach.skill</a></span><span class="gs-p"><a class="gs-dl" href="/projects/lyrics-and-chords/downloads/lyrics-and-chords.skill" download>
       Download lyrics-and-chords.skill</a></span></span></li>
-    <li><b><span class="gs-n">2</span>Add the skills to Claude</b><span class="gs-d"><span class="gs-p">Open claude.ai<br/>Or open Claude Desktop app (Mac or Windows)<br/>Or <a href="#claude-code-mac-terminal">Claude Code in a terminal</a></span><span class="gs-p">Customize &gt; Skills &gt; Add &gt; Upload skill</span><span class="gs-p">Drag and drop the download file</span></span></li>
+    <li><b><span class="gs-n">2</span>Add the skills to Claude</b><span class="gs-d"><span class="gs-p">Open claude.ai<br/>Or open Claude Desktop app (Mac or Windows)</span><span class="gs-p">Customize &gt; Skills &gt; Add &gt; Upload skill</span><span class="gs-p">Drag and drop the files together then Upload</span></span></li>
     <li><b><span class="gs-n">3</span>Start a chat with the Songwriting Coach</b><span class="gs-d"><span class="gs-p">Open a new chat and say <i>&ldquo;I want to write a song&rdquo;</i>.</span></span><div class="gs-note">Works best with Opus or Sonnet 4.5 or later.</div></li>
   </ol>
 </div>
@@ -71,9 +71,9 @@ The Songwriting Coach helps you write and improve song lyrics from a first idea 
   </ol>
 </div>
 
-## Coaching points
+## Coaching notes
 
-The Songwriting Coach can help you find and sharpen a song idea. Feedback starts with what's working, and marks each point as a strength, observation, concern or issue. If you have a draft, it can review with [over 40 coaching points](conversations/assessments-checks.html) in these groups.
+The Songwriting Coach can help you find and sharpen a song idea. Feedback starts with what's working, and marks each point as a strength, observation, concern or issue. If you have a draft, it can review with [over 40 coaching notes](conversations/assessments-checks.html) in these groups.
 
 * Song Idea Development
 * Song Idea Assessment / Sharpening
@@ -100,7 +100,7 @@ The coach lets you get going from wherever you are in the songwriting process. E
 
 ## Coaching behaviours
 
-**Help** is always available to guide you through the many coaching points above. Just ask for "Help" or "What's next?" or anything like this.
+**Help** is always available to guide you through the many coaching notes above. Just ask for "Help" or "What's next?" or anything like this.
 
 **Song status:** ask for "status" at any time to see a board of the checks run so far, with a colour for each finding. It opens in your browser and updates as you work.
 
@@ -116,7 +116,9 @@ You can ask the coach to change coaching style:
 
 ## Models
 
-Songwriting is a specialised use of language and structure. Tests reveal this skill works best with capable Claude models (Opus or Sonnet, 4.5 or later). Haiku 4.5 (as an example) is not reliable. Whatever model you use, always check its reading of your song against your own.
+**Claude models Opus 4.5 or Sonnet 4.5 or later are strongly recommended.**
+
+Songwriting is a specialised use of language and structure. Tests reveal this skill works best with capable Claude models. Haiku 4.5 (as an example) is not reliable. Whatever model you use, always check its reading of your song against your own.
 
 <!--
 ## Availability
