@@ -54,7 +54,10 @@ REINSTATE: remove the comment tags around the block below.
 						<a href="{{ page.url }}">{{ icon_html }}</a>
 					</div>
 					<div class="col">
-						<h3 class="h5"><a href="{{ page.url }}">{{ page.title }}</a></h3>
+						{%- comment -%} A description that starts "Beta." gets the same warning badge as the project page heading, placed after the title. {%- endcomment -%}
+						{%- assign desc = page.description | default: "" -%}
+						{%- assign desc_start = desc | slice: 0, 5 -%}
+						<h3 class="h5"><a href="{{ page.url }}">{{ page.title }}</a>{% if desc_start == "Beta." %} <span class="badge text-bg-warning ms-1">BETA</span>{% endif %}</h3>
 						<div class="project-desc">
 							{%- comment -%} Below 992px: the title comes first, then the icon sits at the left with the text wrapping around it, and the GitHub icon (if the project has a repo) is directly under it. {%- endcomment %}
 							<div class="project-icon-inline float-start me-3 mb-1 d-lg-none text-center">
@@ -63,13 +66,10 @@ REINSTATE: remove the comment tags around the block below.
 								<a href="{{ page.gitrepo }}" class="d-block mt-2"><img class="project-github-icon" src="/assets/images/github-icon.svg" alt="GitHub repository for {{ page.title | escape }} ({{ repo }})" style="width: 32px; height: 32px;"/></a>
 								{%- endif %}
 							</div>
-							{%- comment -%} A description that starts "Beta." gets the same warning badge as the project page heading. {%- endcomment -%}
-							{%- assign desc = page.description | default: "" -%}
-							{%- assign desc_start = desc | slice: 0, 5 -%}
 							{%- if desc_start == "Beta." -%}
-								<span class="badge text-bg-warning me-1">BETA</span> {{ desc | remove_first: "Beta." | strip }}
+								{{ desc | remove_first: "Beta." | strip | markdownify }}
 							{%- else -%}
-								{{ desc }}
+								{{ desc | markdownify }}
 							{%- endif %}
 						</div>
 					</div>
