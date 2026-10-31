@@ -80,15 +80,18 @@ document.addEventListener("click", function (event) {
   </div>
   <ol class="gs-steps gs-steps-4">
     <li><b><span class="gs-n">1</span>Downloads</b>
-    <span class="gs-d"><span class="gs-p"><a class="gs-dl" href="downloads/songwriting-coach.skill" download>
-      1. songwriting-coach.skill</a></span><span class="gs-p"><a class="gs-dl" href="/projects/lyrics-and-chords/downloads/lyrics-and-chords.skill" download>
-      2. lyrics-and-chords.skill</a></span></span></li>
+      <span class="gs-d"><span class="gs-p"><a class="gs-dl" href="downloads/songwriting-coach.skill" download>
+        1) songwriting-coach.skill</a></span>
+         <span class="gs-p"><a class="gs-dl" href="/projects/lyrics-and-chords/downloads/lyrics-and-chords.skill" download>
+        2) lyrics-and-chords.skill</a></span>
+      </span>
+    </li>
     <li><b><span class="gs-n">2</span>Open Claude</b><span class="gs-d">
       <span class="gs-p">Choose:</span>
-      <span class="gs-p">• <a href="https://claude.ao">claude.ai</a> (Chat or Work)</span>
+      <span class="gs-p">• <a href="https://claude.ai">claude.ai</a> (Chat or Work)</span>
       <span class="gs-p">• Claude Desktop app (Chat or Work, Mac or Windows)</span>
-      <span class="gs-p">Settings > Capabilities > Code execution ON</span>
-    </li>
+      <span class="gs-p">Settings &gt; Capabilities &gt; Code execution ON</span>
+    </span></li>
     <li><b><span class="gs-n">3</span>Add the skills</b>
       <span class="gs-d"><span class="gs-p">Customize &gt; Skills &gt; Add &gt; Upload skill</span>
       <span class="gs-p">Drag and drop the files together then Upload</span></span>
@@ -113,10 +116,25 @@ document.addEventListener("click", function (event) {
     <b class="gs-title">Installation for ChatGPT</b>
   </div>
   <ol class="gs-steps gs-steps-4">
-    <li><b><span class="gs-n">1</span>Open ChatGPT</b><span class="gs-d"><span class="gs-p">Open ChatGPT desktop app (Mac or Windows)</span></span></li>
-    <li><b><span class="gs-n">2</span>Add the marketplace</b><span class="gs-d"><span class="gs-p">Plugins &gt; Add plugin marketplace</span><span class="gs-p">Source: <code>musios-app/musios-ai-plugins</code> <button type="button" class="gs-copy" data-copy="musios-app/musios-ai-plugins" aria-label="Copy musios-app/musios-ai-plugins" title="Copy"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="9" width="11" height="11" rx="2"/><path d="M9 4h9a2 2 0 0 1 2 2v9"/></svg></button></span><span class="gs-p">Leave the other boxes empty</span><span class="gs-p">Click <i>Add marketplace</i></span></span></li>
+    <li>
+      <b><span class="gs-n">1</span>Open ChatGPT</b>
+      <span class="gs-d">
+        <span class="gs-p">Open ChatGPT desktop app (Mac or Windows)</span>
+        <span class="gs-p">(ChatGPT online not supported)</span>
+      </span>
+    </li>
+    <li>
+      <b><span class="gs-n">2</span>Add the marketplace</b>
+      <span class="gs-d">
+        <span class="gs-p">Plugins &gt; Add plugin marketplace</span>
+        <span class="gs-p">Source: <code>musios-app/musios-ai-plugins</code> <button type="button" class="gs-copy" data-copy="musios-app/musios-ai-plugins" aria-label="Copy musios-app/musios-ai-plugins" title="Copy"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="9" width="11" height="11" rx="2"/><path d="M9 4h9a2 2 0 0 1 2 2v9"/></svg></button></span><span class="gs-p">(Leave the other boxes empty)</span><span class="gs-p">Click <i>Add marketplace</i></span></span></li>
     <li><b><span class="gs-n">3</span>Install the plugins</b><span class="gs-d"><span class="gs-p">Plugins &gt; Personal &gt; <i>musios AI</i></span><span class="gs-p">Click <i>Songwriting Coach</i> then <i>Install</i></span><span class="gs-p">Click <i>Lyrics &amp; Chords</i> then <i>Install</i></span></span></li>
-    <li><b><span class="gs-n">4</span>Start a chat with the Songwriting Coach</b><span class="gs-d"><span class="gs-p">Open a new chat in <b style="display:inline">Work</b> mode (it works only there)</span><span class="gs-p">Say <code>I want to write a song</code> <button type="button" class="gs-copy" data-copy="I want to write a song" aria-label="Copy I want to write a song" title="Copy"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="9" width="11" height="11" rx="2"/><path d="M9 4h9a2 2 0 0 1 2 2v9"/></svg></button></span></span></li>
+    <li>
+      <b><span class="gs-n">4</span>Start a chat with the Songwriting Coach</b>
+      <span class="gs-d">
+        <span class="gs-p">Open a new chat </span>
+        <span class="gs-p">Select <b style="display:inline">Work</b> mode (it only works there)</span>
+        <span class="gs-p">Prompt <code>I want to write a song</code> <button type="button" class="gs-copy" data-copy="I want to write a song" aria-label="Copy I want to write a song" title="Copy"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="9" width="11" height="11" rx="2"/><path d="M9 4h9a2 2 0 0 1 2 2v9"/></svg></button></span></span></li>
   </ol>
 </div>
 
