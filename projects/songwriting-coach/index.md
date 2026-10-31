@@ -1,7 +1,12 @@
 ---
 layout: default
 title: Songwriting Coach Skill
-description: Beta. A songwriting coach for Claude and ChatGPT where you write the lyrics and keep creative control. It includes over 50 checks on narrative arc, rhyme, rhythm, singability, tense, pronouns, and more. Start with a first idea, or from polished lyrics that you've written, or anywhere between.
+description: |-
+  Beta. The Songwriting Coach provides songwriters with structured, constructive insights to help develop and refine their lyrics. Unlike most AI lyric tools, it is not set up to write lyrics for you, so **you retain full creative control**.
+
+  The Songwriting Coach can be used by songwriters of all experience levels who want to develop their craft and refine their original works. It's easy to install and brings over 50 checks that help identify strengths and places to focus improvement in narrative, structure, phrasing, rhyme, emotional impact, and more.
+
+  [Get started in 5 minutes...](/projects/songwriting-coach/)
 tagline: "BETA: A coach for song lyrics, from a first idea to a finished draft."
 icon: images/icon.svg
 software:
@@ -73,7 +78,7 @@ document.addEventListener("click", function (event) {
   else fallback();
 });
 </script>
-<div class="gs-start gs-claude">
+<div class="gs-start gs-claude" id="claude-install">
   <div class="gs-intro">
     <img class="gs-icon" src="images/claude-icon.svg" alt="Claude" width="40" height="40">
     <b class="gs-title">Installation for Claude</b>

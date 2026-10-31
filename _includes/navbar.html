@@ -14,38 +14,33 @@
                     </a>
                 </li>
 
+                {%- comment -%} Two menus, split by the group: key in projects_homes (_config.yml): "songwriters", everything else under "Music". {%- endcomment -%}
+                {% assign menus = "songwriters|Songwriters,other|Music" | split: "," %}
+                {% for menu in menus %}
+                {% assign menu_parts = menu | split: "|" %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Tools &amp; Doc
+                        {{ menu_parts[1] }}
                     </a>
                     <ul class="dropdown-menu bg-dark">
                         {% for project in site.projects_homes %}
+                            {% assign group = project.group | default: "other" %}
+                            {% if group == menu_parts[0] %}
                             {% assign url = project.dir | append: "/" | append: project.home | replace: ".md", ".html" %}
-                    		{% assign url2 = url | replace: "/index.html", "/" %}
+                            {% assign url2 = url | replace: "/index.html", "/" %}
 
                             {% for page in site.pages %}
-                    			{% if url == page.url or url2 == page.url %}
+                                {% if url == page.url or url2 == page.url %}
                                     <li class="nav-item align-middle">
                                         <a class="dropdown-item nav-link" href="{{ page.url }}">{{ page.title }}</a>
                                     </li>
                                 {% endif %}
                             {% endfor %}
+                            {% endif %}
                         {% endfor %}
                     </ul>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link align-middle" href="https://github.com/orgs/musios-app/discussions">Discussion</a>
-                </li>
-
-                {% assign issues = site.github.repository_url | append: '/issues' %}
-                {% if page.gitrepo %}
-                    {% assign issues = page.gitrepo | append: '/issues' %}
-                {% endif %}
-
-                <li class="nav-item">
-                    <a class="nav-link align-middle" href="{{ issues }}">Issues</a>
-                </li>
+                {% endfor %}
 
                 {%- comment -%} Github: the project's repo; the home page goes to the musios-app organisation; pages with no repo (such as Songwriting Coach, which is private) have no link. {%- endcomment -%}
                 {% assign github_link = page.gitrepo %}
