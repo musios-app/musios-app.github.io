@@ -174,6 +174,8 @@ The coach lets you get going from wherever you are in the songwriting process. E
 
 **Help** is always available to guide you through the many coaching notes above. Just ask for "Help" or "What's next?" or anything like this.
 
+**Start small:** you don't have to take every note at once. Ask for one check, or pick from the list the coach offers; say "all" to run everything.
+
 **Song status:** ask for "status" at any time to see a board of the checks run so far, with a colour for each finding. It opens in your browser and updates as you work.
 
 You can ask the coach to change coaching style:
