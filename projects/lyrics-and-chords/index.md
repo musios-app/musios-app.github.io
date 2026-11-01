@@ -10,7 +10,7 @@ icon: images/icon.svg
 gitrepo: https://github.com/musios-app/lyrics-and-chords
 software:
   categories: [Music, Songwriting, Lyrics and chord sheets]
-  version: "0.1.5"
+  version: "0.1.6"
   download: /projects/lyrics-and-chords/downloads/lyrics-and-chords.skill
   license: https://spdx.org/licenses/GPL-2.0-only.html
   repo: https://github.com/musios-app/lyrics-and-chords
@@ -121,7 +121,7 @@ document.addEventListener("click", function (event) {
 
 ## Source {#source}
 
-Source code for Lyrics & Chords Skill 0.1.5: [lyrics-and-chords-0.1.5-source.zip](downloads/lyrics-and-chords-0.1.5-source.zip)
+Source code for Lyrics & Chords Skill 0.1.6: [lyrics-and-chords-0.1.6-source.zip](downloads/lyrics-and-chords-0.1.6-source.zip)
 
 ## Install, update, remove
 
@@ -182,4 +182,4 @@ Example JSON object:
 
 ## Licence and source
 
-Lyrics & Chords is free software under the **GNU General Public License, version 2 only** (GPL-2.0-only), because it includes [ChordSheetJS](https://github.com/martijnversluis/ChordSheetJS) 18.0.0 by Martijn Versluis, which has the same licence. The licence text is in the `.skill` file as `LICENSE`, and `NOTICE.txt` says what is included. The source for this version is the source download above (commit 8b99ef4).
+Lyrics & Chords is free software under the **GNU General Public License, version 2 only** (GPL-2.0-only), because it includes [ChordSheetJS](https://github.com/martijnversluis/ChordSheetJS) 18.0.0 by Martijn Versluis, which has the same licence. The licence text is in the `.skill` file as `LICENSE`, and `NOTICE.txt` says what is included. The source for this version is the source download above (commit de54cc4).
