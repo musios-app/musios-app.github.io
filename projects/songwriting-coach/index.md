@@ -11,7 +11,7 @@ tagline: "BETA: A coach for song lyrics, from a first idea to a finished draft."
 icon: images/icon.svg
 software:
   categories: [Music, Songwriting, Lyrics]
-  version: "0.2.2"
+  version: "0.2.3"
   download: /projects/songwriting-coach/downloads/songwriting-coach.skill
 ---
 
@@ -178,10 +178,11 @@ The coach lets you get going from wherever you are in the songwriting process. E
 
 **Song status:** ask for "status" at any time to see a board of the checks run so far, with a colour for each finding. It opens in your browser and updates as you work.
 
-You can ask the coach to change coaching style:
+Coaching settings change how the coach interacts and presents findings. Ask for any of them in your own words:
 
-* Change the level of detail in its responses to Concise, Moderate or Comprehensive
-* Change the coach style between Directive, Guided, and Socratic (guide by questions)
+* Coaching style: Socratic (guide by questions), Guided or Directive
+* Information depth: Concise, Moderate or Comprehensive
+* Report depth: Summary (3 key points for the song), Full report (5 key points, then up to 3 points per section), or your own numbers
 
 **Disagree:** disagree with the coach when you have a different view. The coach will engage and can take on and apply your perspective.
 
@@ -229,7 +230,7 @@ Songwriting is a specialised use of language and structure. Tests reveal this sk
 
 **Installation procedure** 
 
-1. Download [`songwriting-coach.skill`](downloads/songwriting-coach.skill) (v0.2.2)
+1. Download [`songwriting-coach.skill`](downloads/songwriting-coach.skill) (v0.2.3)
 2. Open Customize > Skills > Add > Upload skill
 3. Drag the `.skill` file into the drop zone and press Upload
 4. Check the skill's toggle is on
@@ -246,7 +247,7 @@ It needs **Node.js 22.6 or later** on your computer.
 
 **Installation procedure:** with Claude Code running in a terminal
 
-1. Download [`songwriting-coach.skill`](downloads/songwriting-coach.skill) (v0.2.2)
+1. Download [`songwriting-coach.skill`](downloads/songwriting-coach.skill) (v0.2.3)
 2. Drag the file into the terminal window where Claude Code is running
 3. Ask Claude to install it ("install this skill") and follow its instructions
 4. Start by typing `/songwriting-coach` to load the coach. Saying "songwriting coach" or "I want to write a song" usually works too, mostly on larger models.
