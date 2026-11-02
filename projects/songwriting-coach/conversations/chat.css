@@ -12,10 +12,11 @@
 .chat .avatar { flex: none; width: 30px; height: 30px; border-radius: 50%; background: var(--accent);
   color: #fff; display: flex; align-items: center; justify-content: center; font-size: .95rem; margin-top: 2px; }
 .chat .turn.coach .bubble { flex: 1; min-width: 0; background: var(--coach); border-radius: 4px 18px 18px 18px; padding: 10px 16px; }
-.chat .bubble { line-height: 1.6; }
+.chat .bubble { line-height: 1.45; }
 .chat .bubble p { margin: .55em 0; }
 .chat .bubble ul, .chat .bubble ol { margin: .4em 0; padding-left: 1.3em; }
 .chat .bubble li { margin: .25em 0; }
+.chat .bubble ul + p, .chat .bubble ol + p { margin-top: 1.8em; }
 .chat .bubble li.e { list-style: none; margin-left: -1.3em; display: flex; gap: .5em; }
 .chat .bubble li.e .em { flex: none; }
 .chat .bubble > :first-child { margin-top: 0; }
